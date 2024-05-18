@@ -2,6 +2,11 @@
 
 本项目基于 MySQL、Python、Django 框架，实现一个 USTC 银行管理系统。本文档主要包括项目的需求分析、功能设计和多模态信息需求的总结。
 
+## 命名规范
+
+1. 数据库表中的表名均为驼峰命名的英文
+2. 数据库属性名为表名驼峰首字母加属性名，如 `BName` 代表银行名称
+
 ## 数据需求
 
 1. 银行信息
@@ -13,7 +18,7 @@
    - 主属性：身份证号，全部为 18 位数字 `CHAR(18)`，使用定长字符串提高检索效率
    - 其他属性：
      - 姓名 `VARCHAR(50)`：考虑到外国人名可能很长
-     - 性别 `CHAR(1)`：M 代表男性，F 代表女性，这里不考虑无性别者
+     - 性别 `CHAR(1)`：M 代表男性，F 代表女性，U 表示未知，这里不考虑无性别者
      - 年龄 `INT`
      - 电话 `VARCHAR(20)`，与银行电话保持一致
      - 地址 `VARCHAR(200)`，与银行地址保持一致
@@ -64,56 +69,106 @@
    - 银行经理是员工的子类，继承员工的所有属性，还有：
      - 经理号 `CHAR(9)`：以 M 开头，后面为 8 位数字（Manager）
 
-## 数据库实体关系设计
+## 数据库实体设计
 
-1. 银行
+1. 银行 Bank
 是银行系统中的可标识对象，因此是实体，实体设计为：
 $(\underline{银行名称}, 银行地址, 银行电话)$
-2. 客户
+$(\underline{BName}, BAddr, BPhone)$
+
+2. 客户 Customer
 是现实世界中的可标识对象，因此是实体，实体设计为：
 $(\underline{身份证号}, 姓名, 性别, 年龄, 电话, 地址)$
-3. 部门
+$(\underline{CID}, CName, CGender, CAge, CPhone, CAddr)$
+
+3. 部门 Department
 是银行系统中的可标识对象，由银行和部门号唯一标识，因此是实体，实体设计为：
 $(\underline{银行名称}, \underline{部门号}, 部门名称, 部门电话)$
-4. 员工
+$(\underline{BName}, \underline{DNo}, DName, DPhone)$
+
+4. 员工 Employee
 是银行系统中的可标识对象，由银行和员工号唯一标识，因此是实体，实体设计为：
 $(\underline{银行名称}, \underline{员工号}, 员工身份证号, 员工姓名, 员工性别, 员工年龄, 员工电话, 员工地址, 员工部门号, 员工头像)$
-经理是员工的子类，实体设计与员工相同，但是需要添加经理号属性
-5. 账户
+$(\underline{BName}, \underline{ENo}, EID, EName, EGender, EAge, EPhone, EAddr, DNo, EAvatar)$
+
+5. 经理 Manager
+是员工的子类，实体设计与员工相同，但是需要添加经理号属性
+经理号：$MNo$
+
+6. 账户 Account
 是银行系统中的可标识对象，由账户号唯一标识，因此是实体，实体设计为：
 $(\underline{账户号}, 账户类型, 货币属性, 账户余额, 开户时间)$
-储蓄账户是账户的子类，实体设计与账户相同，但是需要添加利率、提款额度属性
-信用卡账户是账户的子类，实体设计与账户相同，但是需要添加透支额度、当前透支金额属性
-6. 账户持有记录
+$(\underline{ANo}, AType, ACurrency, ABalance, AOpenTime)$
+
+7. 储蓄账户 SavingAccount
+是账户的子类，实体设计与账户相同，但是需要添加利率、提款额度属性
+利率：$SARate$，提款额度：$SAWithdrawLimit$
+
+8. 信用卡账户 CreditAccount
+是账户的子类，实体设计与账户相同，但是需要添加透支额度、当前透支金额属性
+透支额度：$CAOverdraftLimit$，当前透支金额：$CAOverdraftAmount$
+
+9. 贷款账户 LoanAccount
+是账户的子类，实体设计与账户相同，但是需要添加利率、贷款额度属性
+利率：$LARate$，贷款额度：$LALoanLimit$
+
+10. 账户持有记录 AccountHold
 是银行系统中的可标识对象，由账户号唯一标识，因此是实体，实体设计为：
-$(\underline{账户号}, 身份证号)$，一个人可以有多个账户，但一个账户只能属于一个人
-7. 储蓄账户存钱记录
+$(\underline{账户号}, 银行名称, 身份证号)$
+$(\underline{ANo}, BName, CID)$
+
+11. 储蓄账户存钱记录 SavingsAccountDeposit
 是银行系统中的可标识对象，由账户号和存款时间唯一标识，因此是实体，实体设计为：
 $(\underline{账户号}, \underline{存款时间}, 存款前余额, 存款金额)$
-8. 储蓄账户取钱记录
+$(\underline{ANo}, \underline{SADTime}, SADBeforeBalance, SADAmount)$
+
+12. 储蓄账户取钱记录 SavingsAccountWithdraw
 是银行系统中的可标识对象，由账户号和取款时间唯一标识，因此是实体，实体设计为：
 $(\underline{账户号}, \underline{取款时间}, 取款前余额, 取款金额)$
-9. 储蓄账户转账记录
+$(\underline{ANo}, \underline{SAWTime}, SAWBeforeBalance, SAWAmount)$
+
+13. 储蓄账户转账记录 SavingsAccountTransfer
 是银行系统中的可标识对象，由账户号和转账时间唯一标识，因此是实体，实体设计为：
 $(\underline{账户号}, \underline{转账时间}, 转账前余额, 转账金额, 转账账户号)$
-10. 信用卡账户存钱记录
+$(\underline{ANo}, \underline{SATTime}, SATBeforeBalance, SATAmount, SATTransferANo)$
+
+14.  信用卡账户存钱记录 CreditAccountDeposit
 是银行系统中的可标识对象，由账户号和存款时间唯一标识，因此是实体，实体设计为：
 $(\underline{账户号}, \underline{存款时间}, 存款前余额, 存款前透支金额, 存款金额)$
-11. 信用卡账户取钱记录
+
+$(\underline{ANo}, \underline{CADTime}, CADBeforeBalance, CADBeforeOverdraft, CADAmount)$
+15.  信用卡账户取钱记录 CreditAccountWithdraw
 是银行系统中的可标识对象，由账户号和取款时间唯一标识，因此是实体，实体设计为：
 $(\underline{账户号}, \underline{取款时间}, 取款前余额, 取款前透支金额, 取款金额)$
-12. 信用卡账户转账记录
+$(\underline{ANo}, \underline{CAWTime}, CAWBeforeBalance, CAWBeforeOverdraft, CAWAmount)$
+
+16.  信用卡账户转账记录 CreditAccountTransfer
 是银行系统中的可标识对象，由账户号和转账时间唯一标识，因此是实体，实体设计为：
 $(\underline{账户号}, \underline{转账时间}, 转账前余额, 转账前透支金额, 转账金额, 转账账户号)$
-13. 借贷信息
+$(\underline{ANo}, \underline{CATTime}, CATBeforeBalance, CATBeforeOverdraft, CATAmount, CATTransferANo)$
+
+17.  借贷信息 Loan
 是银行系统中的可标识对象，由银行发放，由贷款号唯一标识，因此是实体，实体设计为；
 $(\underline{贷款号}, 贷款金额, 贷款时间, 贷款期限, 当前还款期数, 当前总还款金额, 当前状态)$
-14. 还贷记录
+$(\underline{LNo}, LAmount, LTime, LDeadline, LCurrentPeriod, LCurrentTotal, LStatus)$
+
+18.  还贷记录 LoanRepay
 是银行系统中的可标识对象，由贷款账户号和还款时间唯一标识，因此是实体，实体设计为：
 $(\underline{贷款号}, \underline{还款时间}, 还款金额)$
-15. 贷款账户发放记录
+$(\underline{LNo}, \underline{LRTime}, LRAmount)$
+
+19.  贷款账户发放记录 LoanAccountGrant
 是银行系统中的可标识对象，由银行发放，由银行名称、贷款号唯一标识，因此是实体，实体设计为：
-$(\underline{银行名称}, \underline{贷款号}, 贷款账户号)$，一个贷款号只对应一个贷款账户号，而一个贷款账户号可以对应多个贷款号
+$(\underline{银行名称}, \underline{贷款号}, 贷款账户号)$
+$(\underline{BName}, \underline{LNo}, LNo)$
+
+
+## 数据库关系设计
+
+1. 一个人可以有多个账户，但一个账户只能属于一个人
+2. 一个银行下可以有多个账户，但一个账户只能属于一个银行
+3. 认为不同银行发布的账户号也互不相同，账户号是全局唯一的，所以账户号可以唯一标识一个账户，这种设计与现实也是一致的
+4. 一个贷款号只对应一个贷款账户号，而一个贷款账户号可以对应多个贷款号
 
 ## 前端功能需求
 
