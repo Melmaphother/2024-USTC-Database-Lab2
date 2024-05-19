@@ -4,7 +4,7 @@
   "avatar": "",
   "version": "4.9.2",
   "createdTime": "2024-5-18 22:27:47",
-  "updatedTime": "2024-5-19 19:42:14",
+  "updatedTime": "2024-5-19 23:05:44",
   "dbConns": [],
   "profile": {
     "default": {
@@ -738,275 +738,6 @@
       "type": "P"
     },
     {
-      "id": "946A027F-D7CC-446D-8331-AB66768D0341",
-      "env": {
-        "base": {
-          "nameSpace": "",
-          "codeRoot": ""
-        }
-      },
-      "defKey": "customer",
-      "defName": "客户",
-      "comment": "",
-      "properties": {
-        "partitioned by": "(date string)",
-        "row format delimited": "",
-        "fields terminated by ','": "",
-        "collection items terminated by '-'": "",
-        "map keys terminated by ':'": "",
-        "store as textfile;": ""
-      },
-      "sysProps": {
-        "nameTemplate": "{defKey}[{defName}]"
-      },
-      "notes": {},
-      "headers": [
-        {
-          "refKey": "hideInGraph",
-          "hideInGraph": true
-        },
-        {
-          "refKey": "defKey",
-          "freeze": false,
-          "hideInGraph": false
-        },
-        {
-          "refKey": "defName",
-          "freeze": false,
-          "hideInGraph": false
-        },
-        {
-          "refKey": "primaryKey",
-          "freeze": false,
-          "hideInGraph": false
-        },
-        {
-          "refKey": "notNull",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "autoIncrement",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "domain",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "type",
-          "freeze": false,
-          "hideInGraph": false
-        },
-        {
-          "refKey": "len",
-          "freeze": false,
-          "hideInGraph": false
-        },
-        {
-          "refKey": "scale",
-          "freeze": false,
-          "hideInGraph": false
-        },
-        {
-          "refKey": "comment",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "refDict",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "defaultValue",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "isStandard",
-          "freeze": false,
-          "hideInGraph": false
-        },
-        {
-          "refKey": "uiHint",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "extProps",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr1",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr2",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr3",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr4",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr5",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr6",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr7",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr8",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr9",
-          "freeze": false,
-          "hideInGraph": true
-        }
-      ],
-      "fields": [
-        {
-          "defKey": "c_id",
-          "defName": "身份证号",
-          "comment": "",
-          "type": "",
-          "len": "",
-          "scale": "",
-          "primaryKey": true,
-          "notNull": true,
-          "autoIncrement": false,
-          "defaultValue": "",
-          "hideInGraph": false,
-          "refDict": "",
-          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
-          "extProps": {},
-          "domain": "1BFCE1A2-A525-43BE-9B08-7DB1B7B94BC3",
-          "id": "F78C3EBB-A05B-40AB-8CEE-26D5077CCB4B",
-          "uiHint": "9999AF2A-A44E-415C-A2DC-D7C613BD0073"
-        },
-        {
-          "defKey": "c_name",
-          "defName": "客户姓名",
-          "comment": "",
-          "type": "",
-          "len": "",
-          "scale": "",
-          "primaryKey": false,
-          "notNull": false,
-          "autoIncrement": false,
-          "defaultValue": "",
-          "hideInGraph": false,
-          "refDict": "",
-          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
-          "extProps": {},
-          "domain": "8D3D0CC8-866A-4285-B8AD-AF5EAE0A12E2",
-          "id": "F12017C1-36A4-4B91-9028-D94E83E78DBB",
-          "uiHint": "642D2E0A-8846-4549-BE56-8C0473F26EDE"
-        },
-        {
-          "defKey": "c_gender",
-          "defName": "性别",
-          "comment": "",
-          "type": "",
-          "len": "",
-          "scale": "",
-          "primaryKey": false,
-          "notNull": false,
-          "autoIncrement": false,
-          "defaultValue": "",
-          "hideInGraph": false,
-          "refDict": "751490E9-0E25-4C53-BD0D-034C34BA1C28",
-          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
-          "extProps": {},
-          "domain": "762A8D98-21C6-43E1-B2CC-D0DE1644F9FC",
-          "id": "9570B4B3-6457-42AB-BB1A-1AD98BB22AF9",
-          "uiHint": "0CB8A6C9-1115-4FC0-B51E-5C028065082F"
-        },
-        {
-          "defKey": "c_age",
-          "defName": "年龄",
-          "comment": "",
-          "type": "",
-          "len": "",
-          "scale": "",
-          "primaryKey": false,
-          "notNull": false,
-          "autoIncrement": false,
-          "defaultValue": "",
-          "hideInGraph": false,
-          "refDict": "",
-          "baseType": "1D764C4A-6F9F-421E-B11A-6F3E23B51811",
-          "extProps": {},
-          "domain": "F7E02E94-7538-4598-8FDF-9716AE794B50",
-          "id": "8E3F7412-C7E8-4682-9F87-84B22099C499",
-          "uiHint": "642D2E0A-8846-4549-BE56-8C0473F26EDE"
-        },
-        {
-          "defKey": "c_phone",
-          "defName": "电话",
-          "comment": "",
-          "type": "",
-          "len": "",
-          "scale": "",
-          "primaryKey": false,
-          "notNull": false,
-          "autoIncrement": false,
-          "defaultValue": "",
-          "hideInGraph": false,
-          "refDict": "",
-          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
-          "extProps": {},
-          "domain": "39E39939-2DEB-42E3-A74E-56D4962E6CC3",
-          "id": "524206E2-7A4E-4DB7-8B03-12F69DD94C22",
-          "uiHint": "642D2E0A-8846-4549-BE56-8C0473F26EDE"
-        },
-        {
-          "defKey": "c_addr",
-          "defName": "地址",
-          "comment": "",
-          "type": "",
-          "len": "",
-          "scale": "",
-          "primaryKey": false,
-          "notNull": false,
-          "autoIncrement": false,
-          "defaultValue": "",
-          "hideInGraph": false,
-          "refDict": "",
-          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
-          "extProps": {},
-          "domain": "8F1B9940-A088-4A46-BF05-550D429124B7",
-          "id": "D122FC03-8D33-4926-BBE4-70470A7A0B00",
-          "uiHint": "642D2E0A-8846-4549-BE56-8C0473F26EDE"
-        }
-      ],
-      "correlations": [],
-      "indexes": [],
-      "type": "P"
-    },
-    {
       "id": "4414C49A-AADA-484B-BBEE-4F63A9BAE800",
       "env": {
         "base": {
@@ -1231,9 +962,622 @@
           "domain": "39E39939-2DEB-42E3-A74E-56D4962E6CC3",
           "id": "8BA084EF-C2C0-42EE-A110-879979B4E1ED",
           "uiHint": "642D2E0A-8846-4549-BE56-8C0473F26EDE"
+        },
+        {
+          "defKey": "d_manager_no",
+          "defName": "部门经理号",
+          "comment": "",
+          "type": "",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
+          "extProps": {},
+          "domain": "4E0B83F6-B24C-4E67-A32A-F59434AAF079",
+          "id": "BC0FCA39-EF20-4DA8-AD69-19866DC34EE3"
+        }
+      ],
+      "correlations": [
+        {
+          "myField": "4696F292-6863-4579-87EA-883B9CE3260C",
+          "refEntity": "DCE42BA8-6E5B-4399-9254-1C1227931192",
+          "refField": "9F39C1D4-68BC-442A-9C83-D7ACFD0703E7",
+          "myRows": "triangle-fill",
+          "refRows": "none",
+          "innerType": ""
+        },
+        {
+          "myField": "6871419F-DC37-4BD9-842C-2C09DA0F958D",
+          "refEntity": "DCE42BA8-6E5B-4399-9254-1C1227931192",
+          "refField": "562425C6-ED0F-4EED-8FCA-BD83A9D17357",
+          "myRows": "triangle-fill",
+          "refRows": "none",
+          "innerType": ""
+        },
+        {
+          "myField": "6871419F-DC37-4BD9-842C-2C09DA0F958D",
+          "refEntity": "3E80404A-CACA-4DA5-BAE0-A25E6FDBAAA7",
+          "refField": "948839F9-1D2E-442E-A78C-BB76B3EE3E62",
+          "myRows": "triangle-fill",
+          "refRows": "none",
+          "innerType": ""
+        },
+        {
+          "myField": "6871419F-DC37-4BD9-842C-2C09DA0F958D",
+          "refEntity": "879C90B9-5995-4402-8B05-813D6DC4B965",
+          "refField": "EEBDE30D-3417-408D-8A59-BE95831A6650",
+          "myRows": "triangle-fill",
+          "refRows": "none",
+          "innerType": ""
+        }
+      ],
+      "indexes": [],
+      "type": "P"
+    },
+    {
+      "id": "DCE42BA8-6E5B-4399-9254-1C1227931192",
+      "env": {
+        "base": {
+          "nameSpace": "",
+          "codeRoot": ""
+        }
+      },
+      "defKey": "department_manager",
+      "defName": "部门经理表",
+      "comment": "",
+      "properties": {
+        "partitioned by": "(date string)",
+        "row format delimited": "",
+        "fields terminated by ','": "",
+        "collection items terminated by '-'": "",
+        "map keys terminated by ':'": "",
+        "store as textfile;": ""
+      },
+      "sysProps": {
+        "nameTemplate": "{defKey}[{defName}]"
+      },
+      "notes": {},
+      "headers": [
+        {
+          "refKey": "hideInGraph",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "defKey",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "defName",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "primaryKey",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "notNull",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "autoIncrement",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "domain",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "type",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "len",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "scale",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "comment",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "refDict",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "defaultValue",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "isStandard",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "uiHint",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "extProps",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr1",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr2",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr3",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr4",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr5",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr6",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr7",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr8",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr9",
+          "freeze": false,
+          "hideInGraph": true
+        }
+      ],
+      "fields": [
+        {
+          "defKey": "b_name",
+          "defName": "银行名称",
+          "comment": "",
+          "type": "",
+          "len": "",
+          "scale": "",
+          "primaryKey": true,
+          "notNull": true,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
+          "extProps": {},
+          "domain": "8346BD3A-7BD4-4AFC-9DD1-B82D82D67F8A",
+          "id": "9F39C1D4-68BC-442A-9C83-D7ACFD0703E7"
+        },
+        {
+          "defKey": "d_no",
+          "defName": "部门号",
+          "comment": "",
+          "type": "",
+          "len": "",
+          "scale": "",
+          "primaryKey": true,
+          "notNull": true,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
+          "extProps": {},
+          "domain": "82FFF4CF-6A87-475D-8D48-B3FFB0A1EB9F",
+          "id": "562425C6-ED0F-4EED-8FCA-BD83A9D17357"
+        },
+        {
+          "defKey": "e_no",
+          "defName": "经理自己的员工号",
+          "comment": "",
+          "type": "",
+          "len": "",
+          "scale": "",
+          "primaryKey": true,
+          "notNull": true,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
+          "extProps": {},
+          "domain": "4E0B83F6-B24C-4E67-A32A-F59434AAF079",
+          "id": "F05B1097-8C36-495C-BE2B-6D2ABFBC5575"
+        },
+        {
+          "defKey": "abab",
+          "defName": "其他信息",
+          "comment": "",
+          "type": "",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
+          "extProps": {},
+          "domain": "9092C4E0-1A54-4859-ABBB-5B62DBC27573",
+          "id": "724A7ABF-C3E9-465C-B096-041CAB261125"
         }
       ],
       "correlations": [],
+      "indexes": [],
+      "type": "P"
+    },
+    {
+      "id": "3E80404A-CACA-4DA5-BAE0-A25E6FDBAAA7",
+      "env": {
+        "base": {
+          "nameSpace": "",
+          "codeRoot": ""
+        }
+      },
+      "defKey": "manager",
+      "defName": "经理",
+      "comment": "",
+      "properties": {
+        "partitioned by": "(date string)",
+        "row format delimited": "",
+        "fields terminated by ','": "",
+        "collection items terminated by '-'": "",
+        "map keys terminated by ':'": "",
+        "store as textfile;": ""
+      },
+      "sysProps": {
+        "nameTemplate": "{defKey}[{defName}]"
+      },
+      "notes": {},
+      "headers": [
+        {
+          "refKey": "hideInGraph",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "defKey",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "defName",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "primaryKey",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "notNull",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "autoIncrement",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "domain",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "type",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "len",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "scale",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "comment",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "refDict",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "defaultValue",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "isStandard",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "uiHint",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "extProps",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr1",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr2",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr3",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr4",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr5",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr6",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr7",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr8",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr9",
+          "freeze": false,
+          "hideInGraph": true
+        }
+      ],
+      "fields": [
+        {
+          "defKey": "b_name",
+          "defName": "银行名称",
+          "comment": "",
+          "type": "",
+          "len": "",
+          "scale": "",
+          "primaryKey": true,
+          "notNull": true,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
+          "extProps": {},
+          "domain": "54611CCC-CA4B-42E1-9F32-4944C85B85A6",
+          "id": "3FB1CF3D-BBD0-4033-9C5F-011541BC9AF7",
+          "uiHint": "642D2E0A-8846-4549-BE56-8C0473F26EDE"
+        },
+        {
+          "defKey": "e_no",
+          "defName": "员工号",
+          "comment": "",
+          "type": "",
+          "len": "",
+          "scale": "",
+          "primaryKey": true,
+          "notNull": true,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
+          "extProps": {},
+          "domain": "4E0B83F6-B24C-4E67-A32A-F59434AAF079",
+          "id": "6887E0EB-B0B9-4AC9-A6BE-7085B892745B"
+        },
+        {
+          "defKey": "e_id",
+          "defName": "员工身份证号",
+          "comment": "",
+          "type": "",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
+          "extProps": {},
+          "domain": "1BFCE1A2-A525-43BE-9B08-7DB1B7B94BC3",
+          "id": "ADDC5831-F55C-42CB-B0D2-24338967FE13"
+        },
+        {
+          "defKey": "e_name",
+          "defName": "员工姓名",
+          "comment": "",
+          "type": "",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
+          "extProps": {},
+          "domain": "8D3D0CC8-866A-4285-B8AD-AF5EAE0A12E2",
+          "id": "9B46B144-8A20-4AC8-9C13-6DFBF16FA983"
+        },
+        {
+          "defKey": "e_age",
+          "defName": "员工年龄",
+          "comment": "",
+          "type": "",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "baseType": "1D764C4A-6F9F-421E-B11A-6F3E23B51811",
+          "extProps": {},
+          "domain": "F7E02E94-7538-4598-8FDF-9716AE794B50",
+          "id": "F6D958B5-7FDA-4E3C-BA55-4964DF9F8CFC"
+        },
+        {
+          "defKey": "e_phone",
+          "defName": "员工电话",
+          "comment": "",
+          "type": "",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
+          "extProps": {},
+          "domain": "39E39939-2DEB-42E3-A74E-56D4962E6CC3",
+          "id": "1187E171-CFBE-407E-BA3C-56E88B1D6E63"
+        },
+        {
+          "defKey": "e_addr",
+          "defName": "员工地址",
+          "comment": "",
+          "type": "",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
+          "extProps": {},
+          "domain": "8F1B9940-A088-4A46-BF05-550D429124B7",
+          "id": "40EA82AD-1627-4F39-B4A7-83A8C109B43A"
+        },
+        {
+          "defKey": "d_no",
+          "defName": "员工部门号",
+          "comment": "",
+          "type": "",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
+          "extProps": {},
+          "domain": "82FFF4CF-6A87-475D-8D48-B3FFB0A1EB9F",
+          "id": "948839F9-1D2E-442E-A78C-BB76B3EE3E62"
+        },
+        {
+          "defKey": "e_avatar",
+          "defName": "员工头像",
+          "comment": "",
+          "type": "",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
+          "extProps": {},
+          "domain": "669A3E50-6D54-4AE7-8E87-70A3806B14A3",
+          "id": "B451C656-36C7-4A90-816B-5A52F5BAE17F"
+        }
+      ],
+      "correlations": [
+        {
+          "myField": "3FB1CF3D-BBD0-4033-9C5F-011541BC9AF7",
+          "refEntity": "5E696AF7-9066-4D97-9791-1AD44288EBCC",
+          "refField": "19367CFC-2B51-4FD5-88EF-34D57524C0A1",
+          "myRows": "none",
+          "refRows": "triangle-fill",
+          "innerType": ""
+        },
+        {
+          "myField": "6887E0EB-B0B9-4AC9-A6BE-7085B892745B",
+          "refEntity": "DCE42BA8-6E5B-4399-9254-1C1227931192",
+          "refField": "F05B1097-8C36-495C-BE2B-6D2ABFBC5575",
+          "myRows": "triangle-fill",
+          "refRows": "none",
+          "innerType": ""
+        }
+      ],
       "indexes": [],
       "type": "P"
     },
@@ -1551,20 +1895,45 @@
           "id": "9265EEEF-7FCD-4E9D-B0A8-16642D9DD013"
         }
       ],
-      "correlations": [],
+      "correlations": [
+        {
+          "myField": "A60083AE-1C10-4650-A618-6F30B51577EE",
+          "refEntity": "5E696AF7-9066-4D97-9791-1AD44288EBCC",
+          "refField": "19367CFC-2B51-4FD5-88EF-34D57524C0A1",
+          "myRows": "none",
+          "refRows": "triangle-fill",
+          "innerType": ""
+        },
+        {
+          "myField": "A60083AE-1C10-4650-A618-6F30B51577EE",
+          "refEntity": "8F5AD07A-55A7-42C3-9C1B-002366874206",
+          "refField": "0BAA5DBD-906A-4F50-AEE8-0E8A54A268DD",
+          "myRows": "triangle-fill",
+          "refRows": "none",
+          "innerType": ""
+        },
+        {
+          "myField": "A0569407-F110-4741-BAB9-8D0E8BEB2670",
+          "refEntity": "8F5AD07A-55A7-42C3-9C1B-002366874206",
+          "refField": "8C9BC75D-4712-409F-9768-B81D980AAC0D",
+          "myRows": "triangle-fill",
+          "refRows": "none",
+          "innerType": ""
+        }
+      ],
       "indexes": [],
       "type": "P"
     },
     {
-      "id": "3E80404A-CACA-4DA5-BAE0-A25E6FDBAAA7",
+      "id": "946A027F-D7CC-446D-8331-AB66768D0341",
       "env": {
         "base": {
           "nameSpace": "",
           "codeRoot": ""
         }
       },
-      "defKey": "manager",
-      "defName": "经理",
+      "defKey": "customer",
+      "defName": "客户",
       "comment": "",
       "properties": {
         "partitioned by": "(date string)",
@@ -1706,51 +2075,14 @@
       ],
       "fields": [
         {
-          "defKey": "b_name",
-          "defName": "银行名称",
+          "defKey": "c_id",
+          "defName": "身份证号",
           "comment": "",
           "type": "",
           "len": "",
           "scale": "",
           "primaryKey": true,
           "notNull": true,
-          "autoIncrement": false,
-          "defaultValue": "",
-          "hideInGraph": false,
-          "refDict": "",
-          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
-          "extProps": {},
-          "domain": "54611CCC-CA4B-42E1-9F32-4944C85B85A6",
-          "id": "3FB1CF3D-BBD0-4033-9C5F-011541BC9AF7",
-          "uiHint": "642D2E0A-8846-4549-BE56-8C0473F26EDE"
-        },
-        {
-          "defKey": "e_no",
-          "defName": "员工号",
-          "comment": "",
-          "type": "",
-          "len": "",
-          "scale": "",
-          "primaryKey": true,
-          "notNull": true,
-          "autoIncrement": false,
-          "defaultValue": "",
-          "hideInGraph": false,
-          "refDict": "",
-          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
-          "extProps": {},
-          "domain": "4E0B83F6-B24C-4E67-A32A-F59434AAF079",
-          "id": "6887E0EB-B0B9-4AC9-A6BE-7085B892745B"
-        },
-        {
-          "defKey": "e_id",
-          "defName": "员工身份证号",
-          "comment": "",
-          "type": "",
-          "len": "",
-          "scale": "",
-          "primaryKey": false,
-          "notNull": false,
           "autoIncrement": false,
           "defaultValue": "",
           "hideInGraph": false,
@@ -1758,11 +2090,12 @@
           "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
           "extProps": {},
           "domain": "1BFCE1A2-A525-43BE-9B08-7DB1B7B94BC3",
-          "id": "ADDC5831-F55C-42CB-B0D2-24338967FE13"
+          "id": "F78C3EBB-A05B-40AB-8CEE-26D5077CCB4B",
+          "uiHint": "9999AF2A-A44E-415C-A2DC-D7C613BD0073"
         },
         {
-          "defKey": "e_name",
-          "defName": "员工姓名",
+          "defKey": "c_name",
+          "defName": "客户姓名",
           "comment": "",
           "type": "",
           "len": "",
@@ -1776,11 +2109,31 @@
           "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
           "extProps": {},
           "domain": "8D3D0CC8-866A-4285-B8AD-AF5EAE0A12E2",
-          "id": "9B46B144-8A20-4AC8-9C13-6DFBF16FA983"
+          "id": "F12017C1-36A4-4B91-9028-D94E83E78DBB",
+          "uiHint": "642D2E0A-8846-4549-BE56-8C0473F26EDE"
         },
         {
-          "defKey": "e_age",
-          "defName": "员工年龄",
+          "defKey": "c_gender",
+          "defName": "性别",
+          "comment": "",
+          "type": "",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "751490E9-0E25-4C53-BD0D-034C34BA1C28",
+          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
+          "extProps": {},
+          "domain": "762A8D98-21C6-43E1-B2CC-D0DE1644F9FC",
+          "id": "9570B4B3-6457-42AB-BB1A-1AD98BB22AF9",
+          "uiHint": "0CB8A6C9-1115-4FC0-B51E-5C028065082F"
+        },
+        {
+          "defKey": "c_age",
+          "defName": "年龄",
           "comment": "",
           "type": "",
           "len": "",
@@ -1794,11 +2147,12 @@
           "baseType": "1D764C4A-6F9F-421E-B11A-6F3E23B51811",
           "extProps": {},
           "domain": "F7E02E94-7538-4598-8FDF-9716AE794B50",
-          "id": "F6D958B5-7FDA-4E3C-BA55-4964DF9F8CFC"
+          "id": "8E3F7412-C7E8-4682-9F87-84B22099C499",
+          "uiHint": "642D2E0A-8846-4549-BE56-8C0473F26EDE"
         },
         {
-          "defKey": "e_phone",
-          "defName": "员工电话",
+          "defKey": "c_phone",
+          "defName": "电话",
           "comment": "",
           "type": "",
           "len": "",
@@ -1812,11 +2166,12 @@
           "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
           "extProps": {},
           "domain": "39E39939-2DEB-42E3-A74E-56D4962E6CC3",
-          "id": "1187E171-CFBE-407E-BA3C-56E88B1D6E63"
+          "id": "524206E2-7A4E-4DB7-8B03-12F69DD94C22",
+          "uiHint": "642D2E0A-8846-4549-BE56-8C0473F26EDE"
         },
         {
-          "defKey": "e_addr",
-          "defName": "员工地址",
+          "defKey": "c_addr",
+          "defName": "地址",
           "comment": "",
           "type": "",
           "len": "",
@@ -1830,28 +2185,20 @@
           "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
           "extProps": {},
           "domain": "8F1B9940-A088-4A46-BF05-550D429124B7",
-          "id": "40EA82AD-1627-4F39-B4A7-83A8C109B43A"
-        },
-        {
-          "defKey": "m_no",
-          "defName": "经理号",
-          "comment": "",
-          "type": "",
-          "len": "",
-          "scale": "",
-          "primaryKey": false,
-          "notNull": false,
-          "autoIncrement": false,
-          "defaultValue": "",
-          "hideInGraph": false,
-          "refDict": "",
-          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
-          "extProps": {},
-          "domain": "4E0B83F6-B24C-4E67-A32A-F59434AAF079",
-          "id": "BCAC3969-2FA1-4E6C-ABBC-A298332022C1"
+          "id": "D122FC03-8D33-4926-BBE4-70470A7A0B00",
+          "uiHint": "642D2E0A-8846-4549-BE56-8C0473F26EDE"
         }
       ],
-      "correlations": [],
+      "correlations": [
+        {
+          "myField": "F78C3EBB-A05B-40AB-8CEE-26D5077CCB4B",
+          "refEntity": "8F5AD07A-55A7-42C3-9C1B-002366874206",
+          "refField": "36D2B515-59C6-4423-B1CA-ED12FC05D819",
+          "myRows": "triangle-fill",
+          "refRows": "none",
+          "innerType": ""
+        }
+      ],
       "indexes": [],
       "type": "P"
     },
@@ -2096,7 +2443,64 @@
           "id": "B4E44838-F61E-405B-AF63-A9B44CE3BEB3"
         }
       ],
-      "correlations": [],
+      "correlations": [
+        {
+          "myField": "AF42BB34-C37C-48D0-AFB9-B41A782BDA27",
+          "refEntity": "8F5AD07A-55A7-42C3-9C1B-002366874206",
+          "refField": "10817992-6EC9-4D7C-9A5C-FEACCF5466EC",
+          "myRows": "triangle-fill",
+          "refRows": "none",
+          "innerType": ""
+        },
+        {
+          "myField": "AF42BB34-C37C-48D0-AFB9-B41A782BDA27",
+          "refEntity": "4B286FC6-F530-4D06-802F-919E79C5A090",
+          "refField": "F6332863-4D63-486B-8903-99F917F58025",
+          "myRows": "triangle-fill",
+          "refRows": "none",
+          "innerType": ""
+        },
+        {
+          "myField": "AF42BB34-C37C-48D0-AFB9-B41A782BDA27",
+          "refEntity": "1A090327-AB6E-419C-8EB9-4AECA8404A27",
+          "refField": "794092A4-8A75-4EA3-BF4B-3C60EB6D3262",
+          "myRows": "triangle-fill",
+          "refRows": "none",
+          "innerType": ""
+        },
+        {
+          "myField": "AF42BB34-C37C-48D0-AFB9-B41A782BDA27",
+          "refEntity": "6BA39086-546F-4FEE-B1D4-7A9605E6B568",
+          "refField": "5A13D14D-DBF0-4E8C-87D5-79544649322B",
+          "myRows": "triangle-fill",
+          "refRows": "none",
+          "innerType": ""
+        },
+        {
+          "myField": "AF42BB34-C37C-48D0-AFB9-B41A782BDA27",
+          "refEntity": "46547CB3-E295-450C-9F70-E9C61200853F",
+          "refField": "604EADE0-8184-4E57-ACF8-6F489E4A1DC5",
+          "myRows": "triangle-fill",
+          "refRows": "none",
+          "innerType": ""
+        },
+        {
+          "myField": "AF42BB34-C37C-48D0-AFB9-B41A782BDA27",
+          "refEntity": "7A6BA843-B78A-4722-95BC-A4F9940BE5BB",
+          "refField": "799A3CB4-3369-43D0-AC9B-BBDB61A65996",
+          "myRows": "triangle-fill",
+          "refRows": "none",
+          "innerType": ""
+        },
+        {
+          "myField": "AF42BB34-C37C-48D0-AFB9-B41A782BDA27",
+          "refEntity": "ABC77AC1-42CD-4323-86B3-CE7751061B71",
+          "refField": "6C61F78B-5FA7-4BF5-B2A2-668B0391947E",
+          "myRows": "triangle-fill",
+          "refRows": "none",
+          "innerType": ""
+        }
+      ],
       "indexes": [],
       "type": "P"
     },
@@ -3715,6 +4119,406 @@
       "type": "P"
     },
     {
+      "id": "ABC77AC1-42CD-4323-86B3-CE7751061B71",
+      "env": {
+        "base": {
+          "nameSpace": "",
+          "codeRoot": ""
+        }
+      },
+      "defKey": "loan_grant",
+      "defName": "贷款发放记录",
+      "comment": "",
+      "properties": {
+        "partitioned by": "(date string)",
+        "row format delimited": "",
+        "fields terminated by ','": "",
+        "collection items terminated by '-'": "",
+        "map keys terminated by ':'": "",
+        "store as textfile;": ""
+      },
+      "sysProps": {
+        "nameTemplate": "{defKey}[{defName}]"
+      },
+      "notes": {},
+      "headers": [
+        {
+          "refKey": "hideInGraph",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "defKey",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "defName",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "primaryKey",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "notNull",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "autoIncrement",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "domain",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "type",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "len",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "scale",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "comment",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "refDict",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "defaultValue",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "isStandard",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "uiHint",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "extProps",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr1",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr2",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr3",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr4",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr5",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr6",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr7",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr8",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr9",
+          "freeze": false,
+          "hideInGraph": true
+        }
+      ],
+      "fields": [
+        {
+          "defKey": "l_no",
+          "defName": "贷款号",
+          "comment": "",
+          "type": "",
+          "len": "",
+          "scale": "",
+          "primaryKey": true,
+          "notNull": true,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
+          "extProps": {},
+          "domain": "430689BE-852D-4FEA-A634-3044B9D634E0",
+          "id": "8180F8DF-D83E-4318-8085-5465BEA6925C"
+        },
+        {
+          "defKey": "a_no",
+          "defName": "贷款账户号",
+          "comment": "",
+          "type": "",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
+          "extProps": {},
+          "domain": "262989EB-0807-4999-97B6-246CC54690FC",
+          "id": "6C61F78B-5FA7-4BF5-B2A2-668B0391947E"
+        }
+      ],
+      "correlations": [],
+      "indexes": [],
+      "type": "P"
+    },
+    {
+      "id": "CC0B56C9-C1BA-455F-8264-030D3328EBAF",
+      "env": {
+        "base": {
+          "nameSpace": "",
+          "codeRoot": ""
+        }
+      },
+      "defKey": "loan_repay",
+      "defName": "还贷记录",
+      "comment": "",
+      "properties": {
+        "partitioned by": "(date string)",
+        "row format delimited": "",
+        "fields terminated by ','": "",
+        "collection items terminated by '-'": "",
+        "map keys terminated by ':'": "",
+        "store as textfile;": ""
+      },
+      "sysProps": {
+        "nameTemplate": "{defKey}[{defName}]"
+      },
+      "notes": {},
+      "headers": [
+        {
+          "refKey": "hideInGraph",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "defKey",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "defName",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "primaryKey",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "notNull",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "autoIncrement",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "domain",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "type",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "len",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "scale",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "comment",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "refDict",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "defaultValue",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "isStandard",
+          "freeze": false,
+          "hideInGraph": false
+        },
+        {
+          "refKey": "uiHint",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "extProps",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr1",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr2",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr3",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr4",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr5",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr6",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr7",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr8",
+          "freeze": false,
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr9",
+          "freeze": false,
+          "hideInGraph": true
+        }
+      ],
+      "fields": [
+        {
+          "defKey": "l_no",
+          "defName": "贷款号",
+          "comment": "",
+          "type": "",
+          "len": "",
+          "scale": "",
+          "primaryKey": true,
+          "notNull": true,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
+          "extProps": {},
+          "domain": "430689BE-852D-4FEA-A634-3044B9D634E0",
+          "id": "FC34F0A6-3E14-48A9-9AE0-CB2D97254793"
+        },
+        {
+          "defKey": "lr_time",
+          "defName": "还款时间",
+          "comment": "",
+          "type": "",
+          "len": "",
+          "scale": "",
+          "primaryKey": true,
+          "notNull": true,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "baseType": "89D69E81-EA34-42EE-9FA2-93B8BD27E098",
+          "extProps": {},
+          "domain": "7CFFA0D3-6A93-4DDC-BC10-DF21211064DC",
+          "id": "1A204748-2718-4404-BC3B-9069EEF8D9F3"
+        },
+        {
+          "defKey": "lr_amount",
+          "defName": "还款金额",
+          "comment": "",
+          "type": "",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "baseType": "1A0BDC09-0792-4174-9E8E-80BE8DF44B8E",
+          "extProps": {},
+          "domain": "F3B3953D-D31C-4173-9E1A-CDDCD39F9DA0",
+          "id": "2C10DD81-0976-4471-A1C4-D0E9C695817F"
+        }
+      ],
+      "correlations": [],
+      "indexes": [],
+      "type": "P"
+    },
+    {
       "id": "D4E6B7D9-1617-4E25-A329-1F7DA9044C2C",
       "env": {
         "base": {
@@ -3991,407 +4795,24 @@
           "id": "55A0E0C1-4E87-4C83-9A98-4BEC324A288F"
         }
       ],
-      "correlations": [],
-      "indexes": [],
-      "type": "P"
-    },
-    {
-      "id": "CC0B56C9-C1BA-455F-8264-030D3328EBAF",
-      "env": {
-        "base": {
-          "nameSpace": "",
-          "codeRoot": ""
-        }
-      },
-      "defKey": "loan_repay",
-      "defName": "还贷记录",
-      "comment": "",
-      "properties": {
-        "partitioned by": "(date string)",
-        "row format delimited": "",
-        "fields terminated by ','": "",
-        "collection items terminated by '-'": "",
-        "map keys terminated by ':'": "",
-        "store as textfile;": ""
-      },
-      "sysProps": {
-        "nameTemplate": "{defKey}[{defName}]"
-      },
-      "notes": {},
-      "headers": [
+      "correlations": [
         {
-          "refKey": "hideInGraph",
-          "hideInGraph": true
+          "myField": "BA37CE00-85D3-4147-8720-E80D8E0257BA",
+          "refEntity": "ABC77AC1-42CD-4323-86B3-CE7751061B71",
+          "refField": "8180F8DF-D83E-4318-8085-5465BEA6925C",
+          "myRows": "triangle-fill",
+          "refRows": "none",
+          "innerType": ""
         },
         {
-          "refKey": "defKey",
-          "freeze": false,
-          "hideInGraph": false
-        },
-        {
-          "refKey": "defName",
-          "freeze": false,
-          "hideInGraph": false
-        },
-        {
-          "refKey": "primaryKey",
-          "freeze": false,
-          "hideInGraph": false
-        },
-        {
-          "refKey": "notNull",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "autoIncrement",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "domain",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "type",
-          "freeze": false,
-          "hideInGraph": false
-        },
-        {
-          "refKey": "len",
-          "freeze": false,
-          "hideInGraph": false
-        },
-        {
-          "refKey": "scale",
-          "freeze": false,
-          "hideInGraph": false
-        },
-        {
-          "refKey": "comment",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "refDict",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "defaultValue",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "isStandard",
-          "freeze": false,
-          "hideInGraph": false
-        },
-        {
-          "refKey": "uiHint",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "extProps",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr1",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr2",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr3",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr4",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr5",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr6",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr7",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr8",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr9",
-          "freeze": false,
-          "hideInGraph": true
+          "myField": "BA37CE00-85D3-4147-8720-E80D8E0257BA",
+          "refEntity": "CC0B56C9-C1BA-455F-8264-030D3328EBAF",
+          "refField": "FC34F0A6-3E14-48A9-9AE0-CB2D97254793",
+          "myRows": "triangle-fill",
+          "refRows": "none",
+          "innerType": ""
         }
       ],
-      "fields": [
-        {
-          "defKey": "l_no",
-          "defName": "贷款号",
-          "comment": "",
-          "type": "",
-          "len": "",
-          "scale": "",
-          "primaryKey": true,
-          "notNull": true,
-          "autoIncrement": false,
-          "defaultValue": "",
-          "hideInGraph": false,
-          "refDict": "",
-          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
-          "extProps": {},
-          "domain": "430689BE-852D-4FEA-A634-3044B9D634E0",
-          "id": "FC34F0A6-3E14-48A9-9AE0-CB2D97254793"
-        },
-        {
-          "defKey": "lr_time",
-          "defName": "还款时间",
-          "comment": "",
-          "type": "",
-          "len": "",
-          "scale": "",
-          "primaryKey": true,
-          "notNull": true,
-          "autoIncrement": false,
-          "defaultValue": "",
-          "hideInGraph": false,
-          "refDict": "",
-          "baseType": "89D69E81-EA34-42EE-9FA2-93B8BD27E098",
-          "extProps": {},
-          "domain": "7CFFA0D3-6A93-4DDC-BC10-DF21211064DC",
-          "id": "1A204748-2718-4404-BC3B-9069EEF8D9F3"
-        },
-        {
-          "defKey": "lr_amount",
-          "defName": "还款金额",
-          "comment": "",
-          "type": "",
-          "len": "",
-          "scale": "",
-          "primaryKey": false,
-          "notNull": false,
-          "autoIncrement": false,
-          "defaultValue": "",
-          "hideInGraph": false,
-          "refDict": "",
-          "baseType": "1A0BDC09-0792-4174-9E8E-80BE8DF44B8E",
-          "extProps": {},
-          "domain": "F3B3953D-D31C-4173-9E1A-CDDCD39F9DA0",
-          "id": "2C10DD81-0976-4471-A1C4-D0E9C695817F"
-        }
-      ],
-      "correlations": [],
-      "indexes": [],
-      "type": "P"
-    },
-    {
-      "id": "ABC77AC1-42CD-4323-86B3-CE7751061B71",
-      "env": {
-        "base": {
-          "nameSpace": "",
-          "codeRoot": ""
-        }
-      },
-      "defKey": "loan_grant",
-      "defName": "贷款发放记录",
-      "comment": "",
-      "properties": {
-        "partitioned by": "(date string)",
-        "row format delimited": "",
-        "fields terminated by ','": "",
-        "collection items terminated by '-'": "",
-        "map keys terminated by ':'": "",
-        "store as textfile;": ""
-      },
-      "sysProps": {
-        "nameTemplate": "{defKey}[{defName}]"
-      },
-      "notes": {},
-      "headers": [
-        {
-          "refKey": "hideInGraph",
-          "hideInGraph": true
-        },
-        {
-          "refKey": "defKey",
-          "freeze": false,
-          "hideInGraph": false
-        },
-        {
-          "refKey": "defName",
-          "freeze": false,
-          "hideInGraph": false
-        },
-        {
-          "refKey": "primaryKey",
-          "freeze": false,
-          "hideInGraph": false
-        },
-        {
-          "refKey": "notNull",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "autoIncrement",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "domain",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "type",
-          "freeze": false,
-          "hideInGraph": false
-        },
-        {
-          "refKey": "len",
-          "freeze": false,
-          "hideInGraph": false
-        },
-        {
-          "refKey": "scale",
-          "freeze": false,
-          "hideInGraph": false
-        },
-        {
-          "refKey": "comment",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "refDict",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "defaultValue",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "isStandard",
-          "freeze": false,
-          "hideInGraph": false
-        },
-        {
-          "refKey": "uiHint",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "extProps",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr1",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr2",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr3",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr4",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr5",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr6",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr7",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr8",
-          "freeze": false,
-          "hideInGraph": true
-        },
-        {
-          "refKey": "attr9",
-          "freeze": false,
-          "hideInGraph": true
-        }
-      ],
-      "fields": [
-        {
-          "defKey": "l_no",
-          "defName": "贷款号",
-          "comment": "",
-          "type": "",
-          "len": "",
-          "scale": "",
-          "primaryKey": true,
-          "notNull": true,
-          "autoIncrement": false,
-          "defaultValue": "",
-          "hideInGraph": false,
-          "refDict": "",
-          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
-          "extProps": {},
-          "domain": "430689BE-852D-4FEA-A634-3044B9D634E0",
-          "id": "8180F8DF-D83E-4318-8085-5465BEA6925C"
-        },
-        {
-          "defKey": "a_no",
-          "defName": "贷款账户号",
-          "comment": "",
-          "type": "",
-          "len": "",
-          "scale": "",
-          "primaryKey": false,
-          "notNull": false,
-          "autoIncrement": false,
-          "defaultValue": "",
-          "hideInGraph": false,
-          "refDict": "",
-          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
-          "extProps": {},
-          "domain": "262989EB-0807-4999-97B6-246CC54690FC",
-          "id": "6C61F78B-5FA7-4BF5-B2A2-668B0391947E"
-        }
-      ],
-      "correlations": [],
       "indexes": [],
       "type": "P"
     }
@@ -4852,7 +5273,1221 @@
       "id": "DA59942E-CFC0-4A46-8A0C-A9104FD3752F"
     }
   ],
-  "diagrams": [],
+  "diagrams": [
+    {
+      "defKey": "bank manage system ER graph",
+      "defName": "银行管理系统 ER 图",
+      "relationType": "field",
+      "canvasData": {
+        "cells": [
+          {
+            "id": "01fe1985-7233-447c-b171-54532fbf5c3c",
+            "shape": "group",
+            "position": {
+              "x": -1109.999999999999,
+              "y": -579.9999999999998
+            },
+            "label": "# 银行管理系统",
+            "fontColor": "rgb(52, 124, 212)",
+            "size": {
+              "width": 2010,
+              "height": 2360
+            },
+            "children": [
+              "d3cf9095-2618-4acb-8ff4-bde6ad6ec81a"
+            ]
+          },
+          {
+            "id": "d3cf9095-2618-4acb-8ff4-bde6ad6ec81a",
+            "shape": "group",
+            "position": {
+              "x": -1020,
+              "y": 1160
+            },
+            "label": "## 账户记录",
+            "fontColor": "rgb(117, 190, 250)",
+            "parent": "01fe1985-7233-447c-b171-54532fbf5c3c",
+            "size": {
+              "width": 1820,
+              "height": 520
+            },
+            "children": [
+              "392b702b-de4a-41d9-ad35-235a53406d86",
+              "5470301d-1e0e-44a3-9c5f-1bc94acf21af",
+              "19f88797-830c-409d-ba26-03a130569f78",
+              "643f0801-2ecf-42ff-90c5-fcb22057cf10",
+              "612d3d14-1d13-46e1-aeb7-41079745ec35",
+              "112c3554-2344-43d2-8cb8-fccb780e3777",
+              "9d751727-776f-4b8f-8cb4-80b485012a1d",
+              "4fd20ceb-64a0-4a54-88d0-aecb337c78c3",
+              "f3695cbc-c005-4dda-af9d-32bcb691179a",
+              "6c667313-183d-4364-922c-68feaaedb39c",
+              "b0c2471c-af67-4cbd-84e1-db1b7e5fa7d2"
+            ]
+          },
+          {
+            "id": "392b702b-de4a-41d9-ad35-235a53406d86",
+            "shape": "table",
+            "position": {
+              "x": -939.999999999995,
+              "y": 1335.5
+            },
+            "count": 0,
+            "originKey": "46547CB3-E295-450C-9F70-E9C61200853F",
+            "fontColor": "#000000",
+            "fillColor": "rgb(117, 190, 250)",
+            "parent": "d3cf9095-2618-4acb-8ff4-bde6ad6ec81a",
+            "type": "P",
+            "size": {
+              "width": 387,
+              "height": 169
+            },
+            "autoSize": true
+          },
+          {
+            "id": "5470301d-1e0e-44a3-9c5f-1bc94acf21af",
+            "shape": "table",
+            "position": {
+              "x": -485.00000000000114,
+              "y": 1324.0000000000011
+            },
+            "count": 0,
+            "originKey": "7A6BA843-B78A-4722-95BC-A4F9940BE5BB",
+            "fontColor": "#000000",
+            "fillColor": "rgb(117, 190, 250)",
+            "parent": "d3cf9095-2618-4acb-8ff4-bde6ad6ec81a",
+            "type": "P",
+            "size": {
+              "width": 481,
+              "height": 192
+            },
+            "autoSize": true
+          },
+          {
+            "id": "19f88797-830c-409d-ba26-03a130569f78",
+            "shape": "table",
+            "position": {
+              "x": 180.00000000000182,
+              "y": 1410.9999999999898
+            },
+            "count": 0,
+            "originKey": "D4E6B7D9-1617-4E25-A329-1F7DA9044C2C",
+            "fontColor": "#000000",
+            "fillColor": "rgb(117, 190, 250)",
+            "parent": "d3cf9095-2618-4acb-8ff4-bde6ad6ec81a",
+            "type": "P",
+            "size": {
+              "width": 459,
+              "height": 192
+            },
+            "autoSize": true
+          },
+          {
+            "id": "643f0801-2ecf-42ff-90c5-fcb22057cf10",
+            "shape": "table",
+            "position": {
+              "x": 59.00000000000102,
+              "y": 1247.0000000000011
+            },
+            "count": 0,
+            "originKey": "ABC77AC1-42CD-4323-86B3-CE7751061B71",
+            "fontColor": "#000000",
+            "fillColor": "rgb(117, 190, 250)",
+            "parent": "d3cf9095-2618-4acb-8ff4-bde6ad6ec81a",
+            "type": "P",
+            "size": {
+              "width": 292,
+              "height": 77
+            },
+            "autoSize": true
+          },
+          {
+            "id": "612d3d14-1d13-46e1-aeb7-41079745ec35",
+            "shape": "table",
+            "position": {
+              "x": 440.000000000005,
+              "y": 1240.4999999999875
+            },
+            "count": 0,
+            "originKey": "CC0B56C9-C1BA-455F-8264-030D3328EBAF",
+            "fontColor": "#000000",
+            "fillColor": "rgb(117, 190, 250)",
+            "parent": "d3cf9095-2618-4acb-8ff4-bde6ad6ec81a",
+            "type": "P",
+            "size": {
+              "width": 320,
+              "height": 100
+            },
+            "autoSize": true
+          },
+          {
+            "id": "112c3554-2344-43d2-8cb8-fccb780e3777",
+            "shape": "group",
+            "position": {
+              "x": -1019.9999999999995,
+              "y": 560
+            },
+            "label": "## 账户",
+            "fontColor": "rgb(51, 153, 108)",
+            "parent": "d3cf9095-2618-4acb-8ff4-bde6ad6ec81a",
+            "size": {
+              "width": 1820,
+              "height": 600
+            },
+            "children": [
+              "87a0d8bc-3705-4586-aee9-aa3e69bae6ed",
+              "0e06ee11-9b3b-456f-a5b9-75a61f314993",
+              "2dca1a40-d06a-44eb-a6be-023bab6f48bb",
+              "7437667e-9bdf-4d68-bc0e-b0a34a90585c",
+              "2f3f1d52-c7ac-4101-9b6a-ec53c9e6b7f6",
+              "5cc75222-44fc-470a-9b50-a08c58a954b5",
+              "b30ed1b9-437e-4bf7-bbbb-30589a4bf920",
+              "8e21b717-3d7f-4b4c-8c1a-909d7fc38ba8",
+              "ac2a72f3-1cbf-40f7-af6b-af168cde412b",
+              "3ee72ff3-e232-42cf-8565-beaf0e77be83",
+              "c2d89592-c02a-47a1-9238-a78834ac2114",
+              "c3d6bab6-3e14-4652-9b80-5e9afa465fa6",
+              "15bab1fe-09f0-4347-8421-acfb16144826"
+            ]
+          },
+          {
+            "id": "87a0d8bc-3705-4586-aee9-aa3e69bae6ed",
+            "shape": "table",
+            "position": {
+              "x": -286.0000000000026,
+              "y": 629.0000000000061
+            },
+            "count": 0,
+            "originKey": "CA91AE70-7B9C-4678-B86E-3E37966D3305",
+            "fontColor": "#000000",
+            "fillColor": "rgb(51, 153, 108)",
+            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
+            "type": "P",
+            "size": {
+              "width": 362,
+              "height": 146
+            },
+            "autoSize": true
+          },
+          {
+            "id": "0e06ee11-9b3b-456f-a5b9-75a61f314993",
+            "shape": "table",
+            "position": {
+              "x": -890.0000000000035,
+              "y": 882.0000000000064
+            },
+            "count": 0,
+            "originKey": "1A090327-AB6E-419C-8EB9-4AECA8404A27",
+            "fontColor": "#000000",
+            "fillColor": "rgb(51, 153, 108)",
+            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
+            "type": "P",
+            "size": {
+              "width": 400,
+              "height": 192
+            },
+            "autoSize": true
+          },
+          {
+            "id": "2dca1a40-d06a-44eb-a6be-023bab6f48bb",
+            "shape": "table",
+            "position": {
+              "x": -345,
+              "y": 872.0000000000064
+            },
+            "count": 0,
+            "originKey": "4B286FC6-F530-4D06-802F-919E79C5A090",
+            "fontColor": "#000000",
+            "fillColor": "rgb(51, 153, 108)",
+            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
+            "type": "P",
+            "size": {
+              "width": 490,
+              "height": 192
+            },
+            "autoSize": true
+          },
+          {
+            "id": "7437667e-9bdf-4d68-bc0e-b0a34a90585c",
+            "shape": "table",
+            "position": {
+              "x": 298.99999999999943,
+              "y": 882.0000000000064
+            },
+            "count": 0,
+            "originKey": "6BA39086-546F-4FEE-B1D4-7A9605E6B568",
+            "fontColor": "#000000",
+            "fillColor": "rgb(51, 153, 108)",
+            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
+            "type": "P",
+            "size": {
+              "width": 362,
+              "height": 192
+            },
+            "autoSize": true
+          },
+          {
+            "id": "2f3f1d52-c7ac-4101-9b6a-ec53c9e6b7f6",
+            "shape": "table",
+            "position": {
+              "x": 196.49999999999943,
+              "y": 640.5000000000061
+            },
+            "count": 0,
+            "originKey": "8F5AD07A-55A7-42C3-9C1B-002366874206",
+            "fontColor": "#000000",
+            "fillColor": "rgb(90, 213, 198)",
+            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
+            "type": "P",
+            "size": {
+              "width": 416,
+              "height": 123
+            },
+            "autoSize": false
+          },
+          {
+            "id": "5cc75222-44fc-470a-9b50-a08c58a954b5",
+            "shape": "group",
+            "position": {
+              "x": -1029.9999999999995,
+              "y": 0
+            },
+            "label": "## 对象",
+            "fontColor": "rgb(249, 186, 80)",
+            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
+            "size": {
+              "width": 1820,
+              "height": 560
+            },
+            "children": [
+              "680ba8d3-92e3-457d-991c-e93f60c78e6d",
+              "c4d89967-d537-40ad-9093-6d6acd2cd2b8",
+              "f5fdf19b-4549-40aa-8b87-b4e1e6475bb0",
+              "a5d5d184-903f-448d-b363-f5250c41a0b1",
+              "eaacfbc5-6305-41c9-b181-1dbf9bf0f6dd",
+              "4d0e5406-f1ea-4aa6-be2f-3af3a7bb690b",
+              "61007134-d1a4-481b-b475-b6916c25b4d9",
+              "911e4b44-4124-4388-9003-aaafe92ac6a0",
+              "d750ade4-60bf-480d-9bde-c40b0fec6fd9",
+              "70ba16a5-0b7a-42a4-a661-1de21caff828",
+              "61862bec-d494-48b7-bf93-f806e5fd5707",
+              "e52b2e23-e5c5-4885-b20e-4ed4fabc035b"
+            ]
+          },
+          {
+            "id": "680ba8d3-92e3-457d-991c-e93f60c78e6d",
+            "shape": "table",
+            "position": {
+              "x": -803.9999999999998,
+              "y": 237.50000000000375
+            },
+            "count": 0,
+            "originKey": "3E80404A-CACA-4DA5-BAE0-A25E6FDBAAA7",
+            "fontColor": "#000000",
+            "fillColor": "rgb(249, 186, 80)",
+            "parent": "5cc75222-44fc-470a-9b50-a08c58a954b5",
+            "type": "P",
+            "size": {
+              "width": 338,
+              "height": 238
+            },
+            "autoSize": true
+          },
+          {
+            "id": "c4d89967-d537-40ad-9093-6d6acd2cd2b8",
+            "shape": "table",
+            "position": {
+              "x": -284.00000000002103,
+              "y": 237.50000000000375
+            },
+            "count": 0,
+            "originKey": "879C90B9-5995-4402-8B05-813D6DC4B965",
+            "fontColor": "#000000",
+            "fillColor": "rgb(249, 186, 80)",
+            "parent": "5cc75222-44fc-470a-9b50-a08c58a954b5",
+            "type": "P",
+            "size": {
+              "width": 338,
+              "height": 238
+            },
+            "autoSize": true
+          },
+          {
+            "id": "f5fdf19b-4549-40aa-8b87-b4e1e6475bb0",
+            "shape": "table",
+            "position": {
+              "x": 224.49999999998101,
+              "y": 260.5000000000008
+            },
+            "count": 0,
+            "originKey": "946A027F-D7CC-446D-8331-AB66768D0341",
+            "fontColor": "#000000",
+            "fillColor": "rgb(249, 186, 80)",
+            "parent": "5cc75222-44fc-470a-9b50-a08c58a954b5",
+            "type": "P",
+            "size": {
+              "width": 317,
+              "height": 169
+            },
+            "autoSize": true
+          },
+          {
+            "id": "a5d5d184-903f-448d-b363-f5250c41a0b1",
+            "shape": "table",
+            "position": {
+              "x": -803.9999999999998,
+              "y": 62.000000000009436
+            },
+            "count": 0,
+            "originKey": "DCE42BA8-6E5B-4399-9254-1C1227931192",
+            "fontColor": "#000000",
+            "fillColor": "rgb(245, 220, 78)",
+            "parent": "5cc75222-44fc-470a-9b50-a08c58a954b5",
+            "type": "P",
+            "size": {
+              "width": 357,
+              "height": 123
+            },
+            "autoSize": true
+          },
+          {
+            "id": "eaacfbc5-6305-41c9-b181-1dbf9bf0f6dd",
+            "shape": "group",
+            "position": {
+              "x": -1034.9999999999777,
+              "y": -430
+            },
+            "label": "## 组织\n",
+            "fontColor": "#d148d1",
+            "parent": "5cc75222-44fc-470a-9b50-a08c58a954b5",
+            "size": {
+              "width": 1820,
+              "height": 430
+            },
+            "children": [
+              "f1cdb6fb-7081-4153-9533-9a7aab1edcd2",
+              "3abb9112-2e7c-4adc-92ee-a8bf0d86c798"
+            ]
+          },
+          {
+            "id": "f1cdb6fb-7081-4153-9533-9a7aab1edcd2",
+            "shape": "table",
+            "position": {
+              "x": -276.4999999999993,
+              "y": -339.9999999999974
+            },
+            "count": 0,
+            "originKey": "5E696AF7-9066-4D97-9791-1AD44288EBCC",
+            "fontColor": "#000000",
+            "fillColor": "#d148d1",
+            "parent": "eaacfbc5-6305-41c9-b181-1dbf9bf0f6dd",
+            "type": "P",
+            "size": {
+              "width": 313,
+              "height": 100
+            },
+            "autoSize": true
+          },
+          {
+            "id": "3abb9112-2e7c-4adc-92ee-a8bf0d86c798",
+            "shape": "table",
+            "position": {
+              "x": -304.9999999999775,
+              "y": -198.99999999998204
+            },
+            "count": 0,
+            "originKey": "4414C49A-AADA-484B-BBEE-4F63A9BAE800",
+            "fontColor": "#000000",
+            "fillColor": "#d148d1",
+            "parent": "eaacfbc5-6305-41c9-b181-1dbf9bf0f6dd",
+            "type": "P",
+            "size": {
+              "width": 360,
+              "height": 146
+            },
+            "autoSize": true
+          },
+          {
+            "id": "4d0e5406-f1ea-4aa6-be2f-3af3a7bb690b",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "f1cdb6fb-7081-4153-9533-9a7aab1edcd2",
+              "port": "19367CFC-2B51-4FD5-88EF-34D57524C0A1%in"
+            },
+            "target": {
+              "cell": "c4d89967-d537-40ad-9093-6d6acd2cd2b8",
+              "port": "A60083AE-1C10-4650-A618-6F30B51577EE%in"
+            },
+            "relation": "triangle-fill:none",
+            "vertices": [
+              {
+                "x": -355.00000000000034,
+                "y": 52.00000000000864
+              }
+            ],
+            "labels": [
+              {
+                "attrs": {
+                  "text": {
+                    "text": ""
+                  }
+                }
+              }
+            ],
+            "fillColor": "#d148d1",
+            "parent": "5cc75222-44fc-470a-9b50-a08c58a954b5",
+            "router": {
+              "name": "manhattan",
+              "args": {
+                "excludeShapes": [
+                  "group"
+                ]
+              }
+            },
+            "connector": {
+              "name": "rounded",
+              "args": {
+                "radius": 10
+              }
+            },
+            "attrs": {
+              "line": {
+                "strokeDasharray": ""
+              }
+            }
+          },
+          {
+            "id": "d750ade4-60bf-480d-9bde-c40b0fec6fd9",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "f1cdb6fb-7081-4153-9533-9a7aab1edcd2",
+              "port": "19367CFC-2B51-4FD5-88EF-34D57524C0A1%in"
+            },
+            "target": {
+              "cell": "680ba8d3-92e3-457d-991c-e93f60c78e6d",
+              "port": "3FB1CF3D-BBD0-4033-9C5F-011541BC9AF7%in"
+            },
+            "relation": "triangle-fill:none",
+            "vertices": [
+              {
+                "x": -929.9999999999784,
+                "y": -157.99999999999056
+              }
+            ],
+            "fillColor": "#d148d1",
+            "parent": "5cc75222-44fc-470a-9b50-a08c58a954b5",
+            "router": {
+              "name": "manhattan",
+              "args": {
+                "excludeShapes": [
+                  "group"
+                ]
+              }
+            },
+            "connector": {
+              "name": "rounded",
+              "args": {
+                "radius": 10
+              }
+            },
+            "attrs": {
+              "line": {
+                "strokeDasharray": ""
+              }
+            }
+          },
+          {
+            "id": "61007134-d1a4-481b-b475-b6916c25b4d9",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "a5d5d184-903f-448d-b363-f5250c41a0b1",
+              "port": "9F39C1D4-68BC-442A-9C83-D7ACFD0703E7%in"
+            },
+            "target": {
+              "cell": "3abb9112-2e7c-4adc-92ee-a8bf0d86c798",
+              "port": "4696F292-6863-4579-87EA-883B9CE3260C%in"
+            },
+            "relation": "none:triangle-fill",
+            "vertices": [
+              {
+                "x": -875.0000000000003,
+                "y": -47.99999999999136
+              }
+            ],
+            "fillColor": "rgb(245, 220, 78)",
+            "parent": "5cc75222-44fc-470a-9b50-a08c58a954b5",
+            "router": {
+              "name": "manhattan",
+              "args": {
+                "excludeShapes": [
+                  "group"
+                ]
+              }
+            },
+            "connector": {
+              "name": "rounded",
+              "args": {
+                "radius": 10
+              }
+            },
+            "attrs": {
+              "line": {
+                "strokeDasharray": ""
+              }
+            }
+          },
+          {
+            "id": "911e4b44-4124-4388-9003-aaafe92ac6a0",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "a5d5d184-903f-448d-b363-f5250c41a0b1",
+              "port": "562425C6-ED0F-4EED-8FCA-BD83A9D17357%in"
+            },
+            "target": {
+              "cell": "3abb9112-2e7c-4adc-92ee-a8bf0d86c798",
+              "port": "6871419F-DC37-4BD9-842C-2C09DA0F958D%in"
+            },
+            "relation": "none:triangle-fill",
+            "vertices": [
+              {
+                "x": -845.0000000000003,
+                "y": -137.99999999999136
+              }
+            ],
+            "fillColor": "rgb(245, 220, 78)",
+            "parent": "5cc75222-44fc-470a-9b50-a08c58a954b5",
+            "router": {
+              "name": "manhattan",
+              "args": {
+                "excludeShapes": [
+                  "group"
+                ]
+              }
+            },
+            "connector": {
+              "name": "rounded",
+              "args": {
+                "radius": 10
+              }
+            },
+            "attrs": {
+              "line": {
+                "strokeDasharray": ""
+              }
+            }
+          },
+          {
+            "id": "70ba16a5-0b7a-42a4-a661-1de21caff828",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "a5d5d184-903f-448d-b363-f5250c41a0b1",
+              "port": "F05B1097-8C36-495C-BE2B-6D2ABFBC5575%in"
+            },
+            "target": {
+              "cell": "680ba8d3-92e3-457d-991c-e93f60c78e6d",
+              "port": "6887E0EB-B0B9-4AC9-A6BE-7085B892745B%in"
+            },
+            "relation": "none:triangle-fill",
+            "vertices": [
+              {
+                "x": -874.9999999999999,
+                "y": 298.50000000000864
+              }
+            ],
+            "fillColor": "rgb(245, 220, 78)",
+            "parent": "5cc75222-44fc-470a-9b50-a08c58a954b5",
+            "router": {
+              "name": "manhattan",
+              "args": {
+                "excludeShapes": [
+                  "group"
+                ]
+              }
+            },
+            "connector": {
+              "name": "rounded",
+              "args": {
+                "radius": 10
+              }
+            },
+            "attrs": {
+              "line": {
+                "strokeDasharray": ""
+              }
+            }
+          },
+          {
+            "id": "61862bec-d494-48b7-bf93-f806e5fd5707",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "680ba8d3-92e3-457d-991c-e93f60c78e6d",
+              "port": "948839F9-1D2E-442E-A78C-BB76B3EE3E62%out"
+            },
+            "target": {
+              "cell": "3abb9112-2e7c-4adc-92ee-a8bf0d86c798",
+              "port": "6871419F-DC37-4BD9-842C-2C09DA0F958D%in"
+            },
+            "relation": "none:triangle-fill",
+            "vertices": [
+              {
+                "x": -415.00000000000034,
+                "y": -137.99999999999136
+              }
+            ],
+            "fillColor": "rgb(249, 186, 80)",
+            "parent": "5cc75222-44fc-470a-9b50-a08c58a954b5",
+            "router": {
+              "name": "manhattan",
+              "args": {
+                "excludeShapes": [
+                  "group"
+                ]
+              }
+            },
+            "connector": {
+              "name": "rounded",
+              "args": {
+                "radius": 10
+              }
+            },
+            "attrs": {
+              "line": {
+                "strokeDasharray": ""
+              }
+            }
+          },
+          {
+            "id": "e52b2e23-e5c5-4885-b20e-4ed4fabc035b",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "c4d89967-d537-40ad-9093-6d6acd2cd2b8",
+              "port": "EEBDE30D-3417-408D-8A59-BE95831A6650%out"
+            },
+            "target": {
+              "cell": "3abb9112-2e7c-4adc-92ee-a8bf0d86c798",
+              "port": "6871419F-DC37-4BD9-842C-2C09DA0F958D%out"
+            },
+            "relation": "none:triangle-fill",
+            "vertices": [
+              {
+                "x": 144.99999999999966,
+                "y": -137.99999999999136
+              }
+            ],
+            "fillColor": "rgb(249, 186, 80)",
+            "parent": "5cc75222-44fc-470a-9b50-a08c58a954b5",
+            "router": {
+              "name": "manhattan",
+              "args": {
+                "excludeShapes": [
+                  "group"
+                ]
+              }
+            },
+            "connector": {
+              "name": "rounded",
+              "args": {
+                "radius": 10
+              }
+            },
+            "attrs": {
+              "line": {
+                "strokeDasharray": ""
+              }
+            }
+          },
+          {
+            "id": "b30ed1b9-437e-4bf7-bbbb-30589a4bf920",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "2f3f1d52-c7ac-4101-9b6a-ec53c9e6b7f6",
+              "port": "10817992-6EC9-4D7C-9A5C-FEACCF5466EC%in"
+            },
+            "target": {
+              "cell": "87a0d8bc-3705-4586-aee9-aa3e69bae6ed",
+              "port": "AF42BB34-C37C-48D0-AFB9-B41A782BDA27%out"
+            },
+            "relation": "none:triangle-fill",
+            "vertices": [
+              {
+                "x": 134.99999999999966,
+                "y": 666.9999999999864
+              }
+            ],
+            "fillColor": "rgb(90, 213, 198)",
+            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
+            "router": {
+              "name": "manhattan",
+              "args": {
+                "excludeShapes": [
+                  "group"
+                ]
+              }
+            },
+            "connector": {
+              "name": "rounded",
+              "args": {
+                "radius": 10
+              }
+            },
+            "attrs": {
+              "line": {
+                "strokeDasharray": ""
+              }
+            }
+          },
+          {
+            "id": "8e21b717-3d7f-4b4c-8c1a-909d7fc38ba8",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "2f3f1d52-c7ac-4101-9b6a-ec53c9e6b7f6",
+              "port": "0BAA5DBD-906A-4F50-AEE8-0E8A54A268DD%in"
+            },
+            "target": {
+              "cell": "c4d89967-d537-40ad-9093-6d6acd2cd2b8",
+              "port": "A60083AE-1C10-4650-A618-6F30B51577EE%out"
+            },
+            "relation": "none:triangle-fill",
+            "vertices": [
+              {
+                "x": 174.99999999999966,
+                "y": 441.99999999998636
+              }
+            ],
+            "fillColor": "rgb(90, 213, 198)",
+            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
+            "router": {
+              "name": "manhattan",
+              "args": {
+                "excludeShapes": [
+                  "group"
+                ]
+              }
+            },
+            "connector": {
+              "name": "rounded",
+              "args": {
+                "radius": 10
+              }
+            },
+            "attrs": {
+              "line": {
+                "strokeDasharray": ""
+              }
+            }
+          },
+          {
+            "id": "ac2a72f3-1cbf-40f7-af6b-af168cde412b",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "2f3f1d52-c7ac-4101-9b6a-ec53c9e6b7f6",
+              "port": "8C9BC75D-4712-409F-9768-B81D980AAC0D%in"
+            },
+            "target": {
+              "cell": "c4d89967-d537-40ad-9093-6d6acd2cd2b8",
+              "port": "A0569407-F110-4741-BAB9-8D0E8BEB2670%out"
+            },
+            "relation": "none:triangle-fill",
+            "vertices": [
+              {
+                "x": 114.99999999999966,
+                "y": 351.99999999998636
+              }
+            ],
+            "fillColor": "rgb(90, 213, 198)",
+            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
+            "router": {
+              "name": "manhattan",
+              "args": {
+                "excludeShapes": [
+                  "group"
+                ]
+              }
+            },
+            "connector": {
+              "name": "rounded",
+              "args": {
+                "radius": 10
+              }
+            },
+            "attrs": {
+              "line": {
+                "strokeDasharray": ""
+              }
+            }
+          },
+          {
+            "id": "3ee72ff3-e232-42cf-8565-beaf0e77be83",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "2f3f1d52-c7ac-4101-9b6a-ec53c9e6b7f6",
+              "port": "36D2B515-59C6-4423-B1CA-ED12FC05D819%out"
+            },
+            "target": {
+              "cell": "f5fdf19b-4549-40aa-8b87-b4e1e6475bb0",
+              "port": "F78C3EBB-A05B-40AB-8CEE-26D5077CCB4B%out"
+            },
+            "relation": "none:triangle-fill",
+            "vertices": [
+              {
+                "x": 664.9999999999997,
+                "y": 391.99999999998636
+              }
+            ],
+            "fillColor": "rgb(90, 213, 198)",
+            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
+            "router": {
+              "name": "manhattan",
+              "args": {
+                "excludeShapes": [
+                  "group"
+                ]
+              }
+            },
+            "connector": {
+              "name": "rounded",
+              "args": {
+                "radius": 10
+              }
+            },
+            "attrs": {
+              "line": {
+                "strokeDasharray": ""
+              }
+            }
+          },
+          {
+            "id": "15bab1fe-09f0-4347-8421-acfb16144826",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "2dca1a40-d06a-44eb-a6be-023bab6f48bb",
+              "port": "F6332863-4D63-486B-8903-99F917F58025%in"
+            },
+            "target": {
+              "cell": "87a0d8bc-3705-4586-aee9-aa3e69bae6ed",
+              "port": "AF42BB34-C37C-48D0-AFB9-B41A782BDA27%in"
+            },
+            "relation": "none:triangle-fill",
+            "vertices": [
+              {
+                "x": -445.00000000000034,
+                "y": 666.9999999999875
+              }
+            ],
+            "fillColor": "rgb(51, 153, 108)",
+            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
+            "router": {
+              "name": "manhattan",
+              "args": {
+                "excludeShapes": [
+                  "group"
+                ]
+              }
+            },
+            "connector": {
+              "name": "rounded",
+              "args": {
+                "radius": 10
+              }
+            },
+            "attrs": {
+              "line": {
+                "strokeDasharray": ""
+              }
+            }
+          },
+          {
+            "id": "c2d89592-c02a-47a1-9238-a78834ac2114",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "0e06ee11-9b3b-456f-a5b9-75a61f314993",
+              "port": "794092A4-8A75-4EA3-BF4B-3C60EB6D3262%in"
+            },
+            "target": {
+              "cell": "87a0d8bc-3705-4586-aee9-aa3e69bae6ed",
+              "port": "AF42BB34-C37C-48D0-AFB9-B41A782BDA27%in"
+            },
+            "relation": "none:triangle-fill",
+            "fillColor": "rgb(51, 153, 108)",
+            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
+            "router": {
+              "name": "manhattan",
+              "args": {
+                "excludeShapes": [
+                  "group"
+                ]
+              }
+            },
+            "connector": {
+              "name": "rounded",
+              "args": {
+                "radius": 10
+              }
+            },
+            "attrs": {
+              "line": {
+                "strokeDasharray": ""
+              }
+            }
+          },
+          {
+            "id": "c3d6bab6-3e14-4652-9b80-5e9afa465fa6",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "7437667e-9bdf-4d68-bc0e-b0a34a90585c",
+              "port": "5A13D14D-DBF0-4E8C-87D5-79544649322B%in"
+            },
+            "target": {
+              "cell": "87a0d8bc-3705-4586-aee9-aa3e69bae6ed",
+              "port": "AF42BB34-C37C-48D0-AFB9-B41A782BDA27%in"
+            },
+            "relation": "none:triangle-fill",
+            "vertices": [
+              {
+                "x": -325.00000000000034,
+                "y": 831.9999999999875
+              }
+            ],
+            "fillColor": "rgb(51, 153, 108)",
+            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
+            "router": {
+              "name": "manhattan",
+              "args": {
+                "excludeShapes": [
+                  "group"
+                ]
+              }
+            },
+            "connector": {
+              "name": "rounded",
+              "args": {
+                "radius": 10
+              }
+            },
+            "attrs": {
+              "line": {
+                "strokeDasharray": ""
+              }
+            }
+          },
+          {
+            "id": "9d751727-776f-4b8f-8cb4-80b485012a1d",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "392b702b-de4a-41d9-ad35-235a53406d86",
+              "port": "604EADE0-8184-4E57-ACF8-6F489E4A1DC5%in"
+            },
+            "target": {
+              "cell": "87a0d8bc-3705-4586-aee9-aa3e69bae6ed",
+              "port": "AF42BB34-C37C-48D0-AFB9-B41A782BDA27%in"
+            },
+            "relation": "none:triangle-fill",
+            "vertices": [
+              {
+                "x": -975.0000000000009,
+                "y": 667
+              }
+            ],
+            "fillColor": "rgb(117, 190, 250)",
+            "parent": "d3cf9095-2618-4acb-8ff4-bde6ad6ec81a",
+            "router": {
+              "name": "manhattan",
+              "args": {
+                "excludeShapes": [
+                  "group"
+                ]
+              }
+            },
+            "connector": {
+              "name": "rounded",
+              "args": {
+                "radius": 10
+              }
+            },
+            "attrs": {
+              "line": {
+                "strokeDasharray": ""
+              }
+            }
+          },
+          {
+            "id": "4fd20ceb-64a0-4a54-88d0-aecb337c78c3",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "5470301d-1e0e-44a3-9c5f-1bc94acf21af",
+              "port": "799A3CB4-3369-43D0-AC9B-BBDB61A65996%in"
+            },
+            "target": {
+              "cell": "87a0d8bc-3705-4586-aee9-aa3e69bae6ed",
+              "port": "AF42BB34-C37C-48D0-AFB9-B41A782BDA27%in"
+            },
+            "relation": "none:triangle-fill",
+            "vertices": [
+              {
+                "x": -515.0000000000009,
+                "y": 1210
+              },
+              {
+                "x": -445.0000000000009,
+                "y": 1210
+              },
+              {
+                "x": -425.0000000000009,
+                "y": 1000
+              }
+            ],
+            "fillColor": "rgb(117, 190, 250)",
+            "parent": "d3cf9095-2618-4acb-8ff4-bde6ad6ec81a",
+            "router": {
+              "name": "manhattan",
+              "args": {
+                "excludeShapes": [
+                  "group"
+                ]
+              }
+            },
+            "connector": {
+              "name": "rounded",
+              "args": {
+                "radius": 10
+              }
+            },
+            "attrs": {
+              "line": {
+                "strokeDasharray": ""
+              }
+            }
+          },
+          {
+            "id": "f3695cbc-c005-4dda-af9d-32bcb691179a",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "643f0801-2ecf-42ff-90c5-fcb22057cf10",
+              "port": "6C61F78B-5FA7-4BF5-B2A2-668B0391947E%in"
+            },
+            "target": {
+              "cell": "87a0d8bc-3705-4586-aee9-aa3e69bae6ed",
+              "port": "AF42BB34-C37C-48D0-AFB9-B41A782BDA27%in"
+            },
+            "relation": "none:triangle-fill",
+            "vertices": [
+              {
+                "x": -385.0000000000009,
+                "y": 1060
+              }
+            ],
+            "fillColor": "rgb(117, 190, 250)",
+            "parent": "d3cf9095-2618-4acb-8ff4-bde6ad6ec81a",
+            "router": {
+              "name": "manhattan",
+              "args": {
+                "excludeShapes": [
+                  "group"
+                ]
+              }
+            },
+            "connector": {
+              "name": "rounded",
+              "args": {
+                "radius": 10
+              }
+            },
+            "attrs": {
+              "line": {
+                "strokeDasharray": ""
+              }
+            }
+          },
+          {
+            "id": "6c667313-183d-4364-922c-68feaaedb39c",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "643f0801-2ecf-42ff-90c5-fcb22057cf10",
+              "port": "8180F8DF-D83E-4318-8085-5465BEA6925C%out"
+            },
+            "target": {
+              "cell": "19f88797-830c-409d-ba26-03a130569f78",
+              "port": "BA37CE00-85D3-4147-8720-E80D8E0257BA%in"
+            },
+            "relation": "none:triangle-fill",
+            "vertices": [
+              {
+                "x": 74.99999999999909,
+                "y": 1360
+              }
+            ],
+            "fillColor": "rgb(117, 190, 250)",
+            "parent": "d3cf9095-2618-4acb-8ff4-bde6ad6ec81a",
+            "router": {
+              "name": "manhattan",
+              "args": {
+                "excludeShapes": [
+                  "group"
+                ]
+              }
+            },
+            "connector": {
+              "name": "rounded",
+              "args": {
+                "radius": 10
+              }
+            },
+            "attrs": {
+              "line": {
+                "strokeDasharray": ""
+              }
+            }
+          },
+          {
+            "id": "b0c2471c-af67-4cbd-84e1-db1b7e5fa7d2",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "612d3d14-1d13-46e1-aeb7-41079745ec35",
+              "port": "FC34F0A6-3E14-48A9-9AE0-CB2D97254793%in"
+            },
+            "target": {
+              "cell": "19f88797-830c-409d-ba26-03a130569f78",
+              "port": "BA37CE00-85D3-4147-8720-E80D8E0257BA%in"
+            },
+            "relation": "none:triangle-fill",
+            "vertices": [
+              {
+                "x": 414.9999999999991,
+                "y": 1380
+              },
+              {
+                "x": 124.99999999999909,
+                "y": 1380
+              }
+            ],
+            "fillColor": "rgb(117, 190, 250)",
+            "parent": "d3cf9095-2618-4acb-8ff4-bde6ad6ec81a",
+            "router": {
+              "name": "manhattan",
+              "args": {
+                "excludeShapes": [
+                  "group"
+                ]
+              }
+            },
+            "connector": {
+              "name": "rounded",
+              "args": {
+                "radius": 10
+              }
+            },
+            "attrs": {
+              "line": {
+                "strokeDasharray": ""
+              }
+            }
+          }
+        ]
+      },
+      "id": "0C9D013A-E806-4B49-BB05-1A5A0F559CF1",
+      "comment": ""
+    }
+  ],
   "standardFields": [],
   "dbConn": [
     {
@@ -4867,7 +6502,48 @@
       }
     }
   ],
-  "logicEntities": [],
+  "logicEntities": [
+    {
+      "id": "5C8D3834-7D7F-4B57-BA1C-B43A20AB375C",
+      "defKey": "LOGIC_1",
+      "headers": [
+        {
+          "refKey": "defKey",
+          "newCode": "defKey",
+          "value": "属性代码",
+          "hideInGraph": false
+        },
+        {
+          "refKey": "defName",
+          "newCode": "defName",
+          "value": "属性名称",
+          "hideInGraph": false
+        },
+        {
+          "refKey": "primaryKey",
+          "newCode": "primaryKey",
+          "value": "主键",
+          "hideInGraph": false
+        },
+        {
+          "refKey": "baseType",
+          "newCode": "baseType",
+          "value": "数据类型",
+          "hideInGraph": false
+        }
+      ],
+      "fields": [],
+      "properties": {
+        "partitioned by": "(date string)",
+        "row format delimited": "",
+        "fields terminated by ','": "",
+        "collection items terminated by '-'": "",
+        "map keys terminated by ':'": "",
+        "store as textfile;": ""
+      },
+      "type": "L"
+    }
+  ],
   "namingRules": [
     {
       "id": "63F1DC0E-6A76-4B75-B3DA-4B00657B4E1B",
