@@ -1,11 +1,21 @@
 # 银行管理系统需求分析
 
-本项目基于 MySQL、Python、Django 框架，实现一个 USTC 银行管理系统。本文档主要包括项目的需求分析、功能设计和多模态信息需求的总结。
+本项目基于 MySQL、Python、Django 框架，实现一个 USTC 银行管理系统。本文档主要包括项目的需求分析、功能设计和多模态信息需求的总结。本项目使用的软件有：
+- MySQL 8.0
+- Python 3.11
+- Django 5.0
+- Datagrip 2024.1
+- PyCharm 2024.1
+- PDManer 元数建模 4.9
+
+本项目的设计时间为 2024 年 5 月 17 日至 2024 年 6 月 1 日。
 
 ## 命名规范
 
-1. 数据库表中的表名均为驼峰命名的英文
-2. 数据库属性名为表名驼峰首字母加属性名，如 `BName` 代表银行名称
+> 考虑到 MySQL 大小写不敏感，并且 Datagrip 会自动将表名转为小写，因此以下命名规范均为全小写
+
+1. 数据库表中的表名均为全小写，如 `bank` 代表银行，多个单词之间使用下划线 `_` 分隔
+2. 数据库属性名为表名各个单词首字母 + 下划线 + 属性名，如 `b_name` 代表银行名称
 
 ## 数据需求
 
@@ -71,104 +81,104 @@
 
 ## 数据库实体设计
 
-1. 银行 Bank
+1. 银行 bank, b
 是银行系统中的可标识对象，因此是实体，实体设计为：
 $(\underline{银行名称}, 银行地址, 银行电话)$
-$(\underline{BName}, BAddr, BPhone)$
+$(\underline{b_name}, b_addr, b_phone)$
 
-2. 客户 Customer
+2. 客户 customer, c
 是现实世界中的可标识对象，因此是实体，实体设计为：
 $(\underline{身份证号}, 姓名, 性别, 年龄, 电话, 地址)$
-$(\underline{CID}, CName, CGender, CAge, CPhone, CAddr)$
+$(\underline{c_id}, c_name, c_gender, c_age, c_phone, c_addr)$
 
-3. 部门 Department
+3. 部门 department, d
 是银行系统中的可标识对象，由银行和部门号唯一标识，因此是实体，实体设计为：
 $(\underline{银行名称}, \underline{部门号}, 部门名称, 部门电话)$
-$(\underline{BName}, \underline{DNo}, DName, DPhone)$
+$(\underline{b_name}, \underline{d_no}, d_name, d_phone)$
 
-4. 员工 Employee
+4. 员工 employee, e
 是银行系统中的可标识对象，由银行和员工号唯一标识，因此是实体，实体设计为：
 $(\underline{银行名称}, \underline{员工号}, 员工身份证号, 员工姓名, 员工性别, 员工年龄, 员工电话, 员工地址, 员工部门号, 员工头像)$
-$(\underline{BName}, \underline{ENo}, EID, EName, EGender, EAge, EPhone, EAddr, DNo, EAvatar)$
+$(\underline{b_name}, \underline{e_no}, e_id, e_name, e_gender, e_age, e_phone, e_addr, e_dno, e_avatar)$
 
-5. 经理 Manager
+1. 经理 manager, m
 是员工的子类，实体设计与员工相同，但是需要添加经理号属性
-经理号：$MNo$
+经理号：$m_no$
 
-6. 账户 Account
+1. 账户 account, a
 是银行系统中的可标识对象，由账户号唯一标识，因此是实体，实体设计为：
 $(\underline{账户号}, 账户类型, 货币属性, 账户余额, 开户时间)$
-$(\underline{ANo}, AType, ACurrency, ABalance, AOpenTime)$
+$(\underline{a_no}, a_type, a_currency, a_balance, a_open_time)$
 
-7. 储蓄账户 SavingAccount
+1. 储蓄账户 savings_account, sa
 是账户的子类，实体设计与账户相同，但是需要添加利率、提款额度属性
-利率：$SARate$，提款额度：$SAWithdrawLimit$
+利率：$sa_rate$，提款额度：$sa_withdraw_limit$
 
-8. 信用卡账户 CreditAccount
+1. 信用卡账户 credit_acount, ca
 是账户的子类，实体设计与账户相同，但是需要添加透支额度、当前透支金额属性
-透支额度：$CAOverdraftLimit$，当前透支金额：$CAOverdraftAmount$
+透支额度：$ca_overdraft_limit$，当前透支金额：$ca_overdraft_amount$
 
-9. 贷款账户 LoanAccount
+1. 贷款账户 loan_account, la
 是账户的子类，实体设计与账户相同，但是需要添加利率、贷款额度属性
-利率：$LARate$，贷款额度：$LALoanLimit$
+利率：$la_rate$，贷款额度：$la_loan_limit$
 
-10. 账户持有记录 AccountHold
+1.  账户持有记录 account_hold, ah
 是银行系统中的可标识对象，由账户号唯一标识，因此是实体，实体设计为：
 $(\underline{账户号}, 银行名称, 身份证号)$
-$(\underline{ANo}, BName, CID)$
+$(\underline{ano}, b_name, c_id)$
 
-11. 储蓄账户存钱记录 SavingsAccountDeposit
+1.  储蓄账户存钱记录 savings_account_deposit, sad
 是银行系统中的可标识对象，由账户号和存款时间唯一标识，因此是实体，实体设计为：
 $(\underline{账户号}, \underline{存款时间}, 存款前余额, 存款金额)$
-$(\underline{ANo}, \underline{SADTime}, SADBeforeBalance, SADAmount)$
+$(\underline{a_no}, \underline{sad_time}, sad_before_balance, sad_amount)$
 
-12. 储蓄账户取钱记录 SavingsAccountWithdraw
+1.  储蓄账户取钱记录 savings_account_withdraw, saw
 是银行系统中的可标识对象，由账户号和取款时间唯一标识，因此是实体，实体设计为：
 $(\underline{账户号}, \underline{取款时间}, 取款前余额, 取款金额)$
-$(\underline{ANo}, \underline{SAWTime}, SAWBeforeBalance, SAWAmount)$
+$(\underline{a_no}, \underline{saw_time}, saw_before_balance, saw_amount)$
 
-13. 储蓄账户转账记录 SavingsAccountTransfer
+1.  储蓄账户转账记录 savings_account_transfer, sat
 是银行系统中的可标识对象，由账户号和转账时间唯一标识，因此是实体，实体设计为：
 $(\underline{账户号}, \underline{转账时间}, 转账前余额, 转账金额, 转账账户号)$
-$(\underline{ANo}, \underline{SATTime}, SATBeforeBalance, SATAmount, SATTransferANo)$
+$(\underline{a_no}, \underline{sat_time}, sat_before_balance, sat_amount, sat_transfer_a_no)$
 
-14.  信用卡账户存钱记录 CreditAccountDeposit
+1.   信用卡账户存钱记录 credit_account_deposit, cad
 是银行系统中的可标识对象，由账户号和存款时间唯一标识，因此是实体，实体设计为：
 $(\underline{账户号}, \underline{存款时间}, 存款前余额, 存款前透支金额, 存款金额)$
+$(\underline{a_no}, \underline{cad_time}, cad_before_balance, cad_before_overdraft, cad_amount)$
 
-$(\underline{ANo}, \underline{CADTime}, CADBeforeBalance, CADBeforeOverdraft, CADAmount)$
-15.  信用卡账户取钱记录 CreditAccountWithdraw
+15.  信用卡账户取钱记录 credit_account_withdraw, caw
 是银行系统中的可标识对象，由账户号和取款时间唯一标识，因此是实体，实体设计为：
 $(\underline{账户号}, \underline{取款时间}, 取款前余额, 取款前透支金额, 取款金额)$
-$(\underline{ANo}, \underline{CAWTime}, CAWBeforeBalance, CAWBeforeOverdraft, CAWAmount)$
+$(\underline{a_no}, \underline{caw_time}, caw_before_balance, caw_before_overdraft, caw_amount)$
 
-16.  信用卡账户转账记录 CreditAccountTransfer
+16.  信用卡账户转账记录 credit_account_transfer, cat
 是银行系统中的可标识对象，由账户号和转账时间唯一标识，因此是实体，实体设计为：
 $(\underline{账户号}, \underline{转账时间}, 转账前余额, 转账前透支金额, 转账金额, 转账账户号)$
-$(\underline{ANo}, \underline{CATTime}, CATBeforeBalance, CATBeforeOverdraft, CATAmount, CATTransferANo)$
+$(\underline{a_no}, \underline{cat_time}, cat_before_balance, cat_before_overdraft, cat_amount, cat_transfer_a_no)$
 
-17.  借贷信息 Loan
+17.  借贷信息 loan, l
 是银行系统中的可标识对象，由银行发放，由贷款号唯一标识，因此是实体，实体设计为；
 $(\underline{贷款号}, 贷款金额, 贷款时间, 贷款期限, 当前还款期数, 当前总还款金额, 当前状态)$
-$(\underline{LNo}, LAmount, LTime, LDeadline, LCurrentPeriod, LCurrentTotal, LStatus)$
+$(\underline{l_no}, l_amount, l_time, l_deadline, l_curr_amount_period, l_curr_amount_total, l_status)$
 
-18.  还贷记录 LoanRepay
+18.  还贷记录 loan_repay, lr
 是银行系统中的可标识对象，由贷款账户号和还款时间唯一标识，因此是实体，实体设计为：
 $(\underline{贷款号}, \underline{还款时间}, 还款金额)$
-$(\underline{LNo}, \underline{LRTime}, LRAmount)$
+$(\underline{l_no}, \underline{lr_time}, lr_amount)$
 
-19.  贷款账户发放记录 LoanAccountGrant
+19.  贷款账户发放记录 loan_account_grant, lag
 是银行系统中的可标识对象，由银行发放，由银行名称、贷款号唯一标识，因此是实体，实体设计为：
 $(\underline{银行名称}, \underline{贷款号}, 贷款账户号)$
-$(\underline{BName}, \underline{LNo}, LNo)$
+$(\underline{b_name}, \underline{l_no}, l_no)$
 
 
 ## 数据库关系设计
 
 1. 一个人可以有多个账户，但一个账户只能属于一个人
 2. 一个银行下可以有多个账户，但一个账户只能属于一个银行
-3. 认为不同银行发布的账户号也互不相同，账户号是全局唯一的，所以账户号可以唯一标识一个账户，这种设计与现实也是一致的
-4. 一个贷款号只对应一个贷款账户号，而一个贷款账户号可以对应多个贷款号
+3. 认为不同银行发布的账户号是互不相同的，也就是账户号是全局唯一的，所以账户号可以唯一标识一个账户，并且根据 account_hold 表，可以找到发布这个账户的银行和账户持有者。这种设计与实际情况也是相符的
+4. 一个贷款号只能绑定到一个贷款账户号，而一个贷款账户号可以绑定多个贷款号。也就是说一个贷款只能由一个账户还贷，但一个账户可以还多个贷款，比如车贷 + 房贷
 
 ## 前端功能需求
 

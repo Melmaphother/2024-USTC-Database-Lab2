@@ -4,12 +4,12 @@
   "avatar": "",
   "version": "4.9.2",
   "createdTime": "2024-5-18 22:27:47",
-  "updatedTime": "2024-5-18 23:35:34",
+  "updatedTime": "2024-5-19 12:25:54",
   "dbConns": [],
   "profile": {
     "default": {
       "db": "29D1CE08-4C35-4D2D-AAA9-23D93305B52E",
-      "dbConn": "",
+      "dbConn": "AEE65DA9-0212-404E-8DB0-5BE6C11D986B",
       "entityInitFields": [],
       "entityInitProperties": {
         "partitioned by": "(date string)",
@@ -533,8 +533,8 @@
           "codeRoot": ""
         }
       },
-      "defKey": "银行",
-      "defName": "",
+      "defKey": "Bank",
+      "defName": "银行",
       "comment": "",
       "properties": {
         "partitioned by": "(date string)",
@@ -676,8 +676,8 @@
       ],
       "fields": [
         {
-          "defKey": "银行名称",
-          "defName": "",
+          "defKey": "BName",
+          "defName": "银行名称",
           "comment": "",
           "type": "",
           "len": "",
@@ -695,8 +695,8 @@
           "uiHint": "642D2E0A-8846-4549-BE56-8C0473F26EDE"
         },
         {
-          "defKey": "银行地址",
-          "defName": "",
+          "defKey": "BAddr",
+          "defName": "银行地址",
           "comment": "",
           "type": "",
           "len": "",
@@ -714,8 +714,8 @@
           "uiHint": "642D2E0A-8846-4549-BE56-8C0473F26EDE"
         },
         {
-          "defKey": "银行电话",
-          "defName": "",
+          "defKey": "BPhone",
+          "defName": "银行电话",
           "comment": "",
           "type": "",
           "len": "",
@@ -744,8 +744,8 @@
           "codeRoot": ""
         }
       },
-      "defKey": "客户",
-      "defName": "",
+      "defKey": "Customer",
+      "defName": "客户",
       "comment": "",
       "properties": {
         "partitioned by": "(date string)",
@@ -887,8 +887,8 @@
       ],
       "fields": [
         {
-          "defKey": "身份证号",
-          "defName": "",
+          "defKey": "CID",
+          "defName": "身份证号",
           "comment": "",
           "type": "",
           "len": "",
@@ -906,8 +906,8 @@
           "uiHint": "9999AF2A-A44E-415C-A2DC-D7C613BD0073"
         },
         {
-          "defKey": "姓名",
-          "defName": "",
+          "defKey": "CName",
+          "defName": "客户姓名",
           "comment": "",
           "type": "",
           "len": "",
@@ -925,8 +925,8 @@
           "uiHint": "642D2E0A-8846-4549-BE56-8C0473F26EDE"
         },
         {
-          "defKey": "性别",
-          "defName": "",
+          "defKey": "CGender",
+          "defName": "性别",
           "comment": "",
           "type": "",
           "len": "",
@@ -944,8 +944,8 @@
           "uiHint": "0CB8A6C9-1115-4FC0-B51E-5C028065082F"
         },
         {
-          "defKey": "年龄",
-          "defName": "",
+          "defKey": "CAge",
+          "defName": "年龄",
           "comment": "",
           "type": "",
           "len": "",
@@ -963,8 +963,8 @@
           "uiHint": "642D2E0A-8846-4549-BE56-8C0473F26EDE"
         },
         {
-          "defKey": "电话",
-          "defName": "",
+          "defKey": "CPhone",
+          "defName": "电话",
           "comment": "",
           "type": "",
           "len": "",
@@ -982,8 +982,8 @@
           "uiHint": "642D2E0A-8846-4549-BE56-8C0473F26EDE"
         },
         {
-          "defKey": "地址",
-          "defName": "",
+          "defKey": "CAddr",
+          "defName": "地址",
           "comment": "",
           "type": "",
           "len": "",
@@ -1013,8 +1013,8 @@
           "codeRoot": ""
         }
       },
-      "defKey": "部门",
-      "defName": "",
+      "defKey": "Department",
+      "defName": "部门",
       "comment": "",
       "properties": {
         "partitioned by": "(date string)",
@@ -1156,8 +1156,8 @@
       ],
       "fields": [
         {
-          "defKey": "银行名称",
-          "defName": "",
+          "defKey": "BName",
+          "defName": "银行名称",
           "comment": "",
           "type": "",
           "len": "",
@@ -1175,8 +1175,8 @@
           "uiHint": "642D2E0A-8846-4549-BE56-8C0473F26EDE"
         },
         {
-          "defKey": "部门号",
-          "defName": "",
+          "defKey": "DNo",
+          "defName": "部门号",
           "comment": "",
           "type": "",
           "len": "",
@@ -1194,8 +1194,8 @@
           "uiHint": "642D2E0A-8846-4549-BE56-8C0473F26EDE"
         },
         {
-          "defKey": "部门名称",
-          "defName": "",
+          "defKey": "DName",
+          "defName": "部门名称",
           "comment": "",
           "type": "",
           "len": "",
@@ -1213,8 +1213,8 @@
           "uiHint": "642D2E0A-8846-4549-BE56-8C0473F26EDE"
         },
         {
-          "defKey": "部门电话",
-          "defName": "",
+          "defKey": "DPhone",
+          "defName": "部门电话",
           "comment": "",
           "type": "",
           "len": "",
@@ -1244,8 +1244,8 @@
           "codeRoot": ""
         }
       },
-      "defKey": "员工",
-      "defName": "",
+      "defKey": "Employee",
+      "defName": "员工",
       "comment": "",
       "properties": {
         "partitioned by": "(date string)",
@@ -1905,7 +1905,19 @@
   ],
   "diagrams": [],
   "standardFields": [],
-  "dbConn": [],
+  "dbConn": [
+    {
+      "defKey": "AEE65DA9-0212-404E-8DB0-5BE6C11D986B",
+      "defName": "mysql_demo",
+      "type": "29D1CE08-4C35-4D2D-AAA9-23D93305B52E",
+      "properties": {
+        "driver_class_name": "com.mysql.cj.jdbc.Driver",
+        "url": "jdbc:mysql://127.0.0.1:3306/library?characterEncoding=UTF-8&useSSL=false&useUnicode=true&serverTimezone=UTC",
+        "password": "030428",
+        "username": "root"
+      }
+    }
+  ],
   "logicEntities": [],
   "namingRules": [
     {
