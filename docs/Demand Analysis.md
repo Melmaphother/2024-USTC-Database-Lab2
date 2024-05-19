@@ -1,6 +1,7 @@
 # 银行管理系统需求分析
 
 本项目基于 MySQL、Python、Django 框架，实现一个 USTC 银行管理系统。本文档主要包括项目的需求分析、功能设计和多模态信息需求的总结。本项目使用的软件有：
+
 - MySQL 8.0
 - Python 3.11
 - Django 5.0
@@ -25,59 +26,65 @@
      - 银行地址 `VARCHAR(200)`：考虑到银行地址可能很长
      - 银行电话 `VARCHAR(20)`：考虑海外电话
 2. 客户信息
-   - 主属性：身份证号，全部为 18 位数字 `CHAR(18)`，使用定长字符串提高检索效率
+   - 主属性：身份证号，全部为 18 位数字 `VARCHAR(18)`
    - 其他属性：
      - 姓名 `VARCHAR(50)`：考虑到外国人名可能很长
-     - 性别 `CHAR(1)`：M 代表男性，F 代表女性，U 表示未知，这里不考虑无性别者
+     - 性别 `VARCHAR(1)`：M 代表男性，F 代表女性，U 表示未知，这里不考虑无性别者
      - 年龄 `INT`
      - 电话 `VARCHAR(20)`，与银行电话保持一致
      - 地址 `VARCHAR(200)`，与银行地址保持一致
 3. 账户信息
-   - 主属性：账户号 `CHAR(18)`，两个字母加 16 个数字，使用定长字符串提高检索效率
+   - 主属性：账户号 `VARCHAR(18)`，两个字母加 16 个数字
    - 其他属性：
-     - 账户类型 `VARCHAR(20)`：储蓄、信用卡、贷款
-     - 货币属性 `CHAR(2)`：USD、CHY、EUR、JPY、GBP，分别代表美元、人民币、欧元、日元、英镑，目前只考虑这五种货币
+     - 账户类型 `VARCHAR(20)`：Savings, Credit, Loan, 分别代表储蓄、信用卡、贷款
+     - 货币属性 `VARCHAR(3)`：USD, CHY, EUR, JPY, GBP，分别代表美元、人民币、欧元、日元、英镑，目前只考虑这五种货币
      - 账户余额 `DECIMAL(20, 2)`：保留两位小数
      - 开户时间 `DATETIME`：YYYY-MM-DD HH:MM:SS，精确到秒
    - 储蓄账户是账户的子类，继承账户的所有属性，还有：
-     - 储蓄账户号 `CHAR(18)`：以 SA 开头，后面为 16 位数字（Savings Account）
-     - 利率 `DECIMAL(5, 4)`：保留四位小数
+     - 储蓄账户号 `VARCHAR(18)`：以 SA 开头，后面为 16 位数字（Savings Account）
+     - 储蓄利率 `DECIMAL(5, 4)`：保留四位小数
      - 提款额度 `DECIMAL(20, 2)`：保留两位小数，与账户余额保持一致
    - 信用卡账户是账户的子类，继承账户的所有属性，还有：
-     - 信用卡账户号 `CHAR(18)`：以 CA 开头，后面为 16 位数字（Credit Account）
+     - 信用卡账户号 `VARCHAR(18)`：以 CA 开头，后面为 16 位数字（Credit Account）
      - 透支额度 `DECIMAL(20, 2)`：保留两位小数
      - 当前透支金额 `DECIMAL(20, 2)`：保留两位小数
    - 贷款账户是账户的子类，继承账户的所有属性，还有：
-     - 贷款账户号 `CHAR(18)`：以 LA 开头，后面为 16 位数字（Loan Account）
-     - 利率 `DECIMAL(5, 4)`：保留四位小数
+     - 贷款账户号 `VARCHAR(18)`：以 LA 开头，后面为 16 位数字（Loan Account）
+     - 贷款利率 `DECIMAL(5, 4)`：保留四位小数
      - 贷款额度 `DECIMAL(20, 2)`：保留两位小数
-4. 贷款信息
-   - 主属性：贷款号 `CHAR(11)`，以 L 开头，后面为 10 位数字（Loan）
+4. 账户操作
+   - 储蓄账户操作类型 `VARCHAR(20)`：deposit, withdraw, transfer_in, transfer_out, 表示存款、取款、转入、转出
+   - 信用卡账户操作类型 `VARCHAR(20)`：deposit, withdraw, transfer_in, transfer_out, 表示存款、取款、转入、转出
+   - 贷款账户操作类型：申请贷款、还款，用两个表保存，不需要设置操作类型
+   - 注意：存款、取款的对方账户号直接设置为 NULL，转账的对方账户号必须存在
+   - 注意：为了方便起见，认为信用卡账户的透支是一种 **状态，不属于一个具体行为，归类于取款或转出行为**，是否透支由其他字段判断（取款后透支金额大于 0 即可）
+5. 贷款信息
+   - 主属性：贷款号 `VARCHAR(11)`，以 L 开头，后面为 10 位数字（Loan）
    - 其他属性：
      - 贷款金额 `DECIMAL(20, 2)`：保留两位小数
      - 贷款时间 `DATETIME`：YYYY-MM-DD HH:MM:SS，精确到秒
      - 贷款期限 `DATETIME`：YYYY-MM-DD HH:MM:SS，精确到秒
      - 当前还款期数 `INT`
      - 当前总还款金额 `DECIMAL(20, 2)`：保留两位小数
-     - 当前状态 `VARCHAR(20)`：未还款、已还款、逾期
-5. 银行部门信息
-   - 主属性：部门号 `CHAR(4)`：以 D 开头，后面为 3 位数字（Department）
+     - 当前状态 `VARCHAR(20)`：ungranted, granted_unrepaid, repaid, canceled, 分别代表未发放、已发放未还款、已还款、已取消
+6. 银行部门信息
+   - 主属性：部门号 `VARCHAR(4)`：以 D 开头，后面为 3 位数字（Department）
    - 其他属性：
      - 部门名称 `VARCHAR(50)`
      - 部门电话 `VARCHAR(20)`
-6. 银行员工信息
-   - 主属性：员工号 `CHAR(9)`：以 E 开头，后面为 8 位数字（Employee）
+7. 银行员工信息
+   - 主属性：员工号 `VARCHAR(9)`：以 E 开头，后面为 8 位数字（Employee）
    - 其他属性：
-     - 员工身份证号 `CHAR(18)`：与客户身份证号保持一致
+     - 员工身份证号 `VARCHAR(18)`：与客户身份证号保持一致
      - 员工姓名 `VARCHAR(50)`：与客户姓名保持一致
-     - 员工性别 `CHAR(1)`：与客户性别保持一致
+     - 员工性别 `VARCHAR(1)`：与客户性别保持一致
      - 员工年龄 `INT`：与客户年龄保持一致
      - 员工电话 `VARCHAR(20)`：与客户电话保持一致
      - 员工地址 `VARCHAR(200)`：与客户地址保持一致
-     - 员工部门号 `CHAR(4)`：与部门号保持一致
+     - 员工部门号 `VARCHAR(4)`：与部门号保持一致
      - 员工头像（只是数据库的一个索引） `VARCHAR(200)`：存储头像的路径
    - 银行经理是员工的子类，继承员工的所有属性，还有：
-     - 经理号 `CHAR(9)`：以 M 开头，后面为 8 位数字（Manager）
+     - 经理号 `VARCHAR(9)`：以 M 开头，后面为 8 位数字（Manager）
 
 ## 数据库实体设计
 
@@ -101,82 +108,61 @@ $(\underline{b_name}, \underline{d_no}, d_name, d_phone)$
 $(\underline{银行名称}, \underline{员工号}, 员工身份证号, 员工姓名, 员工性别, 员工年龄, 员工电话, 员工地址, 员工部门号, 员工头像)$
 $(\underline{b_name}, \underline{e_no}, e_id, e_name, e_gender, e_age, e_phone, e_addr, e_dno, e_avatar)$
 
-1. 经理 manager, m
+5. 经理 manager, m
 是员工的子类，实体设计与员工相同，但是需要添加经理号属性
 经理号：$m_no$
 
-1. 账户 account, a
+6. 账户 account, a
 是银行系统中的可标识对象，由账户号唯一标识，因此是实体，实体设计为：
 $(\underline{账户号}, 账户类型, 货币属性, 账户余额, 开户时间)$
 $(\underline{a_no}, a_type, a_currency, a_balance, a_open_time)$
 
-1. 储蓄账户 savings_account, sa
+7. 储蓄账户 savings_account, sa
 是账户的子类，实体设计与账户相同，但是需要添加利率、提款额度属性
 利率：$sa_rate$，提款额度：$sa_withdraw_limit$
 
-1. 信用卡账户 credit_acount, ca
+8. 信用卡账户 credit_account, ca
 是账户的子类，实体设计与账户相同，但是需要添加透支额度、当前透支金额属性
-透支额度：$ca_overdraft_limit$，当前透支金额：$ca_overdraft_amount$
+透支额度：$ca_overdraft_limit$，当前透支金额：$ca_current_overdraft_amount$
 
-1. 贷款账户 loan_account, la
+9. 贷款账户 loan_account, la
 是账户的子类，实体设计与账户相同，但是需要添加利率、贷款额度属性
 利率：$la_rate$，贷款额度：$la_loan_limit$
 
-1.  账户持有记录 account_hold, ah
+10. 账户持有和管理记录 account_hold_manage, ahm
 是银行系统中的可标识对象，由账户号唯一标识，因此是实体，实体设计为：
-$(\underline{账户号}, 银行名称, 身份证号)$
-$(\underline{ano}, b_name, c_id)$
+$(\underline{账户号}, 银行名称, 员工号, 身份证号)$
+$(\underline{ano}, b_name, e_no, c_id)$
 
-1.  储蓄账户存钱记录 savings_account_deposit, sad
-是银行系统中的可标识对象，由账户号和存款时间唯一标识，因此是实体，实体设计为：
-$(\underline{账户号}, \underline{存款时间}, 存款前余额, 存款金额)$
-$(\underline{a_no}, \underline{sad_time}, sad_before_balance, sad_amount)$
+11. 储蓄账户记录 savings_account_record, sar
+是银行系统中的可标识对象，由账户号和操作时间唯一标识，因此是实体，实体设计为：
+$(\underline{账户号}, \underline{操作时间}, 对方账户号, 操作后余额, 操作金额, 操作类型)$
+$(\underline{a_no}, \underline{sad_time}, sad_other_a_no, sad_after_balance, sad_amount, sad_type)$
 
-1.  储蓄账户取钱记录 savings_account_withdraw, saw
-是银行系统中的可标识对象，由账户号和取款时间唯一标识，因此是实体，实体设计为：
-$(\underline{账户号}, \underline{取款时间}, 取款前余额, 取款金额)$
-$(\underline{a_no}, \underline{saw_time}, saw_before_balance, saw_amount)$
+12. 信用卡账户记录 credit_account_record, car
+是银行系统中的可标识对象，由账户号和操作时间唯一标识，因此是实体，实体设计为：
+$(\underline{账户号}, \underline{操作时间}, 对方账户号, 操作后余额, 操作后透支金额, 操作金额, 操作类型)$
+$(\underline{a_no}, \underline{cad_time}, cad_other_a_no, cad_after_balance, cad_after_overdraft_amount, cad_amount, cad_type)$
 
-1.  储蓄账户转账记录 savings_account_transfer, sat
-是银行系统中的可标识对象，由账户号和转账时间唯一标识，因此是实体，实体设计为：
-$(\underline{账户号}, \underline{转账时间}, 转账前余额, 转账金额, 转账账户号)$
-$(\underline{a_no}, \underline{sat_time}, sat_before_balance, sat_amount, sat_transfer_a_no)$
-
-1.   信用卡账户存钱记录 credit_account_deposit, cad
-是银行系统中的可标识对象，由账户号和存款时间唯一标识，因此是实体，实体设计为：
-$(\underline{账户号}, \underline{存款时间}, 存款前余额, 存款前透支金额, 存款金额)$
-$(\underline{a_no}, \underline{cad_time}, cad_before_balance, cad_before_overdraft, cad_amount)$
-
-15.  信用卡账户取钱记录 credit_account_withdraw, caw
-是银行系统中的可标识对象，由账户号和取款时间唯一标识，因此是实体，实体设计为：
-$(\underline{账户号}, \underline{取款时间}, 取款前余额, 取款前透支金额, 取款金额)$
-$(\underline{a_no}, \underline{caw_time}, caw_before_balance, caw_before_overdraft, caw_amount)$
-
-16.  信用卡账户转账记录 credit_account_transfer, cat
-是银行系统中的可标识对象，由账户号和转账时间唯一标识，因此是实体，实体设计为：
-$(\underline{账户号}, \underline{转账时间}, 转账前余额, 转账前透支金额, 转账金额, 转账账户号)$
-$(\underline{a_no}, \underline{cat_time}, cat_before_balance, cat_before_overdraft, cat_amount, cat_transfer_a_no)$
-
-17.  借贷信息 loan, l
+13. 贷款信息 loan, l
 是银行系统中的可标识对象，由银行发放，由贷款号唯一标识，因此是实体，实体设计为；
 $(\underline{贷款号}, 贷款金额, 贷款时间, 贷款期限, 当前还款期数, 当前总还款金额, 当前状态)$
-$(\underline{l_no}, l_amount, l_time, l_deadline, l_curr_amount_period, l_curr_amount_total, l_status)$
+$(\underline{l_no}, l_amount, l_time, l_deadline, l_current_amount_period, l_current_amount_total, l_status)$
 
-18.  还贷记录 loan_repay, lr
+14. 还贷记录 loan_repay, lr
 是银行系统中的可标识对象，由贷款账户号和还款时间唯一标识，因此是实体，实体设计为：
 $(\underline{贷款号}, \underline{还款时间}, 还款金额)$
 $(\underline{l_no}, \underline{lr_time}, lr_amount)$
 
-19.  贷款账户发放记录 loan_account_grant, lag
-是银行系统中的可标识对象，由银行发放，由银行名称、贷款号唯一标识，因此是实体，实体设计为：
-$(\underline{银行名称}, \underline{贷款号}, 贷款账户号)$
-$(\underline{b_name}, \underline{l_no}, l_no)$
-
+15. 贷款发放记录 loan_grant, lg
+是银行系统中的可标识对象，由贷款号唯一标识，因此是实体，实体设计为：
+$(\underline{贷款号}, 贷款账户号)$
+$(\underline{l_no}, a_no)$
 
 ## 数据库关系设计
 
 1. 一个人可以有多个账户，但一个账户只能属于一个人
-2. 一个银行下可以有多个账户，但一个账户只能属于一个银行
+2. 一个员工可以管理多个账户，但一个账户只能由一个员工管理
 3. 认为不同银行发布的账户号是互不相同的，也就是账户号是全局唯一的，所以账户号可以唯一标识一个账户，并且根据 account_hold 表，可以找到发布这个账户的银行和账户持有者。这种设计与实际情况也是相符的
 4. 一个贷款号只能绑定到一个贷款账户号，而一个贷款账户号可以绑定多个贷款号。也就是说一个贷款只能由一个账户还贷，但一个账户可以还多个贷款，比如车贷 + 房贷
 
@@ -269,9 +255,13 @@ $(\underline{b_name}, \underline{l_no}, l_no)$
    
 8. 客户操作
    - 客户操作包括操作账户、修改自己的信息
+   - 具体包括开通账户、存款、取款、转账、借贷、还款、查询账户信息
+   - 客户在申请贷款账户之后可以申请贷款，申请时即生成一条贷款记录，状态为未发放，插入信息表。该贷款需要贷款账户绑定的员工审核；审核通过后，状态变为已发放未还款，审核不通过则状态变为已取消
    
 9. 员工操作
-   - 员工操作包括查询绑定的账户信息、查询绑定的贷款信息、绑定账户或贷款中客户的信息、修改自己的信息
+   - 员工操作包括查询绑定的账户信息、绑定账户中客户的信息、修改自己的信息
+   - 绑定的账户若是贷款账户，还可以查询贷款信息
+   - 客户申请贷款时，对应贷款账户的员工需要审核。若审核通过，则将记录写入贷款账户发放记录 lag 表，同时更新贷款状态为已发放未还款；若审核不通过，则更新贷款状态为已取消，不写入记录
    
 10. 经理操作
     - 经理操作包括查询部门信息、查询员工信息、修改自己的信息
