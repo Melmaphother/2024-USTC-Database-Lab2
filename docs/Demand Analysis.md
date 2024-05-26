@@ -21,7 +21,7 @@
 ## 数据需求
 
 1. 银行信息
-   - 主属性：银行名称 `VARCHAR(100)`
+   - 主属性：银行名称 `VARCHAR(50)`
    - 其他属性：
      - 银行地址 `VARCHAR(200)`：考虑到银行地址可能很长
      - 银行电话 `VARCHAR(20)`：考虑海外电话
@@ -88,83 +88,101 @@
 
 ## 数据库实体设计
 
-1. 银行 bank, b
-是银行系统中的可标识对象，因此是实体，实体设计为：
-$(\underline{银行名称}, 银行地址, 银行电话)$
-$(\underline{b_name}, b_addr, b_phone)$
+1. 银行 `bank`, `b`
+     是银行系统中的可标识对象，因此是实体，实体设计为：
+       $(\underline{银行名称}, 银行地址, 银行电话)$
+       $(\underline{b\_name}, b\_addr, b\_phone)$
 
-2. 客户 customer, c
-是现实世界中的可标识对象，因此是实体，实体设计为：
-$(\underline{身份证号}, 姓名, 性别, 年龄, 电话, 地址)$
-$(\underline{c_id}, c_name, c_gender, c_age, c_phone, c_addr)$
+2. 客户 `customer`, `c`
+     是现实世界中的可标识对象，因此是实体，实体设计为：
+       $(\underline{身份证号}, 姓名, 性别, 年龄, 电话, 地址)$
+       $(\underline{c\_id}, c\_name, c\_gender, c\_age, c\_phone, c\_addr)$
 
-3. 部门 department, d
-是银行系统中的可标识对象，由银行和部门号唯一标识，因此是实体，实体设计为：
-$(\underline{银行名称}, \underline{部门号}, 部门名称, 部门电话)$
-$(\underline{b_name}, \underline{d_no}, d_name, d_phone)$
+3. 部门 `department`, `d`
+     是银行系统中的可标识对象，由银行和部门号唯一标识，因此是实体，实体设计为：
+     $(\underline{银行名称}, \underline{部门号}, 部门名称, 部门电话, 部门经理号)$
+     $(\underline{b\_name}, \underline{d\_no}, d\_name, d\_phone, d\_manager\_no)$
 
-4. 员工 employee, e
-是银行系统中的可标识对象，由银行和员工号唯一标识，因此是实体，实体设计为：
-$(\underline{银行名称}, \underline{员工号}, 员工身份证号, 员工姓名, 员工性别, 员工年龄, 员工电话, 员工地址, 员工部门号, 员工头像)$
-$(\underline{b_name}, \underline{e_no}, e_id, e_name, e_gender, e_age, e_phone, e_addr, e_dno, e_avatar)$
+4. 员工 `employee`, `e`
+     是银行系统中的可标识对象，由银行和员工号唯一标识，因此是实体，实体设计为：
+       $(\underline{银行名称}, \underline{员工号}, 员工身份证号, 员工姓名, 员工性别, 员工年龄, 员工电话, 员工地址, 员工部门号, 员工头像)$
+       $(\underline{b\_name}, \underline{e\_no}, e\_id, e\_name, e\_gender, e\_age, e\_phone, e\_addr, e\_dno, e\_avatar)$
 
-5. 经理 manager, m
-是员工的子类，实体设计与员工相同，但是需要添加经理号属性
-经理号：$m_no$
+5. 经理 `manager`, `m`
+     是员工的子类，实体设计与员工相同，部门经理号放在部门中
 
-6. 账户 account, a
-是银行系统中的可标识对象，由账户号唯一标识，因此是实体，实体设计为：
-$(\underline{账户号}, 账户类型, 货币属性, 账户余额, 开户时间)$
-$(\underline{a_no}, a_type, a_currency, a_balance, a_open_time)$
+6. 部门经理表 `department_manager`, `dm`
 
-7. 储蓄账户 savings_account, sa
-是账户的子类，实体设计与账户相同，但是需要添加利率、提款额度属性
-利率：$sa_rate$，提款额度：$sa_withdraw_limit$
+     是银行系统中的可标识对象，用于银行名称、部门号、经理员工号唯一标定，因此是实体，实体设计为：
 
-8. 信用卡账户 credit_account, ca
-是账户的子类，实体设计与账户相同，但是需要添加透支额度、当前透支金额属性
-透支额度：$ca_overdraft_limit$，当前透支金额：$ca_current_overdraft_amount$
+      $(\underline{银行名称}, \underline{部门号}, \underline{经理员工号})$
 
-9. 贷款账户 loan_account, la
-是账户的子类，实体设计与账户相同，但是需要添加利率、贷款额度属性
-利率：$la_rate$，贷款额度：$la_loan_limit$
+      $(\underline{b\_name}, \underline{d\_no}, \underline{e\_no})$
 
-10. 账户持有和管理记录 account_hold_manage, ahm
-是银行系统中的可标识对象，由账户号唯一标识，因此是实体，实体设计为：
-$(\underline{账户号}, 银行名称, 员工号, 身份证号)$
-$(\underline{ano}, b_name, e_no, c_id)$
+7. 账户 `account`, `a`
+    是银行系统中的可标识对象，由账户号唯一标识，因此是实体，实体设计为：
+    $(\underline{账户号}, 账户类型, 货币属性, 账户余额, 开户时间)$
+    $(\underline{a\_no}, a\_type, a\_currency, a\_balance, a\_open\_time)$
 
-11. 储蓄账户记录 savings_account_record, sar
-是银行系统中的可标识对象，由账户号和操作时间唯一标识，因此是实体，实体设计为：
-$(\underline{账户号}, \underline{操作时间}, 对方账户号, 操作后余额, 操作金额, 操作类型)$
-$(\underline{a_no}, \underline{sad_time}, sad_other_a_no, sad_after_balance, sad_amount, sad_type)$
+8. 储蓄账户 `savings_account`, `sa`
+    是账户的子类，实体设计与账户相同，但是需要添加利率、提款额度属性
+    利率：$sa\_rate$，提款额度：$sa\_withdraw\_limit$
 
-12. 信用卡账户记录 credit_account_record, car
-是银行系统中的可标识对象，由账户号和操作时间唯一标识，因此是实体，实体设计为：
-$(\underline{账户号}, \underline{操作时间}, 对方账户号, 操作后余额, 操作后透支金额, 操作金额, 操作类型)$
-$(\underline{a_no}, \underline{cad_time}, cad_other_a_no, cad_after_balance, cad_after_overdraft_amount, cad_amount, cad_type)$
+9. 信用卡账户 `credit_account`, `ca`
+    是账户的子类，实体设计与账户相同，但是需要添加透支额度、当前透支金额属性
+    透支额度：$ca\_overdraft\_limit$，当前透支金额：$ca\_current\_overdraft\_amount$
 
-13. 贷款信息 loan, l
-是银行系统中的可标识对象，由银行发放，由贷款号唯一标识，因此是实体，实体设计为；
-$(\underline{贷款号}, 贷款金额, 贷款时间, 贷款期限, 当前还款期数, 当前总还款金额, 当前状态)$
-$(\underline{l_no}, l_amount, l_time, l_deadline, l_current_amount_period, l_current_amount_total, l_status)$
+10. 贷款账户 `loan_account`, `la`
+    是账户的子类，实体设计与账户相同，但是需要添加利率、贷款额度属性
+    利率：$la\_rate$，贷款额度：$la\_loan\_limit$
 
-14. 还贷记录 loan_repay, lr
-是银行系统中的可标识对象，由贷款账户号和还款时间唯一标识，因此是实体，实体设计为：
-$(\underline{贷款号}, \underline{还款时间}, 还款金额)$
-$(\underline{l_no}, \underline{lr_time}, lr_amount)$
+11. 账户持有和管理记录 `account_hold_manage`, `ahm`
+    是银行系统中的可标识对象，由账户号唯一标识，因此是实体，实体设计为：
+    $(\underline{账户号}, 银行名称, 员工号, 身份证号)$
+    $(\underline{a\_no}, b\_name, e\_no, c\_id)$
 
-15. 贷款发放记录 loan_grant, lg
-是银行系统中的可标识对象，由贷款号唯一标识，因此是实体，实体设计为：
-$(\underline{贷款号}, 贷款账户号)$
-$(\underline{l_no}, a_no)$
+12. 储蓄账户记录 `savings_account_record`, `sar`
+    是银行系统中的可标识对象，由账户号和操作时间唯一标识，因此是实体，实体设计为：
+    $(\underline{账户号}, \underline{操作时间}, 对方账户号, 操作后余额, 操作金额, 操作类型)$
+    $(\underline{a\_no}, \underline{sad\_time}, sad\_other\_a\_no, sad\_after\_balance, sad\_amount, sad\_type)$
+
+13. 信用卡账户记录 `credit_account_record`, `car`
+    是银行系统中的可标识对象，由账户号和操作时间唯一标识，因此是实体，实体设计为：
+    $(\underline{账户号}, \underline{操作时间}, 对方账户号, 操作后余额, 操作后透支金额, 操作金额, 操作类型)$
+    $(\underline{a\_no}, \underline{cad\_time}, cad\_other\_a\_no, cad\_after\_balance, cad\_after\_overdraft\_amount, cad\_amount, cad\_type)$
+
+14. 贷款信息 `loan`, `l`
+    是银行系统中的可标识对象，由银行发放，由贷款号唯一标识，因此是实体，实体设计为；
+    $(\underline{贷款号}, 贷款金额, 贷款时间, 贷款期限, 当前还款期数, 当前总还款金额, 当前状态)$
+    $(\underline{l\_no}, l\_amount, l\_time, l\_deadline, l\_current\_amount\_period, l\_current\_amount\_total, l\_status)$
+
+15. 还贷记录 `loan_repay`, `lr`
+    是银行系统中的可标识对象，由贷款账户号和还款时间唯一标识，因此是实体，实体设计为：
+    $(\underline{贷款号}, \underline{还款时间}, 还款金额)$
+    $(\underline{l\_no}, \underline{lr\_time}, lr\_amount)$
+
+16. 贷款发放记录 `loan_grant`, `lg`
+    是银行系统中的可标识对象，由贷款号唯一标识，因此是实体，实体设计为：
+    $(\underline{贷款号}, 贷款账户号)$
+    $(\underline{l\_no}, a\_no)$
 
 ## 数据库关系设计
 
-1. 一个人可以有多个账户，但一个账户只能属于一个人
-2. 一个员工可以管理多个账户，但一个账户只能由一个员工管理
-3. 认为不同银行发布的账户号是互不相同的，也就是账户号是全局唯一的，所以账户号可以唯一标识一个账户，并且根据 account_hold 表，可以找到发布这个账户的银行和账户持有者。这种设计与实际情况也是相符的
-4. 一个贷款号只能绑定到一个贷款账户号，而一个贷款账户号可以绑定多个贷款号。也就是说一个贷款只能由一个账户还贷，但一个账户可以还多个贷款，比如车贷 + 房贷
+1. 部门经理表 `department_manager`, `dm`
+
+   - 一个部门只有一个经理，一个员工只能做一个部门的经理
+   - 这里在表中把部门主键和员工主键全部设为部门经理表主键。虽然这个表属于 M: N 关系，但是也没什么办法，因为数据库中的表没有办法表示 1: 1 关系。但是可以在程序里使用手动检查保证 1: 1 关系。
+
+2. 账户持有和管理记录 `account_hold_manage`, `ahm`
+
+   - 认为不同银行发布的账户号是互不相同的，也就是账户号是全局唯一的，所以账户号可以唯一标识一个账户，并且根据 account_hold_manage 表，可以找到发布这个账户的银行和账户持有者。这种设计与实际情况也是相符的
+
+   - 一个人可以有多个账户，但一个账户只能属于一个人
+   - 一个员工可以管理多个账户，但一个账户只能由一个员工管理
+
+3. 贷款发放记录 `loan_grant`, `lg`
+
+   - 一个贷款号只能绑定到一个贷款账户号，而一个贷款账户号可以绑定多个贷款号。也就是说一个贷款只能由一个账户还贷，但一个账户可以还多个贷款，比如车贷 + 房贷
 
 ## 前端功能需求
 
@@ -249,7 +267,8 @@ $(\underline{l_no}, a_no)$
    
 7. 借贷还贷操作
    - 借贷还贷操作包括借贷、还款、查询
-   - 借贷：输入借款金额，借款金额必须为正数，且不能超过贷款额度，贷款金额会直接存入账户余额，贷款时间自动生成，贷款期限默认为 12 个月，利率默认为 0.05
+   - 只有贷款账户才能借贷还贷。
+   - 借贷：输入借款金额，借款金额必须为正数，且不能超过贷款额度。贷款需要对应贷款账户员工审核，审核完毕后，贷款金额会直接存入账户余额，贷款时间自动生成，贷款期限默认为 12 个月，利率默认为 0.05
    - 还款：输入还款金额，还款金额必须为正数，且不能超过当前需要还款的金额，还款时间自动生成，当前还款期数加 1，更新当前总还款金额
    - 查询：查询贷款金额、贷款期限、利率、当前还款期数、当前总还款金额
    
@@ -274,4 +293,18 @@ $(\underline{l_no}, a_no)$
 
 ## 多模态信息需求
 
-对于员工/经理来说，在创建账户时，需要上传头像。
+对于员工/经理来说，在创建账户时，需要上传**头像**。
+
+> 头像在数据表中只是一个索引，真正的头像不存储在表项中。
+
+
+## 设计图
+
+### ER 图
+![](../design/银行管理系统%20ER%20图.png)
+
+### 数据表依赖
+
+> 这里的单向箭头就是外键依赖。
+
+![](../design/银行管理系统数据表.png)
