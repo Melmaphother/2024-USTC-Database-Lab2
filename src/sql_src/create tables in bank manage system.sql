@@ -12,32 +12,8 @@ CREATE TABLE department(
     `d_no` VARCHAR(4) NOT NULL  COMMENT '部门号' ,
     `d_name` VARCHAR(50)   COMMENT '部门名称' ,
     `d_phone` VARCHAR(20)   COMMENT '部门电话' ,
-    `d_manager_no` VARCHAR(9)   COMMENT '部门经理号' ,
     PRIMARY KEY (b_name,d_no)
 )  COMMENT = '部门';
-
-DROP TABLE IF EXISTS department_manager;
-CREATE TABLE department_manager(
-    `b_name` VARCHAR(50) NOT NULL  COMMENT '银行名称' ,
-    `d_no` VARCHAR(4) NOT NULL  COMMENT '部门号' ,
-    `e_no` VARCHAR(9) NOT NULL  COMMENT '经理自己的员工号' ,
-    `abab` VARCHAR(255)   COMMENT '其他信息' ,
-    PRIMARY KEY (b_name,d_no,e_no)
-)  COMMENT = '部门经理表';
-
-DROP TABLE IF EXISTS manager;
-CREATE TABLE manager(
-    `b_name` VARCHAR(50) NOT NULL  COMMENT '银行名称' ,
-    `e_no` VARCHAR(9) NOT NULL  COMMENT '员工号' ,
-    `e_id` VARCHAR(18)   COMMENT '员工身份证号' ,
-    `e_name` VARCHAR(50)   COMMENT '员工姓名' ,
-    `e_age` INT(3)   COMMENT '员工年龄' ,
-    `e_phone` VARCHAR(20)   COMMENT '员工电话' ,
-    `e_addr` VARCHAR(200)   COMMENT '员工地址' ,
-    `d_no` VARCHAR(4)   COMMENT '员工部门号' ,
-    `e_avatar` VARCHAR(200)   COMMENT '员工头像' ,
-    PRIMARY KEY (b_name,e_no)
-)  COMMENT = '经理';
 
 DROP TABLE IF EXISTS employee;
 CREATE TABLE employee(
@@ -77,10 +53,6 @@ CREATE TABLE account(
 DROP TABLE IF EXISTS savings_account;
 CREATE TABLE savings_account(
     `a_no` INT AUTO_INCREMENT COMMENT '账户号' ,
-    `a_type` VARCHAR(20)   COMMENT '账号类型;Savings, Credit, Loan' ,
-    `a_currency` VARCHAR(3)   COMMENT '账号货币属性;USD, CHY, EUR, JPY, GBP' ,
-    `a_balance` DECIMAL(20,2)   COMMENT '账户余额' ,
-    `a_open_time` DATETIME   COMMENT '账户开户时间' ,
     `sa_rate` DECIMAL(5,4)   COMMENT '储蓄利率' ,
     `sa_withdraw_limit` DECIMAL(20,2)   COMMENT '储蓄提款额度' ,
     PRIMARY KEY (a_no)
@@ -89,10 +61,6 @@ CREATE TABLE savings_account(
 DROP TABLE IF EXISTS credit_account;
 CREATE TABLE credit_account(
     `a_no` INT AUTO_INCREMENT COMMENT '账户号' ,
-    `a_type` VARCHAR(20)   COMMENT '账号类型;Savings, Credit, Loan' ,
-    `a_balance` DECIMAL(20,2)   COMMENT '账户余额' ,
-    `a_open_time` DATETIME   COMMENT '账户开户时间' ,
-    `a_currency` VARCHAR(3)   COMMENT '账号货币属性;USD, CHY, EUR, JPY, GBP' ,
     `ca_overdraft_limit` DECIMAL(20,2)   COMMENT '信用卡透支额度' ,
     `ca_current_overdraft_amount` DECIMAL(20,2)   COMMENT '当前透支金额' ,
     PRIMARY KEY (a_no)
@@ -102,9 +70,6 @@ DROP TABLE IF EXISTS loan_account;
 CREATE TABLE loan_account(
     `a_no` INT AUTO_INCREMENT COMMENT '账户号' ,
     `a_type` VARCHAR(20)   COMMENT '账号类型;Savings, Credit, Loan' ,
-    `a_currency` VARCHAR(3)   COMMENT '账号货币属性;USD, CHY, EUR, JPY, GBP' ,
-    `a_open_time` DATETIME   COMMENT '账户开户时间' ,
-    `a_balance` DECIMAL(20,2)   COMMENT '账户余额' ,
     `la_rate` DECIMAL(5,4)   COMMENT '贷款利率' ,
     `la_loan_limit` DECIMAL(20,2)   COMMENT '贷款额度' ,
     PRIMARY KEY (a_no)
