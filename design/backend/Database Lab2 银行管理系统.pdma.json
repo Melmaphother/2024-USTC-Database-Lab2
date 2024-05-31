@@ -4,7 +4,7 @@
   "avatar": "",
   "version": "4.9.2",
   "createdTime": "2024-5-18 22:27:47",
-  "updatedTime": "2024-5-30 23:00:58",
+  "updatedTime": "2024-5-31 16:51:11",
   "dbConns": [],
   "profile": {
     "default": {
@@ -1511,7 +1511,7 @@
         },
         {
           "defKey": "c_gender",
-          "defName": "性别",
+          "defName": "客户性别",
           "comment": "",
           "type": "",
           "len": "",
@@ -1530,7 +1530,7 @@
         },
         {
           "defKey": "c_age",
-          "defName": "年龄",
+          "defName": "客户年龄",
           "comment": "",
           "type": "",
           "len": "",
@@ -1549,7 +1549,7 @@
         },
         {
           "defKey": "c_phone",
-          "defName": "电话",
+          "defName": "客户电话",
           "comment": "",
           "type": "",
           "len": "",
@@ -1568,7 +1568,7 @@
         },
         {
           "defKey": "c_addr",
-          "defName": "地址",
+          "defName": "客户地址",
           "comment": "",
           "type": "",
           "len": "",
@@ -1584,6 +1584,24 @@
           "domain": "8F1B9940-A088-4A46-BF05-550D429124B7",
           "id": "D122FC03-8D33-4926-BBE4-70470A7A0B00",
           "uiHint": "642D2E0A-8846-4549-BE56-8C0473F26EDE"
+        },
+        {
+          "defKey": "c_avatar",
+          "defName": "客户头像",
+          "comment": "",
+          "type": "",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "baseType": "FC9790A7-36B8-4A48-8F9A-BC1042BCFE64",
+          "extProps": {},
+          "domain": "669A3E50-6D54-4AE7-8E87-70A3806B14A3",
+          "id": "B2220CA1-EF87-43FB-9012-3DE25D27F4B5"
         }
       ],
       "correlations": [
@@ -4495,6 +4513,10 @@
             "children": [
               "d3cf9095-2618-4acb-8ff4-bde6ad6ec81a",
               "eaacfbc5-6305-41c9-b181-1dbf9bf0f6dd",
+              "5cc75222-44fc-470a-9b50-a08c58a954b5",
+              "8e21b717-3d7f-4b4c-8c1a-909d7fc38ba8",
+              "ac2a72f3-1cbf-40f7-af6b-af168cde412b",
+              "baa0b8c0-0cd1-4913-b212-c6bf9629655d",
               "1636bb3c-320d-4356-8f80-0c19ea138fe3",
               "e4109579-dfad-4784-a382-cecd0075ce4e"
             ]
@@ -4521,13 +4543,32 @@
               "612d3d14-1d13-46e1-aeb7-41079745ec35",
               "112c3554-2344-43d2-8cb8-fccb780e3777",
               "112c3554-2344-43d2-8cb8-fccb780e3777",
-              "9d751727-776f-4b8f-8cb4-80b485012a1d",
-              "f3695cbc-c005-4dda-af9d-32bcb691179a",
               "28c8bd30-af1e-42b9-9338-503161c6e4cd",
               "f6fea38f-6a49-4160-9c9e-7ebe59aa8980",
               "9d751727-776f-4b8f-8cb4-80b485012a1d",
               "f3695cbc-c005-4dda-af9d-32bcb691179a",
+              "9d751727-776f-4b8f-8cb4-80b485012a1d",
+              "f3695cbc-c005-4dda-af9d-32bcb691179a",
               "53bb6ee8-ff57-4d71-a09e-6c091d3c33c4"
+            ]
+          },
+          {
+            "id": "eaacfbc5-6305-41c9-b181-1dbf9bf0f6dd",
+            "shape": "group",
+            "position": {
+              "x": -1010,
+              "y": -410.00000000000136
+            },
+            "label": "## 组织\n",
+            "fontColor": "#d148d1",
+            "parent": "01fe1985-7233-447c-b171-54532fbf5c3c",
+            "size": {
+              "width": 1820,
+              "height": 460
+            },
+            "children": [
+              "f1cdb6fb-7081-4153-9533-9a7aab1edcd2",
+              "bd1758e5-81a5-42e2-9fe6-5a9c770c47db"
             ]
           },
           {
@@ -4607,6 +4648,44 @@
             "autoSize": true
           },
           {
+            "id": "612d3d14-1d13-46e1-aeb7-41079745ec35",
+            "shape": "table",
+            "position": {
+              "x": 449.9999999999991,
+              "y": 1170
+            },
+            "count": 0,
+            "originKey": "CC0B56C9-C1BA-455F-8264-030D3328EBAF",
+            "fontColor": "#000000",
+            "fillColor": "rgb(117, 190, 250)",
+            "parent": "d3cf9095-2618-4acb-8ff4-bde6ad6ec81a",
+            "type": "P",
+            "size": {
+              "width": 320,
+              "height": 100
+            },
+            "autoSize": true
+          },
+          {
+            "id": "f1cdb6fb-7081-4153-9533-9a7aab1edcd2",
+            "shape": "table",
+            "position": {
+              "x": -261.5000000000201,
+              "y": -319.9999999999974
+            },
+            "count": 0,
+            "originKey": "5E696AF7-9066-4D97-9791-1AD44288EBCC",
+            "fontColor": "#000000",
+            "fillColor": "#d148d1",
+            "parent": "eaacfbc5-6305-41c9-b181-1dbf9bf0f6dd",
+            "type": "P",
+            "size": {
+              "width": 313,
+              "height": 100
+            },
+            "autoSize": true
+          },
+          {
             "id": "28c8bd30-af1e-42b9-9338-503161c6e4cd",
             "shape": "erdRelation",
             "source": {
@@ -4671,11 +4750,30 @@
             }
           },
           {
+            "id": "bd1758e5-81a5-42e2-9fe6-5a9c770c47db",
+            "shape": "table",
+            "position": {
+              "x": -261.9999999999985,
+              "y": -154
+            },
+            "count": 0,
+            "originKey": "4414C49A-AADA-484B-BBEE-4F63A9BAE800",
+            "fontColor": "#000000",
+            "fillColor": "#d148d1",
+            "parent": "eaacfbc5-6305-41c9-b181-1dbf9bf0f6dd",
+            "type": "P",
+            "size": {
+              "width": 305,
+              "height": 123
+            },
+            "autoSize": true
+          },
+          {
             "id": "112c3554-2344-43d2-8cb8-fccb780e3777",
             "shape": "group",
             "position": {
-              "x": -1024.9999999999995,
-              "y": 519.9999999999998
+              "x": -1010,
+              "y": 479.99999999999955
             },
             "label": "## 账户",
             "fontColor": "rgb(51, 153, 108)",
@@ -4690,10 +4788,6 @@
               "2dca1a40-d06a-44eb-a6be-023bab6f48bb",
               "7437667e-9bdf-4d68-bc0e-b0a34a90585c",
               "2f3f1d52-c7ac-4101-9b6a-ec53c9e6b7f6",
-              "5cc75222-44fc-470a-9b50-a08c58a954b5",
-              "8e21b717-3d7f-4b4c-8c1a-909d7fc38ba8",
-              "ac2a72f3-1cbf-40f7-af6b-af168cde412b",
-              "3ee72ff3-e232-42cf-8565-beaf0e77be83",
               "c2d89592-c02a-47a1-9238-a78834ac2114",
               "e67bb469-3395-4d83-9e9a-56b72f2a6165",
               "15bab1fe-09f0-4347-8421-acfb16144826",
@@ -4705,11 +4799,30 @@
             ]
           },
           {
+            "id": "87a0d8bc-3705-4586-aee9-aa3e69bae6ed",
+            "shape": "table",
+            "position": {
+              "x": -281,
+              "y": 559.0000000000057
+            },
+            "count": 0,
+            "originKey": "CA91AE70-7B9C-4678-B86E-3E37966D3305",
+            "fontColor": "#000000",
+            "fillColor": "rgb(51, 153, 108)",
+            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
+            "type": "P",
+            "size": {
+              "width": 362,
+              "height": 146
+            },
+            "autoSize": true
+          },
+          {
             "id": "0e06ee11-9b3b-456f-a5b9-75a61f314993",
             "shape": "table",
             "position": {
-              "x": -904.9999999999984,
-              "y": 839.9999999999998
+              "x": -889.9999999999989,
+              "y": 799.9999999999995
             },
             "count": 0,
             "originKey": "1A090327-AB6E-419C-8EB9-4AECA8404A27",
@@ -4722,6 +4835,120 @@
               "height": 100
             },
             "autoSize": false
+          },
+          {
+            "id": "2dca1a40-d06a-44eb-a6be-023bab6f48bb",
+            "shape": "table",
+            "position": {
+              "x": -294.9999999999998,
+              "y": 799.9999999999995
+            },
+            "count": 0,
+            "originKey": "4B286FC6-F530-4D06-802F-919E79C5A090",
+            "fontColor": "#000000",
+            "fillColor": "rgb(116, 212, 151)",
+            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
+            "type": "P",
+            "size": {
+              "width": 486,
+              "height": 100
+            },
+            "autoSize": false
+          },
+          {
+            "id": "7437667e-9bdf-4d68-bc0e-b0a34a90585c",
+            "shape": "table",
+            "position": {
+              "x": 338.999999999999,
+              "y": 809.0000000000059
+            },
+            "count": 0,
+            "originKey": "6BA39086-546F-4FEE-B1D4-7A9605E6B568",
+            "fontColor": "#000000",
+            "fillColor": "rgb(116, 212, 151)",
+            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
+            "type": "P",
+            "size": {
+              "width": 334,
+              "height": 123
+            },
+            "autoSize": false
+          },
+          {
+            "id": "2f3f1d52-c7ac-4101-9b6a-ec53c9e6b7f6",
+            "shape": "table",
+            "position": {
+              "x": 267.999999999999,
+              "y": 610.5000000000057
+            },
+            "count": 0,
+            "originKey": "8F5AD07A-55A7-42C3-9C1B-002366874206",
+            "fontColor": "#000000",
+            "fillColor": "rgb(90, 213, 198)",
+            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
+            "type": "P",
+            "size": {
+              "width": 416,
+              "height": 123
+            },
+            "autoSize": false
+          },
+          {
+            "id": "5cc75222-44fc-470a-9b50-a08c58a954b5",
+            "shape": "group",
+            "position": {
+              "x": -1010,
+              "y": 49.999999999999545
+            },
+            "label": "## 对象",
+            "fontColor": "rgb(249, 186, 80)",
+            "parent": "01fe1985-7233-447c-b171-54532fbf5c3c",
+            "size": {
+              "width": 1820,
+              "height": 430
+            },
+            "children": [
+              "c4d89967-d537-40ad-9093-6d6acd2cd2b8",
+              "d6ecc364-49b6-4281-a384-51f85758766d"
+            ]
+          },
+          {
+            "id": "c4d89967-d537-40ad-9093-6d6acd2cd2b8",
+            "shape": "table",
+            "position": {
+              "x": -639.9999999999969,
+              "y": 159.99999999999977
+            },
+            "count": 0,
+            "originKey": "879C90B9-5995-4402-8B05-813D6DC4B965",
+            "fontColor": "#000000",
+            "fillColor": "rgb(249, 186, 80)",
+            "parent": "5cc75222-44fc-470a-9b50-a08c58a954b5",
+            "type": "P",
+            "size": {
+              "width": 338,
+              "height": 238
+            },
+            "autoSize": true
+          },
+          {
+            "id": "d6ecc364-49b6-4281-a384-51f85758766d",
+            "shape": "table",
+            "position": {
+              "x": 310.99999999999955,
+              "y": 179.99999999999977
+            },
+            "count": 0,
+            "originKey": "946A027F-D7CC-446D-8331-AB66768D0341",
+            "fontColor": "#000000",
+            "fillColor": "rgb(249, 186, 80)",
+            "parent": "5cc75222-44fc-470a-9b50-a08c58a954b5",
+            "type": "P",
+            "size": {
+              "width": 317,
+              "height": 192
+            },
+            "autoSize": true
           },
           {
             "id": "15bab1fe-09f0-4347-8421-acfb16144826",
@@ -4737,8 +4964,8 @@
             "relation": "none:triangle-fill",
             "vertices": [
               {
-                "x": -444.99999999999955,
-                "y": 680.0000000000005
+                "x": -430,
+                "y": 640.0000000000002
               }
             ],
             "fillColor": "rgb(51, 153, 108)",
@@ -4863,8 +5090,8 @@
             "relation": "none:triangle-fill",
             "vertices": [
               {
-                "x": 155.00000000000045,
-                "y": 660.0000000000005
+                "x": 170,
+                "y": 620.0000000000002
               }
             ],
             "fillColor": "rgb(90, 213, 198)",
@@ -4895,8 +5122,8 @@
             "relation": "none:triangle-fill",
             "vertices": [
               {
-                "x": -374.99999999999955,
-                "y": 800.0000000000005
+                "x": -360,
+                "y": 760.0000000000002
               }
             ],
             "fillColor": "rgb(51, 153, 108)",
@@ -4954,28 +5181,6 @@
             }
           },
           {
-            "id": "5cc75222-44fc-470a-9b50-a08c58a954b5",
-            "shape": "group",
-            "position": {
-              "x": -1024.9999999999995,
-              "y": 89.99999999999977
-            },
-            "label": "## 对象",
-            "fontColor": "rgb(249, 186, 80)",
-            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
-            "size": {
-              "width": 1820,
-              "height": 430
-            },
-            "children": [
-              "680ba8d3-92e3-457d-991c-e93f60c78e6d",
-              "c4d89967-d537-40ad-9093-6d6acd2cd2b8",
-              "f5fdf19b-4549-40aa-8b87-b4e1e6475bb0",
-              "a5d5d184-903f-448d-b363-f5250c41a0b1",
-              "70ba16a5-0b7a-42a4-a661-1de21caff828"
-            ]
-          },
-          {
             "id": "8e21b717-3d7f-4b4c-8c1a-909d7fc38ba8",
             "shape": "erdRelation",
             "source": {
@@ -4989,16 +5194,16 @@
             "relation": "none:triangle-fill",
             "vertices": [
               {
-                "x": 165.0000000000025,
-                "y": 268
+                "x": 180.00000000000205,
+                "y": 227.99999999999977
               },
               {
-                "x": 165.0000000000025,
-                "y": 238
+                "x": 180.00000000000205,
+                "y": 197.99999999999977
               }
             ],
             "fillColor": "rgb(90, 213, 198)",
-            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
+            "parent": "01fe1985-7233-447c-b171-54532fbf5c3c",
             "connector": {
               "name": "rounded",
               "args": {
@@ -5025,207 +5230,23 @@
             "relation": "none:triangle-fill",
             "vertices": [
               {
-                "x": 105.0000000000025,
-                "y": 261
+                "x": 120.00000000000205,
+                "y": 220.99999999999977
               }
             ],
             "fillColor": "rgb(90, 213, 198)",
-            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
-            "connector": {
-              "name": "rounded",
-              "args": {
-                "radius": 10
-              }
-            },
-            "attrs": {
-              "line": {
-                "strokeDasharray": ""
-              }
-            }
-          },
-          {
-            "id": "3ee72ff3-e232-42cf-8565-beaf0e77be83",
-            "shape": "erdRelation",
-            "source": {
-              "cell": "2f3f1d52-c7ac-4101-9b6a-ec53c9e6b7f6",
-              "port": "36D2B515-59C6-4423-B1CA-ED12FC05D819%out"
-            },
-            "target": {
-              "cell": "f5fdf19b-4549-40aa-8b87-b4e1e6475bb0",
-              "port": "F78C3EBB-A05B-40AB-8CEE-26D5077CCB4B%out"
-            },
-            "relation": "none:triangle-fill",
-            "vertices": [
-              {
-                "x": 735.0000000000025,
-                "y": 288.5
-              }
-            ],
-            "fillColor": "rgb(90, 213, 198)",
-            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
-            "connector": {
-              "name": "rounded",
-              "args": {
-                "radius": 10
-              }
-            },
-            "attrs": {
-              "line": {
-                "strokeDasharray": ""
-              }
-            }
-          },
-          {
-            "id": "f5fdf19b-4549-40aa-8b87-b4e1e6475bb0",
-            "shape": "table",
-            "position": {
-              "x": 230.00000000000045,
-              "y": 220.49999999999977
-            },
-            "count": 0,
-            "originKey": "946A027F-D7CC-446D-8331-AB66768D0341",
-            "fontColor": "#000000",
-            "fillColor": "rgb(249, 186, 80)",
-            "parent": "5cc75222-44fc-470a-9b50-a08c58a954b5",
-            "type": "P",
-            "size": {
-              "width": 317,
-              "height": 169
-            },
-            "autoSize": true
-          },
-          {
-            "id": "2dca1a40-d06a-44eb-a6be-023bab6f48bb",
-            "shape": "table",
-            "position": {
-              "x": -309.9999999999993,
-              "y": 839.9999999999998
-            },
-            "count": 0,
-            "originKey": "4B286FC6-F530-4D06-802F-919E79C5A090",
-            "fontColor": "#000000",
-            "fillColor": "rgb(116, 212, 151)",
-            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
-            "type": "P",
-            "size": {
-              "width": 486,
-              "height": 100
-            },
-            "autoSize": false
-          },
-          {
-            "id": "87a0d8bc-3705-4586-aee9-aa3e69bae6ed",
-            "shape": "table",
-            "position": {
-              "x": -295.99999999999955,
-              "y": 599.0000000000059
-            },
-            "count": 0,
-            "originKey": "CA91AE70-7B9C-4678-B86E-3E37966D3305",
-            "fontColor": "#000000",
-            "fillColor": "rgb(51, 153, 108)",
-            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
-            "type": "P",
-            "size": {
-              "width": 362,
-              "height": 146
-            },
-            "autoSize": true
-          },
-          {
-            "id": "612d3d14-1d13-46e1-aeb7-41079745ec35",
-            "shape": "table",
-            "position": {
-              "x": 449.9999999999991,
-              "y": 1170
-            },
-            "count": 0,
-            "originKey": "CC0B56C9-C1BA-455F-8264-030D3328EBAF",
-            "fontColor": "#000000",
-            "fillColor": "rgb(117, 190, 250)",
-            "parent": "d3cf9095-2618-4acb-8ff4-bde6ad6ec81a",
-            "type": "P",
-            "size": {
-              "width": 320,
-              "height": 100
-            },
-            "autoSize": true
-          },
-          {
-            "id": "7437667e-9bdf-4d68-bc0e-b0a34a90585c",
-            "shape": "table",
-            "position": {
-              "x": 323.99999999999943,
-              "y": 849.0000000000061
-            },
-            "count": 0,
-            "originKey": "6BA39086-546F-4FEE-B1D4-7A9605E6B568",
-            "fontColor": "#000000",
-            "fillColor": "rgb(116, 212, 151)",
-            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
-            "type": "P",
-            "size": {
-              "width": 334,
-              "height": 123
-            },
-            "autoSize": false
-          },
-          {
-            "id": "2f3f1d52-c7ac-4101-9b6a-ec53c9e6b7f6",
-            "shape": "table",
-            "position": {
-              "x": 252.99999999999943,
-              "y": 650.5000000000059
-            },
-            "count": 0,
-            "originKey": "8F5AD07A-55A7-42C3-9C1B-002366874206",
-            "fontColor": "#000000",
-            "fillColor": "rgb(90, 213, 198)",
-            "parent": "112c3554-2344-43d2-8cb8-fccb780e3777",
-            "type": "P",
-            "size": {
-              "width": 416,
-              "height": 123
-            },
-            "autoSize": false
-          },
-          {
-            "id": "eaacfbc5-6305-41c9-b181-1dbf9bf0f6dd",
-            "shape": "group",
-            "position": {
-              "x": -1010,
-              "y": -410.00000000000136
-            },
-            "label": "## 组织\n",
-            "fontColor": "#d148d1",
             "parent": "01fe1985-7233-447c-b171-54532fbf5c3c",
-            "size": {
-              "width": 1820,
-              "height": 460
+            "connector": {
+              "name": "rounded",
+              "args": {
+                "radius": 10
+              }
             },
-            "children": [
-              "f1cdb6fb-7081-4153-9533-9a7aab1edcd2",
-              "bd1758e5-81a5-42e2-9fe6-5a9c770c47db"
-            ]
-          },
-          {
-            "id": "f1cdb6fb-7081-4153-9533-9a7aab1edcd2",
-            "shape": "table",
-            "position": {
-              "x": -261.5000000000201,
-              "y": -319.9999999999974
-            },
-            "count": 0,
-            "originKey": "5E696AF7-9066-4D97-9791-1AD44288EBCC",
-            "fontColor": "#000000",
-            "fillColor": "#d148d1",
-            "parent": "eaacfbc5-6305-41c9-b181-1dbf9bf0f6dd",
-            "type": "P",
-            "size": {
-              "width": 313,
-              "height": 100
-            },
-            "autoSize": true
+            "attrs": {
+              "line": {
+                "strokeDasharray": ""
+              }
+            }
           },
           {
             "id": "1636bb3c-320d-4356-8f80-0c19ea138fe3",
@@ -5273,6 +5294,38 @@
             "relation": "none:triangle-fill",
             "fillColor": "rgb(249, 186, 80)",
             "parent": "01fe1985-7233-447c-b171-54532fbf5c3c",
+            "connector": {
+              "name": "rounded",
+              "args": {
+                "radius": 10
+              }
+            },
+            "attrs": {
+              "line": {
+                "strokeDasharray": ""
+              }
+            }
+          },
+          {
+            "id": "baa0b8c0-0cd1-4913-b212-c6bf9629655d",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "2f3f1d52-c7ac-4101-9b6a-ec53c9e6b7f6",
+              "port": "36D2B515-59C6-4423-B1CA-ED12FC05D819%out"
+            },
+            "target": {
+              "cell": "d6ecc364-49b6-4281-a384-51f85758766d",
+              "port": "F78C3EBB-A05B-40AB-8CEE-26D5077CCB4B%out"
+            },
+            "relation": "none:triangle-fill",
+            "vertices": [
+              {
+                "x": 730,
+                "y": 680
+              }
+            ],
+            "fillColor": "rgb(90, 213, 198)",
+            "parent": "01fe1985-7233-447c-b171-54532fbf5c3c",
             "router": {
               "name": "manhattan",
               "args": {
@@ -5292,44 +5345,6 @@
                 "strokeDasharray": ""
               }
             }
-          },
-          {
-            "id": "c4d89967-d537-40ad-9093-6d6acd2cd2b8",
-            "shape": "table",
-            "position": {
-              "x": -654.9999999999965,
-              "y": 200
-            },
-            "count": 0,
-            "originKey": "879C90B9-5995-4402-8B05-813D6DC4B965",
-            "fontColor": "#000000",
-            "fillColor": "rgb(249, 186, 80)",
-            "parent": "5cc75222-44fc-470a-9b50-a08c58a954b5",
-            "type": "P",
-            "size": {
-              "width": 338,
-              "height": 238
-            },
-            "autoSize": true
-          },
-          {
-            "id": "bd1758e5-81a5-42e2-9fe6-5a9c770c47db",
-            "shape": "table",
-            "position": {
-              "x": -261.9999999999985,
-              "y": -154
-            },
-            "count": 0,
-            "originKey": "4414C49A-AADA-484B-BBEE-4F63A9BAE800",
-            "fontColor": "#000000",
-            "fillColor": "#d148d1",
-            "parent": "eaacfbc5-6305-41c9-b181-1dbf9bf0f6dd",
-            "type": "P",
-            "size": {
-              "width": 305,
-              "height": 123
-            },
-            "autoSize": true
           }
         ]
       },

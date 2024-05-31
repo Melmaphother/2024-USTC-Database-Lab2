@@ -33,10 +33,11 @@ DROP TABLE IF EXISTS customer;
 CREATE TABLE customer(
     `c_id` VARCHAR(18) NOT NULL  COMMENT '身份证号' ,
     `c_name` VARCHAR(50)   COMMENT '客户姓名' ,
-    `c_gender` VARCHAR(1)   COMMENT '性别' ,
-    `c_age` INT(3)   COMMENT '年龄' ,
-    `c_phone` VARCHAR(20)   COMMENT '电话' ,
-    `c_addr` VARCHAR(200)   COMMENT '地址' ,
+    `c_gender` VARCHAR(1)   COMMENT '客户性别' ,
+    `c_age` INT(3)   COMMENT '客户年龄' ,
+    `c_phone` VARCHAR(20)   COMMENT '客户电话' ,
+    `c_addr` VARCHAR(200)   COMMENT '客户地址' ,
+    `c_avatar` VARCHAR(200)   COMMENT '客户头像' ,
     PRIMARY KEY (c_id)
 )  COMMENT = '客户';
 
