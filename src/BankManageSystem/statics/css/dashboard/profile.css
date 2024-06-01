@@ -1,0 +1,56 @@
+.form-group {
+    margin: 10px 30px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 1.15em;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.required::after {
+    content: " *";
+    color: red;
+}
+
+input[type="text"], input[type="password"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Increased border-radius */
+}
+
+.majority-width {
+    width: 60%;
+    display: inline-block;
+}
+
+.minority-width {
+    width: 30%;
+    display: inline-block;
+}
+
+input[type="radio"] {
+    width: auto;
+    margin-right: 10px;
+}
+
+.radio-label {
+    display: inline-block;
+    margin-right: 2px;
+    padding-top: 10px;
+}
+
+.save-button {
+    width: 60%;
+    padding: 10px;
+    margin: 10px 30px;
+    background-color: #5c67f2;
+    color: white;
+    border: none;
+    border-radius: 8px; /* Increased border-radius */
+    cursor: pointer;
+}

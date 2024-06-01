@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>USTC 银行</title>
+    <base href="/dashboard/">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard/dashboard.css' %}">
+    <script src="{% static 'js/dashboard.js' %}"></script>
+</head>
+<body>
+<div id="pageContent">
+    <div class="sidebar">
+        <div class="bank-info">
+            {% load static %}
+            <img src="{% static 'image/logo.png' %}" alt="Bank Logo">
+            <div class="separator"></div>
+        </div>
+        <button onclick="goToPage('');" class="onclick">账户查询</button>
+        <button onclick="goToPage('profile');">个人资料</button>
+        <button onclick="goToPage('savings');">储蓄账户</button>
+        <button onclick="goToPage('credit')">信用卡账户</button>
+        <button onclick="goToPage('loan')">贷款账户</button>
+        <button onclick="openLogoutModal()" class="logout-btn">登出</button>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <h1>你好，Username!</h1>
+            <img src="{% static 'image/logo.png' %}" alt="User Avatar">
+        </div>
+        <h3 class="savings-accounts">储蓄账户</h3>
+        <table class="savings-accounts">
+            <tr>
+                <th>账号</th>
+                <th>余额</th>
+                <th>明细</th>
+            </tr>
+            <tr>
+                <td>123456</td>
+                <td>$5,000</td>
+                <td>查看</td>
+            </tr>
+            <tr>
+                <td>789101</td>
+                <td>$15,000</td>
+                <td>查看</td>
+            </tr>
+            <tr>
+                <td>112131</td>
+                <td>$25,000</td>
+                <td>查看</td>
+            </tr>
+        </table>
+        <h3 class="credit-accounts">信用卡账户</h3>
+        <table class="credit-accounts">
+            <tr>
+                <th>账号</th>
+                <th>余额</th>
+                <th>明细</th>
+            </tr>
+            <tr>
+                <td>456789</td>
+                <td>$1,000</td>
+                <td>查看</td>
+            </tr>
+            <tr>
+                <td>101112</td>
+                <td>$500</td>
+                <td>查看</td>
+            </tr>
+            <tr>
+                <td>131415</td>
+                <td>$1,500</td>
+                <td>查看</td>
+            </tr>
+        </table>
+        <h3 class="loan-accounts">贷款账户</h3>
+        <table class="loan-accounts">
+            <tr>
+                <th>账号</th>
+                <th>余额</th>
+                <th>明细</th>
+            </tr>
+            <tr>
+                <td>161718</td>
+                <td>$20,000</td>
+                <td>查看</td>
+            </tr>
+            <tr>
+                <td>192021</td>
+                <td>$50,000</td>
+                <td>查看</td>
+            </tr>
+            <tr>
+                <td>222324</td>
+                <td>$75,000</td>
+                <td>查看</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div id="logoutModal" class="modal">
+    <div class="modal-content">
+        <h2>确认要登出吗？</h2>
+        <div class="button-container">
+            <button onclick="logout()" class="confirm">确认</button>
+            <button onclick="closeLogoutModal()" class="cancel">取消</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

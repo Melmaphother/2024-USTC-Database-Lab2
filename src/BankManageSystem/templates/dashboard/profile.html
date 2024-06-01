@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>USTC 银行 - 个人资料</title>
+    <base href="/dashboard/">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard/profile.css' %}">
+    <script src="{% static 'js/dashboard.js' %}"></script>
+</head>
+<body>
+<div id="pageContent">
+    <div class="sidebar">
+        <div class="bank-info">
+            {% load static %}
+            <img src="{% static 'image/logo.png' %}" alt="Bank Logo">
+            <div class="separator"></div>
+        </div>
+        <script>
+            function goToPage(page) {
+                window.location.href = page;
+            }
+        </script>
+        <button onclick="goToPage('');">账户查询</button>
+        <button onclick="goToPage('profile');" class="onclick">个人资料</button>
+        <button onclick="goToPage('savings');">储蓄账户</button>
+        <button onclick="goToPage('credit')">信用卡账户</button>
+        <button onclick="goToPage('loan')">贷款账户</button>
+        <button onclick="openLogoutModal()" class="logout-btn">登出</button>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <h1>你好，Username!</h1>
+            <img src="{% static 'image/logo.png' %}" alt="User Avatar">
+        </div>
+        <form action="/dashboard/profile/" method="post">
+            {% csrf_token %}
+            <div class="form-group majority-width">
+                <label for="name" class="required">姓名</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group minority-width">
+                <label>性别</label>
+                <label class="radio-label"><input type="radio" name="gender" value="male">男</label>
+                <label class="radio-label"><input type="radio" name="gender" value="female">女</label>
+            </div>
+            <div class="form-group majority-width">
+                <label for="phone">电话</label>
+                <input type="text" id="phone" name="phone" placeholder="请输入11位电话">
+            </div>
+            <div class="form-group minority-width">
+                <label for="age">年龄</label>
+                <input type="text" id="age" name="age">
+            </div>
+            <div class="form-group majority-width">
+                <label for="address">地址</label>
+                <textarea id="address" name="address" placeholder="不超过200个字"></textarea>
+            </div>
+            <button type="submit" class="save-button">确认修改</button>
+            <div>
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if forloop.last %}
+                            <p style="color: red;">{{ message }}</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </form>
+    </div>
+</div>
+<div id="logoutModal" class="modal">
+    <div class="modal-content">
+        <h2>确认要登出吗？</h2>
+        <div class="button-container">
+            <button onclick="logout()" class="confirm">确认</button>
+            <button onclick="closeLogoutModal()" class="cancel">取消</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

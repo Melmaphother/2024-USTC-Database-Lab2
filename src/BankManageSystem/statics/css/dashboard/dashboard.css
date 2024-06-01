@@ -1,0 +1,60 @@
+
+h3 {
+    margin: 10px 30px;
+    font-size: 24px;
+}
+
+h3.savings-accounts {
+    color: #339900;
+}
+
+h3.credit-accounts {
+    color: #3366CC;
+}
+
+h3.loan-accounts {
+    color: #CC6633;
+}
+
+table {
+    width: 94%;
+    border-collapse: collapse;
+    margin: 20px 30px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+    background-color: white;
+}
+
+th {
+    color: whitesmoke;
+}
+
+.savings-accounts th {
+    background-color: #339900;
+}
+
+.credit-accounts th {
+    background-color: #3366CC;
+}
+
+.loan-accounts th {
+    background-color: #CC6633;
+}
+
+.savings-accounts tr:nth-child(odd) td {
+    background-color: #b2fab4;
+}
+
+.credit-accounts tr:nth-child(odd) td {
+    background-color: #ace7ef;
+}
+
+.loan-accounts tr:nth-child(odd) td {
+    background-color: #fddca8;
+}

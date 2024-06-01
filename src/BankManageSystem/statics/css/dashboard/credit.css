@@ -1,0 +1,172 @@
+.account-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 30px;
+}
+
+.account-header h3 {
+    font-size: 24px;
+    color: #3366CC;
+}
+
+.account-header button {
+    padding: 10px 20px;
+    background-color: #0066CC;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.account {
+    background-color: #F5F5F5;
+    padding: 15px;
+    margin: 20px 30px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.account-number {
+    margin: 5px 0;
+    font-size: 18px; /* 略微放大字体 */
+    font-weight: bold; /* 字体加粗 */
+    color: #333;
+}
+
+.account-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 5px 0;
+}
+
+.account-row p {
+    flex: 1; /* 使每个p标签填满等分的空间 */
+    margin: 5px 10px; /* 调整间距 */
+    font-size: 16px;
+    color: #555;
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 5px 0;
+}
+
+.account button {
+    padding: 12px 14px;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    flex: 1; /* 每个按钮等宽 */
+    margin: 0 10px; /* 调整按钮间距 */
+}
+
+.account button.deposit {
+    background-color: #339900;
+}
+
+.account button.withdraw {
+    background-color: #CC3333;
+}
+
+.account button.transfer {
+    background-color: #CC6633;
+}
+
+.business-modal-content {
+    text-align: center;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    width: 40%; /* Could be more or less, depending on screen size */
+    height: 40%;
+    justify-content: space-around; /* Improved spacing within the modal */
+}
+
+.business-modal-content.add-account-modal-content {
+    height: 28%;
+}
+
+.business-modal-content.transfer-modal-content {
+    height: 46%;
+}
+
+.business-modal-content .h3 {
+    font-weight: bold;
+    font-size: 1.8em;
+}
+
+.business-modal-content .add-account {
+    color: #0066CC;
+}
+
+.business-modal-content .deposit {
+    color: #339900;
+}
+
+.business-modal-content .withdraw {
+    color: #CC3333;
+}
+
+.business-modal-content .transfer {
+    color: #CC6633;
+}
+
+.business-modal-content .button-container {
+    width: 100%; /* Full width of the modal content */
+    display: flex; /* Using flexbox to layout buttons */
+    justify-content: space-evenly; /* Even spacing around the buttons */
+}
+
+.button-container button {
+    padding: 14px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px; /* 圆角 */
+    cursor: pointer;
+    font-size: 16px; /* 文本大小 */
+    flex: 1; /* Flex property to fill the space */
+}
+
+.button-container button.confirm {
+    background-color: #CC3333; /* 确认按钮的颜色 */
+    color: white;
+}
+
+.button-container button.cancel {
+    background-color: #dedede; /* 取消按钮的颜色 */
+    color: black;
+}
+
+.input-form-group {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* 标签和输入框的列布局 */
+    align-items: center;
+    gap: 10px;
+    margin: 10px; /* 表单组件之间添加一些间隔 */
+}
+
+.input-form-group label {
+    text-align: right;
+    white-space: nowrap; /* 防止标签在窄屏幕上换行 */
+    font-weight: bold;
+    font-size: 1.15em;
+}
+
+.input-form-group input[type="text"], input[type="password"] {
+    width: 80%;
+    height: 35px; /* 增加输入框的高度 */
+    padding: 8px 12px; /* 调整内边距以适应新的高度 */
+    border: 1px solid #ccc; /* 输入框边框 */
+    box-sizing: border-box; /* 输入框大小包括边框 */
+    border-radius: 8px; /* 边框圆角 */
+}

@@ -1,0 +1,149 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    background-color: #F0F0F0;
+    width: 220px;
+    height: 100%;
+    position: fixed;
+    overflow: hidden;
+    padding: 20px 10px; /* Updated padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bank-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative; /* For absolute positioning of the separator */
+}
+
+.bank-info img {
+    width: 80px; /* Increased width */
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+
+.bank-info span {
+    align-self: center;
+}
+
+.separator {
+    width: 150%; /* Width less than 100% for some space on the sides */
+    height: 1px;
+    background-color: #aaa;
+    margin: 10px 0;
+}
+
+.sidebar button {
+    background-color: #dedede;
+    color: black;
+    font-weight: bold;
+    margin: 10px;
+    padding: 14px 20px; /* Larger padding */
+    width: 90%; /* Slightly larger button */
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+}
+
+.sidebar button.onclick {
+    background-color: #0066CC;
+    color: whitesmoke;
+}
+
+.sidebar button.logout-btn {
+    color: white;
+    margin-top: auto;
+    margin-bottom: 60px; /* Updated margin to move up */
+    background-color: #CC3333;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    text-align: center;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    width: 40%; /* Could be more or less, depending on screen size */
+    height: 20%;
+    justify-content: space-around; /* Improved spacing within the modal */
+}
+
+.modal-content .button-container {
+    width: 100%; /* Full width of the modal content */
+    display: flex; /* Using flexbox to layout buttons */
+    justify-content: space-evenly; /* Even spacing around the buttons */
+}
+
+.modal-content button {
+    padding: 14px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px; /* 圆角 */
+    cursor: pointer;
+    font-size: 16px; /* 文本大小 */
+    flex: 1; /* Flex property to fill the space */
+}
+
+.modal-content button.confirm {
+    background-color: #CC3333; /* 确认按钮的颜色 */
+    color: white;
+}
+
+.modal-content button.cancel {
+    background-color: #dedede; /* 取消按钮的颜色 */
+    color: black;
+}
+
+
+.main-content {
+    margin-left: 220px;
+    padding: 20px;
+    overflow: auto;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    margin-top: 6px;
+    margin-bottom: 25px;
+}
+
+
+.header h1 {
+    margin: 0;
+}
+
+.header img {
+    height: 50px;
+    border-radius: 50%;
+}

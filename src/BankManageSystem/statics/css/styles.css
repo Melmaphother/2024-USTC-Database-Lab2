@@ -1,0 +1,32 @@
+/* Apply basic reset to remove default padding and margin */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style the header */
+header .top-bar {
+    display: flex;          /* Enable flexbox */
+    align-items: center;    /* Align items vertically in the center */
+    justify-content: space-between; /* Distribute space between and around content items */
+    padding: 10px 20px;     /* Add some padding around */
+}
+
+header h1 {
+    margin-right: 1px;     /* Add right margin to the title */
+}
+
+nav ul {
+    list-style: none;       /* Remove bullet points from the list */
+    display: flex;          /* Display list items in a row */
+}
+
+nav ul li {
+    margin-left: 10px;      /* Space between the links */
+}
+
+nav ul li a {
+    text-decoration: none;  /* Remove underline from links */
+    color: black;           /* Set color for the links */
+}
