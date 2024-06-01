@@ -88,25 +88,36 @@ CREATE TABLE account_hold_manage(
 DROP TABLE IF EXISTS savings_account_record;
 CREATE TABLE savings_account_record(
     `a_no` VARCHAR(18) NOT NULL  COMMENT '账户号' ,
-    `sad_time` DATETIME NOT NULL  COMMENT '操作时间' ,
-    `sad_other_a_no` VARCHAR(18)   COMMENT '对方账户号' ,
-    `sad_after_balance` DECIMAL(20,2)   COMMENT '操作后余额' ,
-    `sad_amount` DECIMAL(20,2)   COMMENT '操作金额' ,
-    `sad_type` VARCHAR(20)   COMMENT '操作类型;deposit, withdraw, transfer_in, transfer_out' ,
-    PRIMARY KEY (a_no,sad_time)
+    `sar_time` DATETIME NOT NULL  COMMENT '操作时间' ,
+    `sar_other_a_no` VARCHAR(18)   COMMENT '对方账户号' ,
+    `sar_after_balance` DECIMAL(20,2)   COMMENT '操作后余额' ,
+    `sar_amount` DECIMAL(20,2)   COMMENT '操作金额' ,
+    `sar_type` VARCHAR(20)   COMMENT '操作类型;deposit, withdraw, transfer_in, transfer_out' ,
+    PRIMARY KEY (a_no,sar_time)
 )  COMMENT = '储蓄账户记录';
 
 DROP TABLE IF EXISTS credit_account_record;
 CREATE TABLE credit_account_record(
     `a_no` VARCHAR(18) NOT NULL  COMMENT '账户号' ,
-    `cad_time` DATETIME NOT NULL  COMMENT '操作时间' ,
-    `cad_other_a_no` VARCHAR(18)   COMMENT '对方账户号' ,
-    `cad_after_balance` DECIMAL(20,2)   COMMENT '操作后余额' ,
-    `cad_after_overdraft_amount` DECIMAL(20,2)   COMMENT '操作后透支金额' ,
-    `cad_amount` DECIMAL(20,2)   COMMENT '操作金额' ,
-    `cad_type` VARCHAR(20)   COMMENT '操作类型;deposit, withdraw, transfer_in, transfer_out' ,
-    PRIMARY KEY (a_no,cad_time)
+    `car_time` DATETIME NOT NULL  COMMENT '操作时间' ,
+    `car_other_a_no` VARCHAR(18)   COMMENT '对方账户号' ,
+    `car_after_balance` DECIMAL(20,2)   COMMENT '操作后余额' ,
+    `car_after_overdraft_amount` DECIMAL(20,2)   COMMENT '操作后透支金额' ,
+    `car_amount` DECIMAL(20,2)   COMMENT '操作金额' ,
+    `car_type` VARCHAR(20)   COMMENT '操作类型;deposit, withdraw, transfer_in, transfer_out' ,
+    PRIMARY KEY (a_no,car_time)
 )  COMMENT = '信用卡账户记录';
+
+DROP TABLE IF EXISTS loan_account_record;
+CREATE TABLE loan_account_record(
+    `a_no` VARCHAR(18) NOT NULL  COMMENT '账户号' ,
+    `lar_time` DATETIME NOT NULL  COMMENT '操作时间' ,
+    `lar_other_a_no` VARCHAR(18)   COMMENT '对方账户号' ,
+    `lar_after_balance` DECIMAL(20,2)   COMMENT '操作后余额' ,
+    `lar_amount` DECIMAL(20,2)   COMMENT '操作金额' ,
+    `lar_type` VARCHAR(20)   COMMENT '操作类型;deposit, withdraw, transfer_in, transfer_out' ,
+    PRIMARY KEY (a_no,lar_time)
+)  COMMENT = '贷款账户记录';
 
 DROP TABLE IF EXISTS loan_grant;
 CREATE TABLE loan_grant(
