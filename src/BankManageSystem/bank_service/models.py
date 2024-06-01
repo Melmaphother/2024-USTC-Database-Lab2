@@ -12,7 +12,8 @@ class Bank(models.Model):
 
 class Department(models.Model):
     d_no = models.CharField(max_length=4, primary_key=True)
-    d_b_name = models.ForeignKey(Bank, on_delete=models.CASCADE, related_name='departments')
+    d_b_name = models.ForeignKey(Bank, on_delete=models.CASCADE, related_name='departments',
+                                 db_column='d_b_name')
     d_name = models.CharField(max_length=50, blank=True)
     d_phone = models.CharField(max_length=20, blank=True)
 
@@ -22,8 +23,10 @@ class Department(models.Model):
 
 class Employee(models.Model):
     e_no = models.CharField(max_length=9, primary_key=True)
-    e_b_name = models.ForeignKey(Bank, on_delete=models.CASCADE, related_name='employees')
-    e_d_no = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='employees')
+    e_b_name = models.ForeignKey(Bank, on_delete=models.CASCADE, related_name='employees',
+                                 db_column='e_b_name')
+    e_d_no = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='employees',
+                               db_column='e_d_no')
     e_id = models.CharField(max_length=18, blank=True)
     e_name = models.CharField(max_length=50, blank=True)
     e_age = models.IntegerField(null=True)
@@ -60,7 +63,8 @@ class Account(models.Model):
 
 
 class SavingsAccount(models.Model):
-    sa_no = models.OneToOneField(Account, on_delete=models.CASCADE, primary_key=True, related_name='savings_account')
+    sa_no = models.OneToOneField(Account, on_delete=models.CASCADE, primary_key=True,
+                                 related_name='savings_account', db_column='sa_no')
     sa_rate = models.DecimalField(max_digits=5, decimal_places=4)
     sa_withdraw_limit = models.DecimalField(max_digits=20, decimal_places=2)
 
@@ -69,7 +73,8 @@ class SavingsAccount(models.Model):
 
 
 class CreditAccount(models.Model):
-    ca_no = models.OneToOneField(Account, on_delete=models.CASCADE, primary_key=True, related_name='credit_account')
+    ca_no = models.OneToOneField(Account, on_delete=models.CASCADE, primary_key=True,
+                                 related_name='credit_account', db_column='ca_no')
     ca_overdraft_limit = models.DecimalField(max_digits=20, decimal_places=2)
     ca_current_overdraft_amount = models.DecimalField(max_digits=20, decimal_places=2)
 
@@ -78,7 +83,8 @@ class CreditAccount(models.Model):
 
 
 class LoanAccount(models.Model):
-    la_no = models.OneToOneField(Account, on_delete=models.CASCADE, primary_key=True, related_name='loan_account')
+    la_no = models.OneToOneField(Account, on_delete=models.CASCADE, primary_key=True,
+                                 related_name='loan_account', db_column='la_no')
     la_rate = models.DecimalField(max_digits=5, decimal_places=4)
     la_loan_limit = models.DecimalField(max_digits=20, decimal_places=2)
 
@@ -88,16 +94,19 @@ class LoanAccount(models.Model):
 
 class AccountHoldManage(models.Model):
     ahm_a_no = models.OneToOneField(Account, on_delete=models.CASCADE, primary_key=True,
-                                    related_name='account_hold_manage')
-    ahm_e_no = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='managed_accounts')
-    ahm_c_id = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='managed_accounts')
+                                    related_name='account_hold_manage', db_column='ahm_a_no')
+    ahm_e_no = models.ForeignKey(Employee, on_delete=models.CASCADE,
+                                 related_name='managed_accounts', db_column='ahm_e_no')
+    ahm_c_id = models.ForeignKey(Customer, on_delete=models.CASCADE,
+                                 related_name='managed_accounts', db_column='ahm_c_id')
 
     class Meta:
         db_table = 'account_hold_manage'
 
 
 class SavingsAccountRecord(models.Model):
-    sar_a_no = models.ForeignKey(SavingsAccount, on_delete=models.CASCADE, related_name='records')
+    sar_a_no = models.ForeignKey(SavingsAccount, on_delete=models.CASCADE,
+                                 related_name='records', db_column='sar_a_no')
     sar_time = models.DateTimeField()
     sar_other_a_no = models.CharField(max_length=18, blank=True)
     sar_after_balance = models.DecimalField(max_digits=20, decimal_places=2)
@@ -110,7 +119,8 @@ class SavingsAccountRecord(models.Model):
 
 
 class CreditAccountRecord(models.Model):
-    car_a_no = models.ForeignKey(CreditAccount, on_delete=models.CASCADE, related_name='records')
+    car_a_no = models.ForeignKey(CreditAccount, on_delete=models.CASCADE,
+                                 related_name='records', db_column='car_a_no')
     car_time = models.DateTimeField()
     car_other_a_no = models.CharField(max_length=18, blank=True)
     car_after_balance = models.DecimalField(max_digits=20, decimal_places=2)
@@ -124,7 +134,8 @@ class CreditAccountRecord(models.Model):
 
 
 class LoanAccountRecord(models.Model):
-    lar_a_no = models.ForeignKey(LoanAccount, on_delete=models.CASCADE, related_name='records')
+    lar_a_no = models.ForeignKey(LoanAccount, on_delete=models.CASCADE,
+                                 related_name='records', db_column='lar_a_no')
     lar_time = models.DateTimeField()
     lar_other_a_no = models.CharField(max_length=18, blank=True)
     lar_after_balance = models.DecimalField(max_digits=20, decimal_places=2)
@@ -150,15 +161,18 @@ class Loan(models.Model):
 
 
 class LoanGrant(models.Model):
-    lg_l_no = models.OneToOneField(Loan, on_delete=models.CASCADE, primary_key=True, related_name='loan_grants')
-    lg_a_no = models.ForeignKey(LoanAccount, on_delete=models.CASCADE, related_name='grants')
+    lg_l_no = models.OneToOneField(Loan, on_delete=models.CASCADE, primary_key=True,
+                                   related_name='loan_grants', db_column='lg_l_no')
+    lg_a_no = models.ForeignKey(LoanAccount, on_delete=models.CASCADE,
+                                related_name='grants', db_column='lg_a_no')
 
     class Meta:
         db_table = 'loan_grant'
 
 
 class LoanRepay(models.Model):
-    lr_l_no = models.ForeignKey(Loan, on_delete=models.CASCADE, related_name='repays')
+    lr_l_no = models.ForeignKey(Loan, on_delete=models.CASCADE,
+                                related_name='repays', db_column='lr_l_no')
     lr_time = models.DateTimeField()
     lr_amount = models.DecimalField(max_digits=20, decimal_places=2)
 
