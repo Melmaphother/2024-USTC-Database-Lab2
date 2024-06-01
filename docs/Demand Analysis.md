@@ -131,24 +131,29 @@
 10. 储蓄账户记录 `savings_account_record`, `sar`
     是银行系统中的可标识对象，由账户号和操作时间唯一标识，因此是实体，实体设计为：
     $(\underline{账户号}, \underline{操作时间}, 对方账户号, 操作后余额, 操作金额, 操作类型)$
-    $(\underline{a\_no}, \underline{sad\_time}, sad\_other\_a\_no, sad\_after\_balance, sad\_amount, sad\_type)$
+    $(\underline{a\_no}, \underline{sar\_time}, sar\_other\_a\_no, sar\_after\_balance, sar\_amount, sar\_type)$
 
 11. 信用卡账户记录 `credit_account_record`, `car`
     是银行系统中的可标识对象，由账户号和操作时间唯一标识，因此是实体，实体设计为：
     $(\underline{账户号}, \underline{操作时间}, 对方账户号, 操作后余额, 操作后透支金额, 操作金额, 操作类型)$
-    $(\underline{a\_no}, \underline{cad\_time}, cad\_other\_a\_no, cad\_after\_balance, cad\_after\_overdraft\_amount, cad\_amount, cad\_type)$
+    $(\underline{a\_no}, \underline{car\_time}, car\_other\_a\_no, car\_after\_balance, car\_after\_overdraft\_amount, car\_amount, car\_type)$
 
-12. 贷款信息 `loan`, `l`
+12. 贷款账户记录 `loan_account_record`, `lar`
+    是银行系统中的可标识对象，由账户号和操作时间唯一标识，因此是实体，实体设计为：
+    $(\underline{账户号}, \underline{操作时间}, 对方账户号, 操作后余额, 操作金额, 操作类型)$
+    $(\underline{a\_no}, \underline{lar\_time}, lar\_other\_a\_no, lar\_after\_balance, lar\_amount, lar\_type)$
+
+13. 贷款信息 `loan`, `l`
     是银行系统中的可标识对象，由银行发放，由贷款号唯一标识，因此是实体，实体设计为；
     $(\underline{贷款号}, 贷款金额, 贷款时间, 贷款期限, 当前还款期数, 当前总还款金额, 当前状态)$
     $(\underline{l\_no}, l\_amount, l\_time, l\_deadline, l\_current\_amount\_period, l\_current\_amount\_total, l\_status)$
 
-13. 还贷记录 `loan_repay`, `lr`
+14. 还贷记录 `loan_repay`, `lr`
     是银行系统中的可标识对象，由贷款账户号和还款时间唯一标识，因此是实体，实体设计为：
     $(\underline{贷款号}, \underline{还款时间}, 还款金额)$
     $(\underline{l\_no}, \underline{lr\_time}, lr\_amount)$
 
-14. 贷款发放记录 `loan_grant`, `lg`
+15. 贷款发放记录 `loan_grant`, `lg`
     是银行系统中的可标识对象，由贷款号唯一标识，因此是实体，实体设计为：
     $(\underline{贷款号}, 贷款账户号)$
     $(\underline{l\_no}, a\_no)$
