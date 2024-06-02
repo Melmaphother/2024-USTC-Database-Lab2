@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
     <link rel="stylesheet" href="{% static 'css/dashboard/dashboard.css' %}">
     <script src="{% static 'js/dashboard.js' %}"></script>
+    <script src="{% static 'js/dashboard/dashboard.js' %}"></script>
 </head>
 <body>
 <div id="pageContent">
@@ -15,10 +16,11 @@
         <div class="bank-info">
             {% load static %}
             <img src="{% static 'image/logo.png' %}" alt="Bank Logo">
+            <span>USTC 银行</span>
             <div class="separator"></div>
         </div>
         <button onclick="goToPage('');" class="onclick">账户查询</button>
-        <button onclick="goToPage('profile');">个人资料</button>
+        <button onclick="goToPage('profile');">个人主页</button>
         <button onclick="goToPage('savings');">储蓄账户</button>
         <button onclick="goToPage('credit')">信用卡账户</button>
         <button onclick="goToPage('loan')">贷款账户</button>
@@ -26,77 +28,74 @@
     </div>
     <div class="main-content">
         <div class="header">
-            <h1>你好，Username!</h1>
-            <img src="{% static 'image/logo.png' %}" alt="User Avatar">
+            <h1>你好，{{ c_name }}!</h1>
+            <img src="{{ MEDIA_URL }}{{ c_avatar }}" alt="User Avatar">
+        </div>
+        <div class="dashboard-header">
+            <h3>账户查询</h3>
         </div>
         <h3 class="savings-accounts">储蓄账户</h3>
         <table class="savings-accounts">
             <tr>
                 <th>账号</th>
                 <th>余额</th>
-                <th>明细</th>
+                <th>开户日期</th>
+                <th>开户银行</th>
             </tr>
-            <tr>
-                <td>123456</td>
-                <td>$5,000</td>
-                <td>查看</td>
-            </tr>
-            <tr>
-                <td>789101</td>
-                <td>$15,000</td>
-                <td>查看</td>
-            </tr>
-            <tr>
-                <td>112131</td>
-                <td>$25,000</td>
-                <td>查看</td>
-            </tr>
+            {% for account in dashboard_dict.SavingsAccount %}
+                <tr>
+                    <td>{{ account.a_no }}</td>
+                    <td>{{ account.formatted_balance }}</td>
+                    <td>{{ account.a_open_time|date:"Y-m-d" }}</td>
+                    <td>{{ account.a_open_b_name }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4"  class="empty-row">没有储蓄账户信息</td>
+                </tr>
+            {% endfor %}
         </table>
         <h3 class="credit-accounts">信用卡账户</h3>
         <table class="credit-accounts">
             <tr>
                 <th>账号</th>
                 <th>余额</th>
-                <th>明细</th>
+                <th>开户日期</th>
+                <th>开户银行</th>
             </tr>
-            <tr>
-                <td>456789</td>
-                <td>$1,000</td>
-                <td>查看</td>
-            </tr>
-            <tr>
-                <td>101112</td>
-                <td>$500</td>
-                <td>查看</td>
-            </tr>
-            <tr>
-                <td>131415</td>
-                <td>$1,500</td>
-                <td>查看</td>
-            </tr>
+            {% for account in dashboard_dict.CreditAccount %}
+                <tr>
+                    <td>{{ account.a_no }}</td>
+                    <td>{{ account.formatted_balance }}</td>
+                    <td>{{ account.a_open_time|date:"Y-m-d" }}</td>
+                    <td>{{ account.a_open_b_name }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4"  class="empty-row">没有信用卡账户信息</td>
+                </tr>
+            {% endfor %}
         </table>
         <h3 class="loan-accounts">贷款账户</h3>
         <table class="loan-accounts">
             <tr>
                 <th>账号</th>
                 <th>余额</th>
-                <th>明细</th>
+                <th>开户日期</th>
+                <th>开户银行</th>
             </tr>
-            <tr>
-                <td>161718</td>
-                <td>$20,000</td>
-                <td>查看</td>
-            </tr>
-            <tr>
-                <td>192021</td>
-                <td>$50,000</td>
-                <td>查看</td>
-            </tr>
-            <tr>
-                <td>222324</td>
-                <td>$75,000</td>
-                <td>查看</td>
-            </tr>
+            {% for account in dashboard_dict.LoanAccount %}
+                <tr>
+                    <td>{{ account.a_no }}</td>
+                    <td>{{ account.formatted_balance }}</td>
+                    <td>{{ account.a_open_time|date:"Y-m-d" }}</td>
+                    <td>{{ account.a_open_b_name }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4"  class="empty-row">没有贷款账户信息</td>
+                </tr>
+            {% endfor %}
         </table>
     </div>
 </div>

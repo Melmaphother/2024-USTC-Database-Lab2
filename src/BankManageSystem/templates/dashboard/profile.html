@@ -2,12 +2,13 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>USTC 银行 - 个人资料</title>
+    <title>USTC 银行 - 个人主页</title>
     <base href="/dashboard/">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
     <link rel="stylesheet" href="{% static 'css/dashboard/profile.css' %}">
     <script src="{% static 'js/dashboard.js' %}"></script>
+    <script src="{% static 'js/dashboard/profile.js' %}"></script>
 </head>
 <body>
 <div id="pageContent">
@@ -15,15 +16,11 @@
         <div class="bank-info">
             {% load static %}
             <img src="{% static 'image/logo.png' %}" alt="Bank Logo">
+            <span>USTC 银行</span>
             <div class="separator"></div>
         </div>
-        <script>
-            function goToPage(page) {
-                window.location.href = page;
-            }
-        </script>
         <button onclick="goToPage('');">账户查询</button>
-        <button onclick="goToPage('profile');" class="onclick">个人资料</button>
+        <button onclick="goToPage('profile');" class="onclick">个人主页</button>
         <button onclick="goToPage('savings');">储蓄账户</button>
         <button onclick="goToPage('credit')">信用卡账户</button>
         <button onclick="goToPage('loan')">贷款账户</button>
@@ -31,31 +28,50 @@
     </div>
     <div class="main-content">
         <div class="header">
-            <h1>你好，Username!</h1>
-            <img src="{% static 'image/logo.png' %}" alt="User Avatar">
+            <h1>你好，{{ c_name }}!</h1>
+            <img src="{{ MEDIA_URL }}{{ c_avatar }}" alt="User Avatar">
         </div>
-        <form action="/dashboard/profile/" method="post">
+        <div class="profile-header">
+            <h3>个人主页</h3>
+        </div>
+        <form action="/dashboard/profile/" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group majority-width">
                 <label for="name" class="required">姓名</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" value="{{ c_name }}" disabled>
             </div>
             <div class="form-group minority-width">
                 <label>性别</label>
-                <label class="radio-label"><input type="radio" name="gender" value="male">男</label>
-                <label class="radio-label"><input type="radio" name="gender" value="female">女</label>
+                <label class="radio-label">
+                    <input type="radio" name="gender" value="male" {% if c_gender == 'M' %}checked{% endif %}
+                           disabled>
+                    男
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="gender" value="female" {% if c_gender == 'F' %}checked{% endif %}
+                           disabled>
+                    女
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="file-upload-button">上传头像</label>
+                <button id="file-upload-button" type="button" class="custom-file-upload-button">
+                    上传文件
+                </button>
+                <input type="file" id="file-upload" name="avatar" accept="image/*"/>
+                <span id="file-name-display"></span>
             </div>
             <div class="form-group majority-width">
                 <label for="phone">电话</label>
-                <input type="text" id="phone" name="phone" placeholder="请输入11位电话">
+                <input type="text" id="phone" name="phone" value="{{ c_phone }}" placeholder="请输入11位电话">
             </div>
             <div class="form-group minority-width">
                 <label for="age">年龄</label>
-                <input type="text" id="age" name="age">
+                <input type="text" id="age" name="age" value="{{ c_age }}">
             </div>
             <div class="form-group majority-width">
                 <label for="address">地址</label>
-                <textarea id="address" name="address" placeholder="不超过200个字"></textarea>
+                <input type="text" id="address" name="address" value="{{ c_addr }}" placeholder="不超过200个字">
             </div>
             <button type="submit" class="save-button">确认修改</button>
             <div>

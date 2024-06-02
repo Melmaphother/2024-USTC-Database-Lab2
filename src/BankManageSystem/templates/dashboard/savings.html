@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
     <link rel="stylesheet" href="{% static 'css/dashboard/savings.css' %}">
     <script src="{% static 'js/dashboard.js' %}"></script>
+    <script src="{% static 'js/dashboard/savings.js' %}"></script>
 </head>
 <body>
 <div id="pageContent">
@@ -15,15 +16,11 @@
         <div class="bank-info">
             {% load static %}
             <img src="{% static 'image/logo.png' %}" alt="Bank Logo">
+            <span>USTC 银行</span>
             <div class="separator"></div>
         </div>
-        <script>
-            function goToPage(page) {
-                window.location.href = page;
-            }
-        </script>
         <button onclick="goToPage('');">账户查询</button>
-        <button onclick="goToPage('profile');">个人资料</button>
+        <button onclick="goToPage('profile');">个人主页</button>
         <button onclick="goToPage('savings');" class="onclick">储蓄账户</button>
         <button onclick="goToPage('credit')">信用卡账户</button>
         <button onclick="goToPage('loan')">贷款账户</button>
