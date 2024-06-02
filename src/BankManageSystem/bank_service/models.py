@@ -3,8 +3,8 @@ from django.db import models
 
 class Bank(models.Model):
     b_name = models.CharField(max_length=50, primary_key=True)
-    b_addr = models.CharField(max_length=200, blank=True)
-    b_phone = models.CharField(max_length=20, blank=True)
+    b_addr = models.CharField(max_length=200, blank=True, default='')
+    b_phone = models.CharField(max_length=20, blank=True, default='')
 
     class Meta:
         db_table = 'bank'
@@ -14,8 +14,8 @@ class Department(models.Model):
     d_no = models.CharField(max_length=4, primary_key=True)
     d_b_name = models.ForeignKey(Bank, on_delete=models.CASCADE, related_name='departments',
                                  db_column='d_b_name')
-    d_name = models.CharField(max_length=50, blank=True)
-    d_phone = models.CharField(max_length=20, blank=True)
+    d_name = models.CharField(max_length=50, blank=True, default='')
+    d_phone = models.CharField(max_length=20, blank=True, default='')
 
     class Meta:
         db_table = 'department'
@@ -27,12 +27,12 @@ class Employee(models.Model):
                                  db_column='e_b_name')
     e_d_no = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='employees',
                                db_column='e_d_no')
-    e_id = models.CharField(max_length=18, blank=True)
-    e_name = models.CharField(max_length=50, blank=True)
+    e_id = models.CharField(max_length=18, blank=True, default='')
+    e_name = models.CharField(max_length=50, blank=True, default='')
     e_age = models.IntegerField(null=True)
-    e_phone = models.CharField(max_length=20, blank=True)
-    e_addr = models.CharField(max_length=200, blank=True)
-    e_avatar = models.CharField(max_length=200, blank=True)
+    e_phone = models.CharField(max_length=20, blank=True, default='')
+    e_addr = models.CharField(max_length=200, blank=True, default='')
+    e_avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
 
     class Meta:
         db_table = 'employee'
@@ -40,12 +40,12 @@ class Employee(models.Model):
 
 class Customer(models.Model):
     c_id = models.CharField(max_length=18, primary_key=True)
-    c_name = models.CharField(max_length=50, blank=True)
-    c_gender = models.CharField(max_length=1, blank=True)
+    c_name = models.CharField(max_length=50, blank=True, default='')
+    c_gender = models.CharField(max_length=1, blank=True, default='')
     c_age = models.IntegerField(null=True)
-    c_phone = models.CharField(max_length=20, blank=True)
-    c_addr = models.CharField(max_length=200, blank=True)
-    c_avatar = models.CharField(max_length=200, blank=True)
+    c_phone = models.CharField(max_length=20, blank=True, default='')
+    c_addr = models.CharField(max_length=200, blank=True, default='')
+    c_avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
 
     class Meta:
         db_table = 'customer'
@@ -53,10 +53,13 @@ class Customer(models.Model):
 
 class Account(models.Model):
     a_no = models.CharField(max_length=18, primary_key=True)
-    a_type = models.CharField(max_length=20, blank=True)
-    a_currency = models.CharField(max_length=3, blank=True)
+    a_type = models.CharField(max_length=20, blank=True, default='')
+    a_currency = models.CharField(max_length=3, blank=True, default='')
     a_balance = models.DecimalField(max_digits=20, decimal_places=2)
     a_open_time = models.DateTimeField()
+    a_open_b_name = models.ForeignKey(Bank, on_delete=models.CASCADE,
+                                      related_name='accounts', db_column='a_open_b_name',
+                                      default='')
 
     class Meta:
         db_table = 'account'
@@ -108,10 +111,10 @@ class SavingsAccountRecord(models.Model):
     sar_a_no = models.ForeignKey(SavingsAccount, on_delete=models.CASCADE,
                                  related_name='records', db_column='sar_a_no')
     sar_time = models.DateTimeField()
-    sar_other_a_no = models.CharField(max_length=18, blank=True)
+    sar_other_a_no = models.CharField(max_length=18, blank=True, default='')
     sar_after_balance = models.DecimalField(max_digits=20, decimal_places=2)
     sar_amount = models.DecimalField(max_digits=20, decimal_places=2)
-    sar_type = models.CharField(max_length=20)
+    sar_type = models.CharField(max_length=20, blank=True, default='')
 
     class Meta:
         db_table = 'savings_account_record'
@@ -122,11 +125,11 @@ class CreditAccountRecord(models.Model):
     car_a_no = models.ForeignKey(CreditAccount, on_delete=models.CASCADE,
                                  related_name='records', db_column='car_a_no')
     car_time = models.DateTimeField()
-    car_other_a_no = models.CharField(max_length=18, blank=True)
+    car_other_a_no = models.CharField(max_length=18, blank=True, default='')
     car_after_balance = models.DecimalField(max_digits=20, decimal_places=2)
     car_after_overdraft_amount = models.DecimalField(max_digits=20, decimal_places=2)
     car_amount = models.DecimalField(max_digits=20, decimal_places=2)
-    car_type = models.CharField(max_length=20)
+    car_type = models.CharField(max_length=20, blank=True, default='')
 
     class Meta:
         db_table = 'credit_account_record'
@@ -137,10 +140,10 @@ class LoanAccountRecord(models.Model):
     lar_a_no = models.ForeignKey(LoanAccount, on_delete=models.CASCADE,
                                  related_name='records', db_column='lar_a_no')
     lar_time = models.DateTimeField()
-    lar_other_a_no = models.CharField(max_length=18, blank=True)
+    lar_other_a_no = models.CharField(max_length=18, blank=True, default='')
     lar_after_balance = models.DecimalField(max_digits=20, decimal_places=2)
     lar_amount = models.DecimalField(max_digits=20, decimal_places=2)
-    lar_type = models.CharField(max_length=20)
+    lar_type = models.CharField(max_length=20, blank=True, default='')
 
     class Meta:
         db_table = 'loan_account_record'
@@ -154,7 +157,7 @@ class Loan(models.Model):
     l_deadline = models.DateTimeField(blank=True, null=True)
     l_current_amount_period = models.IntegerField(null=True)
     l_current_amount_total = models.DecimalField(max_digits=20, decimal_places=2)
-    l_status = models.CharField(max_length=20)
+    l_status = models.CharField(max_length=20, blank=True, default='')
 
     class Meta:
         db_table = 'loan'

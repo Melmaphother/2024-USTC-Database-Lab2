@@ -2,10 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.http import HttpRequest
 from django.contrib import messages
-from captcha.image import ImageCaptcha
-from io import BytesIO
-import base64
-import random
+from .gen_captcha import gen_captcha
 
 
 def auth_login(request: HttpRequest):
@@ -15,14 +12,8 @@ def auth_login(request: HttpRequest):
 
     if request.method == 'GET':
         # 生成验证码
-        image = ImageCaptcha(width=120, height=40)
-        code = str(random.randint(1000, 9999))
+        code, image_data_url = gen_captcha()
         request.session['captcha'] = code
-        data = image.generate(code)
-        image_file = BytesIO(data.read())
-        # 转化为base64
-        image_data = base64.b64encode(image_file.getvalue()).decode('utf-8')
-        image_data_url = f"data:image/png;base64,{image_data}"
         return render(
             request,
             'login.html',

@@ -1,5 +1,7 @@
 from django.urls import path
-from . import views, login, customer_register, dashboard
+from django.conf import settings
+from django.conf.urls.static import static
+from . import login, customer_register, dashboard
 
 urlpatterns = [
     path('', login.auth_login, name='init_register'),  # 修改默认页面为注册页面
@@ -12,4 +14,4 @@ urlpatterns = [
     path('dashboard/credit/', dashboard.credit, name='credit'),
     path('dashboard/loan/', dashboard.loan, name='loan'),
     path('dashboard/logout/', dashboard.logout, name='logout'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
