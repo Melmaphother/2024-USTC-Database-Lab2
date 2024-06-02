@@ -48,7 +48,7 @@ DROP TABLE IF EXISTS account;
 CREATE TABLE account(
     `a_no` VARCHAR(18) NOT NULL  COMMENT '账户号' ,
     `a_type` VARCHAR(20)   COMMENT '账号类型;Savings, Credit, Loan' ,
-    `a_currency` VARCHAR(3)   COMMENT '账号货币属性;USD, CHY, EUR, JPY, GBP' ,
+    `a_currency` VARCHAR(3)   COMMENT '账号货币属性;USD, CNY, EUR, JPY, GBP' ,
     `a_balance` DECIMAL(20,2)   COMMENT '账户余额' ,
     `a_open_time` DATETIME   COMMENT '账户开户时间' ,
     PRIMARY KEY (a_no)
