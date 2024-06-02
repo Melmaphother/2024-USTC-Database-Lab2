@@ -1,19 +1,28 @@
-
-h3 {
+.dashboard-header {
     margin: 10px 30px;
+}
+
+.dashboard-header h3 {
     font-size: 24px;
+    color: #003399;
 }
 
 h3.savings-accounts {
     color: #339900;
+    margin: 10px 30px;
+    font-size: 20px;
 }
 
 h3.credit-accounts {
     color: #3366CC;
+    margin: 10px 30px;
+    font-size: 20px;
 }
 
 h3.loan-accounts {
     color: #CC6633;
+    margin: 10px 30px;
+    font-size: 20px;
 }
 
 table {
@@ -33,6 +42,11 @@ th, td {
 
 th {
     color: whitesmoke;
+}
+
+td.empty-row {
+    background-color: #dedede;
+    text-align: center;
 }
 
 .savings-accounts th {

@@ -34,6 +34,7 @@ body, html {
 
 .bank-info span {
     align-self: center;
+    font-weight: bold;
 }
 
 .separator {
@@ -141,6 +142,7 @@ body, html {
 
 .header h1 {
     margin: 0;
+    color: #40A798;
 }
 
 .header img {
