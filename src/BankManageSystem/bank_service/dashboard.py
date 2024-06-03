@@ -10,6 +10,9 @@ from pathlib import Path
 
 @login_required
 def dashboard(request):
+    # 使用 Django 自带的用户认证系统，获取用户的用户名
+    # 而不是使用 session 中的 id_number，这样更加安全
+    # login 的 session 中的 id_number 在重定向后会被清除
     c_id = request.user.username
     customer = models.Customer.objects.get(c_id=c_id)
     dashboard_dict = defaultdict()

@@ -3,121 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <title>个人信息</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f9;
-            margin: 0;
-            color: #333;
-        }
-
-        .form-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 400px;
-        }
-
-        h2 {
-            text-align: center;
-            color: #0066CC;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .required::after {
-            content: " *";
-            color: red;
-        }
-
-        input[type="text"], input[type="password"], textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 8px; /* Increased border-radius */
-        }
-
-        .majority-width {
-            width: 60%;
-            display: inline-block;
-        }
-
-        .minority-width {
-            width: 30%;
-            margin-left: 8%;
-            display: inline-block;
-        }
-
-        input[type="radio"] {
-            width: auto;
-            margin-right: 10px;
-        }
-
-        .radio-label {
-            display: inline-block;
-            margin-right: 2px;
-            padding-top: 10px;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #0066CC;
-            color: white;
-            border: none;
-            border-radius: 8px; /* Increased border-radius */
-            cursor: pointer;
-        }
-
-    </style>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/edit_profile.css' %}">
+    <script src="{% static 'js/dashboard/profile.js' %}"></script>
 </head>
 <body>
 <div class="form-container">
     <h2>个人信息</h2>
     <form action="/edit_profile/" method="post">
         {% csrf_token %}
-        <div class="form-group majority-width">
+        <div class="form-group">
             <label for="name" class="required">姓名</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" value="{{ name }}" required>
+        </div>
+        <div class="form-group majority-width">
+            <label for="file-upload-button">头像</label>
+            <button id="file-upload-button" type="button" class="custom-file-upload-button">
+                上传文件
+            </button>
+            <input type="file" id="file-upload" name="avatar" accept="image/*"/>
+            <span id="file-name-display"></span>
         </div>
         <div class="form-group minority-width">
             <label>性别</label>
-            <label class="radio-label"><input type="radio" name="gender" value="male">男</label>
-            <label class="radio-label"><input type="radio" name="gender" value="female">女</label>
+            <label class="radio-label"><input type="radio" name="gender" value="male"
+                                              {% if gender == "male" %}checked{% endif %}>
+                男
+            </label>
+            <label class="radio-label"><input type="radio" name="gender" value="female"
+                                              {% if gender == "female" %}checked{% endif %}>
+                女
+            </label>
         </div>
         <div class="form-group majority-width">
             <label for="phone">电话</label>
-            <input type="text" id="phone" name="phone" placeholder="请输入11位电话">
+            <input type="tel" id="phone" name="phone" value="{{ phone }}" placeholder="请输入11位电话">
         </div>
         <div class="form-group minority-width">
             <label for="age">年龄</label>
-            <input type="text" id="age" name="age">
+            <input type="text" id="age" name="age" value="{{ age }}">
         </div>
         <div class="form-group">
             <label for="address">地址</label>
-            <textarea id="address" name="address" placeholder="不超过200个字"></textarea>
+            <input type="text" id="address" name="address" value="{{ address }}" placeholder="不超过200个字">
         </div>
-        <button type="submit">保存并登录</button>
+        <button type="submit" class="save-button">保存并登录</button>
         <div>
             {% if messages %}
                 {% for message in messages %}
                     {% if forloop.last %}
-                        <p style="color: red;">{{ message }}</p>
+                        <p class="error-message">{{ message }}</p>
                     {% endif %}
                 {% endfor %}
             {% endif %}

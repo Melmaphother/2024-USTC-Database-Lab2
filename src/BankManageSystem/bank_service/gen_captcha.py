@@ -5,7 +5,7 @@ import random
 
 
 def gen_captcha():
-    image = ImageCaptcha(width=120, height=40)
+    image = ImageCaptcha(width=150, height=45)
     code = str(random.randint(1000, 9999))
     data = image.generate(code)
     image_file = BytesIO(data.read())
