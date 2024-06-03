@@ -28,7 +28,10 @@ function closeAddAccountModal() {
     document.getElementById('pageContent').style.filter = 'none';
 }
 
-function openDepositModal() {
+function openDepositModal(button) {
+    let accountNumber = button.getAttribute('data-account-number');
+    document.getElementById('depositAccountNumber').textContent = accountNumber;
+    document.getElementById('hiddenAccountNumber').value = accountNumber;
     document.getElementById('depositModal').style.display = 'block';
     document.getElementById('pageContent').style.filter = 'blur(5px)';
 }

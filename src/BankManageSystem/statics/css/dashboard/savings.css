@@ -80,6 +80,11 @@
     background-color: #CC6633;
 }
 
+h3.empty-savings-message {
+    margin: 10px 30px;
+    font-size: 20px;
+}
+
 .business-modal-content {
     text-align: center;
     background-color: #fefefe;
@@ -93,7 +98,7 @@
 }
 
 .business-modal-content.add-account-modal-content {
-    height: 28%;
+    height: 58%;
 }
 
 .business-modal-content.transfer-modal-content {
@@ -128,7 +133,7 @@
 }
 
 .button-container button {
-    padding: 14px 20px;
+    padding: 12px 20px;
     margin: 10px;
     border: none;
     border-radius: 8px; /* 圆角 */
@@ -162,11 +167,17 @@
     font-size: 1.15em;
 }
 
-.input-form-group input[type="text"], input[type="password"] {
+.input-form-group input[type="text"], input[type="password"], select {
     width: 80%;
     height: 35px; /* 增加输入框的高度 */
     padding: 8px 12px; /* 调整内边距以适应新的高度 */
     border: 1px solid #ccc; /* 输入框边框 */
     box-sizing: border-box; /* 输入框大小包括边框 */
     border-radius: 8px; /* 边框圆角 */
+}
+
+p.error-message {
+    margin: 5px 30px;
+    text-align: left;
+    color: red;
 }
