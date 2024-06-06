@@ -28,6 +28,17 @@ function closeAddAccountModal() {
     document.getElementById('pageContent').style.filter = 'none';
 }
 
+function openDetailModal(button) {
+    document.getElementById('hiddenDetailAccountNumber').textContent = button.getAttribute('data-detail-account-number');
+    document.getElementById('detailModal').style.display = 'block';
+    document.getElementById('pageContent').style.filter = 'blur(5px)';
+}
+
+function closeDetailModal() {
+    document.getElementById('detailModal').style.display = 'none';
+    document.getElementById('pageContent').style.filter = 'none';
+}
+
 function openDepositModal(button) {
     document.getElementById('hiddenDepositAccountNumber').value = button.getAttribute('data-deposit-account-number');
     document.getElementById('depositModal').style.display = 'block';

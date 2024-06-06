@@ -49,7 +49,13 @@
         <div class="account-details">
             {% for account in SavingsAccount %}
                 <div class="account">
-                    <p class="account-number">账户号：{{ account.a_no }}</p>
+                    <div class="each-account-header">
+                        <p class="account-number">账户号：{{ account.a_no }}</p>
+                        <button onclick="openDetailModal(this)"
+                                data-detail-account-number="{{ account.a_no }}"
+                                class="business-detail-button">明细
+                        </button>
+                    </div>
                     <div class="account-row">
                         <p>余额：{{ account.a_balance }}</p>
                         <p>开户银行：{{ account.a_open_b_name }}</p>
@@ -61,7 +67,8 @@
                         <p></p>
                     </div>
                     <div class="button-row">
-                        <button onclick="openDepositModal(this)" data-deposit-account-number="{{ account.a_no }}"
+                        <button onclick="openDepositModal(this)"
+                                data-deposit-account-number="{{ account.a_no }}"
                                 class="deposit">存款
                         </button>
                         <button onclick="openWithdrawModal(this)"
@@ -147,6 +154,38 @@
                 <button type="button" onclick="closeAddAccountModal()" class="cancel">取消</button>
             </div>
         </form>
+    </div>
+</div>
+<div id="detailModal" class="modal">
+    <div class="business-modal-content detail-modal-content">
+        <h2 class="detail">账户 <span id="hiddenDetailAccountNumber"></span> 明细</h2>
+        <div class="detail-table">
+            <table>
+                <tr>
+                    <th>交易时间</th>
+                    <th>交易类型</th>
+                    <th>交易对方</th>
+                    <th>交易金额</th>
+                    <th>交易后余额</th>
+                </tr>
+                {% for detail in details %}
+                    <tr>
+                        <td>{{ detail.d_time }}</td>
+                        <td>{{ detail.d_type }}</td>
+                        <td>{{ detail.d_other_a_no }}</td>
+                        <td>{{ detail.d_amount }}</td>
+                        <td>{{ detail.d_balance }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5" class="empty-row">没有交易明细</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="detail-button-container">
+            <button onclick="closeDetailModal()" class="confirm">确认</button>
+        </div>
     </div>
 </div>
 <div id="depositModal" class="modal">

@@ -30,6 +30,78 @@
     align-items: flex-start;
 }
 
+.each-account-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.each-account-header .account-number {
+    flex-grow: 1;
+}
+
+.each-account-header .business-detail-button {
+    padding: 8px 16px;
+    background-color: #0066CC;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    max-width: 100px;
+}
+
+.detail-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.detail-table th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+    background-color: white;
+}
+
+.detail-table th {
+    background-color: #0066CC;
+    color: whitesmoke;
+}
+
+.detail-table tr:nth-child(odd) td {
+    background-color: #2288EE;
+}
+
+.detail-table td.empty-row {
+    background-color: #dedede;
+    text-align: center;
+}
+
+.detail-button-container {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+
+.detail-button-container button {
+    width: 50%;
+    background-color: #CC3333; /* 确认按钮的颜色 */
+    color: white;
+    padding: 12px 20px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 8px; /* 圆角 */
+    cursor: pointer;
+    font-size: 16px; /* 文本大小 */
+}
+
 .account-number {
     margin: 5px 0;
     font-size: 18px; /* 略微放大字体 */
@@ -99,6 +171,10 @@ h3.empty-savings-message {
 
 .business-modal-content.add-account-modal-content {
     height: 58%;
+}
+
+.business-modal-content .detail-modal-content {
+    overflow: auto;
 }
 
 .business-modal-content.withdraw-modal-content {
