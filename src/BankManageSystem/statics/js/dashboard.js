@@ -29,9 +29,7 @@ function closeAddAccountModal() {
 }
 
 function openDepositModal(button) {
-    let accountNumber = button.getAttribute('data-account-number');
-    document.getElementById('depositAccountNumber').textContent = accountNumber;
-    document.getElementById('hiddenAccountNumber').value = accountNumber;
+    document.getElementById('hiddenDepositAccountNumber').value = button.getAttribute('data-deposit-account-number');
     document.getElementById('depositModal').style.display = 'block';
     document.getElementById('pageContent').style.filter = 'blur(5px)';
 }
@@ -41,7 +39,10 @@ function closeDepositModal() {
     document.getElementById('pageContent').style.filter = 'none';
 }
 
-function openWithdrawModal() {
+function openWithdrawModal(button) {
+    document.getElementById('hiddenWithdrawAccountNumber').value = button.getAttribute('data-withdraw-account-number');
+    document.getElementById('hiddenWithdrawBalance').value = button.getAttribute('data-withdraw-balance');
+    document.getElementById('hiddenWithdrawLimit').value = button.getAttribute('data-withdraw-limit');
     document.getElementById('withdrawModal').style.display = 'block';
     document.getElementById('pageContent').style.filter = 'blur(5px)';
 }
@@ -51,7 +52,10 @@ function closeWithdrawModal() {
     document.getElementById('pageContent').style.filter = 'none';
 }
 
-function openTransferModal() {
+function openTransferModal(button) {
+    document.getElementById('hiddenTransferAccountNumber').value = button.getAttribute('data-transfer-account-number');
+    document.getElementById('hiddenTransferBalance').value = button.getAttribute('data-transfer-balance');
+    document.getElementById('hiddenTransferLimit').value = button.getAttribute('data-transfer-limit');
     document.getElementById('transferModal').style.display = 'block';
     document.getElementById('pageContent').style.filter = 'blur(5px)';
 }

@@ -101,8 +101,12 @@ h3.empty-savings-message {
     height: 58%;
 }
 
+.business-modal-content.withdraw-modal-content {
+    height: 52%;
+}
+
 .business-modal-content.transfer-modal-content {
-    height: 46%;
+    height: 58%;
 }
 
 .business-modal-content .h3 {
@@ -174,6 +178,14 @@ h3.empty-savings-message {
     border: 1px solid #ccc; /* 输入框边框 */
     box-sizing: border-box; /* 输入框大小包括边框 */
     border-radius: 8px; /* 边框圆角 */
+}
+
+.input-form-group input[readonly] {
+    background-color: #f8f8f8;
+}
+
+#hiddenAccountNumber {
+    font-weight: bolder;
 }
 
 p.error-message {

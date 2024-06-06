@@ -51,7 +51,7 @@
                 <div class="account">
                     <p class="account-number">账户号：{{ account.a_no }}</p>
                     <div class="account-row">
-                        <p>余额：{{ account.formatted_balance }}</p>
+                        <p>余额：{{ account.a_balance }}</p>
                         <p>开户银行：{{ account.a_open_b_name }}</p>
                         <p>开户时间：{{ account.a_open_time }}</p>
                     </div>
@@ -61,11 +61,21 @@
                         <p></p>
                     </div>
                     <div class="button-row">
-                        <button onclick="openDepositModal(this)" data-account-number="{{ account.a_no }}"
+                        <button onclick="openDepositModal(this)" data-deposit-account-number="{{ account.a_no }}"
                                 class="deposit">存款
                         </button>
-                        <button onclick="openWithdrawModal()" class="withdraw">取款</button>
-                        <button onclick="openTransferModal()" class="transfer">转账</button>
+                        <button onclick="openWithdrawModal(this)"
+                                data-withdraw-account-number="{{ account.a_no }}"
+                                data-withdraw-balance="{{ account.a_balance }}"
+                                data-withdraw-limit="{{ account.sa_withdraw_limit }}"
+                                class="withdraw">取款
+                        </button>
+                        <button onclick="openTransferModal(this)"
+                                data-transfer-account-number="{{ account.a_no }}"
+                                data-transfer-balance="{{ account.a_balance }}"
+                                data-transfer-limit="{{ account.sa_withdraw_limit }}"
+                                class="transfer">转账
+                        </button>
                     </div>
                 </div>
             {% empty %}
@@ -125,12 +135,12 @@
                 </select>
             </div>
             <div class="input-form-group">
-                <label for="password">设置密码：</label>
-                <input type="password" id="password" name="password" placeholder="密码请设置为6位" required>
+                <label for="set-password">设置密码：</label>
+                <input type="password" id="set-password" name="password" placeholder="密码请设置为6位" required>
             </div>
             <div class="input-form-group">
-                <label for="confirm_password">确认密码：</label>
-                <input type="password" id="confirm_password" name="confirm_password" required>
+                <label for="set-confirm_password">确认密码：</label>
+                <input type="password" id="set-confirm_password" name="confirm_password" required>
             </div>
             <div class="button-container">
                 <button type="submit" class="confirm">确认添加</button>
@@ -142,17 +152,19 @@
 <div id="depositModal" class="modal">
     <div class="business-modal-content">
         <h2 class="deposit">存款</h2>
-        <h3>账户号：<span id="depositAccountNumber"></span></h3>
         <form action="/savings_account_deposit/" method="post">
             {% csrf_token %}
-            <input type="hidden" id="hiddenAccountNumber" name="a_no">
             <div class="input-form-group">
-                <label for="amount">存款金额：</label>
-                <input type="text" id="amount" name="amount" required>
+                <label for="hiddenDepositAccountNumber">账户号：</label>
+                <input type="text" id="hiddenDepositAccountNumber" name="a_no" readonly>
             </div>
             <div class="input-form-group">
-                <label for="password">账户密码：</label>
-                <input type="password" id="password" name="password" required>
+                <label for="deposit-amount">存款金额：</label>
+                <input type="text" id="deposit-amount" name="amount" required>
+            </div>
+            <div class="input-form-group">
+                <label for="deposit-password">账户密码：</label>
+                <input type="password" id="deposit-password" name="password" required>
             </div>
             <div class="button-container">
                 <button type="submit" class="confirm">确认</button>
@@ -162,18 +174,29 @@
     </div>
 </div>
 <div id="withdrawModal" class="modal">
-    <div class="business-modal-content">
+    <div class="business-modal-content withdraw-modal-content">
         <h2 class="withdraw">取款</h2>
-        <h3>账户号：1234</h3>
-        <form action="" method="post">
+        <form action="/savings_account_withdraw/" method="post">
             {% csrf_token %}
             <div class="input-form-group">
-                <label for="amount">取款金额：</label>
-                <input type="text" id="amount" name="amount" required>
+                <label for="hiddenWithdrawAccountNumber">账户号：</label>
+                <input type="text" id="hiddenWithdrawAccountNumber" name="a_no" readonly>
             </div>
             <div class="input-form-group">
-                <label for="password">账户密码：</label>
-                <input type="password" id="password" name="password" required>
+                <label for="hiddenWithdrawBalance">账户余额：</label>
+                <input type="text" id="hiddenWithdrawBalance" name="balance" disabled>
+            </div>
+            <div class="input-form-group">
+                <label for="hiddenWithdrawLimit">提款额度：</label>
+                <input type="text" id="hiddenWithdrawLimit" name="limit" disabled>
+            </div>
+            <div class="input-form-group">
+                <label for="withdraw-amount">取款金额：</label>
+                <input type="text" id="withdraw-amount" name="amount" required>
+            </div>
+            <div class="input-form-group">
+                <label for="withdraw-password">账户密码：</label>
+                <input type="password" id="withdraw-password" name="password" required>
             </div>
             <div class="button-container">
                 <button type="submit" class="confirm">确认</button>
@@ -185,20 +208,31 @@
 <div id="transferModal" class="modal">
     <div class="business-modal-content transfer-modal-content">
         <h2 class="transfer">转账</h2>
-        <h3>账户号：1234</h3>
-        <form action="" method="post">
+        <form action="/savings_account_transfer/" method="post">
             {% csrf_token %}
             <div class="input-form-group">
-                <label for="amount">转账金额：</label>
-                <input type="text" id="amount" name="amount" required>
+                <label for="hiddenTransferAccountNumber">账户号：</label>
+                <input type="text" id="hiddenTransferAccountNumber" name="a_no" readonly>
             </div>
             <div class="input-form-group">
-                <label for="target">目标账户号：</label>
-                <input type="text" id="target" name="target" required>
+                <label for="hiddenTransferBalance">账户余额：</label>
+                <input type="text" id="hiddenTransferBalance" name="balance" disabled>
             </div>
             <div class="input-form-group">
-                <label for="password">账户密码：</label>
-                <input type="password" id="password" name="password" required>
+                <label for="hiddenTransferLimit">提款额度：</label>
+                <input type="text" id="hiddenTransferLimit" name="limit" disabled>
+            </div>
+            <div class="input-form-group">
+                <label for="transfer-target">目标账户号：</label>
+                <input type="text" id="transfer-target" name="target" required>
+            </div>
+            <div class="input-form-group">
+                <label for="transfer-amount">转账金额：</label>
+                <input type="text" id="transfer-amount" name="amount" required>
+            </div>
+            <div class="input-form-group">
+                <label for="transfer-password">账户密码：</label>
+                <input type="password" id="transfer-password" name="password" required>
             </div>
             <div class="button-container">
                 <button type="submit" class="confirm">确认</button>
