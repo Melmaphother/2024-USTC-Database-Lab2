@@ -61,6 +61,7 @@ class Account(models.Model):
                                       related_name='accounts', db_column='a_open_b_name',
                                       default='')
     a_password_hash = models.CharField(max_length=128, blank=True, default='')
+    a_total = models.DecimalField(max_digits=20, decimal_places=2, default=0)
 
     class Meta:
         db_table = 'account'
