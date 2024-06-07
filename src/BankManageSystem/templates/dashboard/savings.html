@@ -51,6 +51,8 @@
                 <div class="account">
                     <div class="each-account-header">
                         <p class="account-number">账户号：{{ account.a_no }}</p>
+                        {% csrf_token %}
+                        <input type="hidden" id="csrfToken" value="{{ csrf_token }}">
                         <button onclick="openDetailModal(this)"
                                 data-detail-account-number="{{ account.a_no }}"
                                 class="business-detail-button">明细
@@ -161,26 +163,18 @@
         <h2 class="detail">账户 <span id="hiddenDetailAccountNumber"></span> 明细</h2>
         <div class="detail-table">
             <table>
+                <thead>
                 <tr>
                     <th>交易时间</th>
                     <th>交易类型</th>
-                    <th>交易对方</th>
                     <th>交易金额</th>
                     <th>交易后余额</th>
+                    <th>对方账户</th>
                 </tr>
-                {% for detail in details %}
-                    <tr>
-                        <td>{{ detail.d_time }}</td>
-                        <td>{{ detail.d_type }}</td>
-                        <td>{{ detail.d_other_a_no }}</td>
-                        <td>{{ detail.d_amount }}</td>
-                        <td>{{ detail.d_balance }}</td>
-                    </tr>
-                {% empty %}
-                    <tr>
-                        <td colspan="5" class="empty-row">没有交易明细</td>
-                    </tr>
-                {% endfor %}
+                </thead>
+                <tbody>
+                <!-- 动态内容将会插入这里 -->
+                </tbody>
             </table>
         </div>
         <div class="detail-button-container">

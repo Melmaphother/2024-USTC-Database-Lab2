@@ -52,12 +52,19 @@
     max-width: 100px;
 }
 
+.detail-table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* 确保有足够的宽度 */
+}
+
 .detail-table table {
-    width: 100%;
+    width: 90%;
     border-collapse: collapse;
-    margin: 20px 0;
+    margin: 20px auto;
     border-radius: 8px;
-    overflow: hidden;
+    overflow: hidden;  /* 确保所有内容都被包含在圆角内 */
 }
 
 .detail-table th, td {
@@ -68,12 +75,12 @@
 }
 
 .detail-table th {
-    background-color: #0066CC;
+    background-color: #3366CC;
     color: whitesmoke;
 }
 
 .detail-table tr:nth-child(odd) td {
-    background-color: #2288EE;
+    background-color: #abe7ef;
 }
 
 .detail-table td.empty-row {
@@ -173,7 +180,9 @@ h3.empty-savings-message {
     height: 58%;
 }
 
-.business-modal-content .detail-modal-content {
+.business-modal-content.detail-modal-content {
+    width: 50%;
+    height: 50%;
     overflow: auto;
 }
 

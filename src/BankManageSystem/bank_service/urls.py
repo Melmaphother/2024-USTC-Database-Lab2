@@ -29,5 +29,7 @@ urlpatterns = ([
                         name='savings_account_withdraw'),
                    path('savings_account_transfer/', savings_account.savings_account_transfer,
                         name='savings_account_transfer'),
+                   path('savings_account_details/', savings_account.savings_account_details,
+                        name='savings_account_details'),
                ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
                )

@@ -33,12 +33,13 @@ def savings(request):
             sa_no=account['a_no']
         )
         formatted_balance = f"{account['a_currency']} {account['a_balance']}"
+        formatted_time = account['a_open_time'].strftime('%Y-%m-%d %H:%M:%S')
         formatted_rate = f"{savings_account_details.sa_rate * 100}%"
         formatted_withdraw_limit = f"{account['a_currency']} {savings_account_details.sa_withdraw_limit}"
         account_info = {
             'a_no': account['a_no'],
             'a_balance': formatted_balance,
-            'a_open_time': account['a_open_time'],
+            'a_open_time': formatted_time,
             'a_open_b_name': account['a_open_b_name'],
             'sa_rate': formatted_rate,
             'sa_withdraw_limit': formatted_withdraw_limit
