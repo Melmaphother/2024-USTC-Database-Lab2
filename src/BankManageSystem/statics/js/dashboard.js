@@ -15,7 +15,7 @@ function closeLogoutModal() {
 function logout() {
     // 执行登出操作，例如清除session、重定向等
     // 这里只是示例，可能需要实际的服务器请求
-    window.location.href = '/login'; // 或任何实际的登出处理路径
+    window.location.href = '/'; // 或任何实际的登出处理路径
 }
 
 function openAddAccountModal() {

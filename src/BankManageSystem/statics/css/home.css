@@ -1,0 +1,127 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+}
+
+.left-panel {
+    width: 67%;
+    background-color: #FFFFDC; /* 淡黄色背景 */
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.right-panel {
+    width: 33%;
+    height: 100%;
+    background-color: #FFFFFF; /* 白色背景 */
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    flex: 8; /* 占据80%的空间 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+
+.bottom {
+    flex: 2; /* 占据20%的空间 */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    color: #FF8C00; /* 橙色 */
+    margin: 0;
+}
+
+.slogan {
+    margin-left: 10px; /* 确保标语在左侧 */
+}
+
+.slogan .large {
+    font-size: 24px;
+    font-weight: bolder;
+    color: #FF8C00; /* 主标题的橙色 */
+}
+
+.slogan .small {
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFAE33; /* 淡橙色 */
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%; /* 使按钮铺满容器宽度 */
+}
+
+button {
+    background-color: #0066cc;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 5px;
+    width: 190px; /* 按钮宽度 */
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px; /* 底部间隔 */
+}
+
+.footer img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; /* 圆形Logo */
+    margin-right: 10px;
+}
+
+.footer p {
+    font-size: 18px; /* 名称字体大小 */
+    color: #40A798; /* 名称颜色 */
+}
+
+.links {
+    margin-top: 10px;
+    font-size: 16px; /* 链接字体大小 */
+}
+
+.links a {
+    color: blue;
+    text-decoration: none;
+    margin-left: 5px;
+    margin-right: 5px;
+}

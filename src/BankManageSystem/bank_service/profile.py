@@ -35,6 +35,7 @@ def profile(request):
         # 保存头像文件到对应位置
         # 使用用户的 id_avatar 作为文件名
         if upload_avatar:
+            print("allowed")
             # 不允许头像大于 1M
             if upload_avatar.size > 1024 * 1024:
                 messages.error(request, '头像图片大小不能超过 1MB')

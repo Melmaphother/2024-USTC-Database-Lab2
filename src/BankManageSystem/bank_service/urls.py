@@ -8,13 +8,17 @@ from . import (
     profile,
     savings,
     credit,
-    loan
+    loan,
+    home,
+    terms
 )
 from .account_utils import savings_account
 
 urlpatterns = ([
-                   path('', login.auth_login, name='init_register'),  # 修改默认页面为注册页面
+                   path('', home.home, name='home'),
                    path('login/', login.auth_login, name='login'),
+                   path('terms/', terms.terms, name='terms'),
+                   path('privacy/', terms.privacy, name='privacy'),
                    path('customer_register/', customer_register.customer_register, name='customer_register'),
                    path('edit_profile/', customer_register.edit_profile, name='edit_profile'),
                    path('dashboard/', dashboard.dashboard, name='dashboard'),

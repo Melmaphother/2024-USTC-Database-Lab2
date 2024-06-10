@@ -1,59 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>Simple Form</title>
+    <title>USTC 银行管理系统</title>
+    <base href="/">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
 <body>
-<form>
-    <p>
-        <label for="text-input">文本框:</label>
-        <input type="text" id="text-input" name="text-input">
-    </p>
-    <p>
-        <label>单选框:</label>
-        <input type="radio" id="radio1" name="radio" value="option1" checked>
-        <label for="radio1">选项1</label>
-        <input type="radio" id="radio2" name="radio" value="option2">
-        <label for="radio2">选项2</label>
-    </p>
-    <p>
-        <label>复选框:</label>
-        <input type="checkbox" id="checkbox1" name="checkbox1">
-        <label for="checkbox1">复选1</label>
-        <input type="checkbox" id="checkbox2" name="checkbox2">
-        <label for="checkbox2">复选2</label>
-    </p>
-    <p>
-        <label for="password-input">密码框:</label>
-        <input type="password" id="password-input" name="password-input">
-    </p>
-    <p>
-        <label for="file-input">上传文件:</label>
-        <input type="file" id="file-input" name="file-input">
-    </p>
-    <p>
-        <label for="textarea"><strong>文本域:</strong></label>
-        <textarea id="textarea" name="textarea"></textarea>
-    </p>
-    <p>
-        <label for="select">下拉框</label>
-        <select id="select" name="select">
-            <option value="option1">选项1</option>
-            <option value="option2">选项2</option>
-            <option value="option3" selected>选项3</option>
-        </select>
-    </p>
-    <p>
-        <input type="submit" value="提交">
-    </p>
-    <p>
-        <button type="submit">
-            <del>提交</del>
-        </button>
-        <button type="button"><em>按钮</em></button>
-        <button type="reset"><q>重置</q></button>
-    </p>
-</form>
+<div class="container">
+    <div class="left-panel">
+        <h1>USTC 银行管理系统</h1>
+        <div class="slogan">
+            <p class="large">让这里</p>
+            <p class="small">作为您远航的起点</p>
+            <p class="small">也成为您扬帆的护佑</p>
+        </div>
+    </div>
+    <div class="right-panel">
+        <div class="content">
+            <h2>快速开始！</h2>
+            <div class="buttons">
+                <button onclick="window.location.href='/login';">登录</button>
+                <button onclick="window.location.href='/customer_register';">注册</button>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="footer">
+                {% load static %}
+                <img src="{% static 'image/logo.png' %}" alt="Bank Logo">
+                <p>Melmaphother</p>
+            </div>
+            <div class="links">
+                <a href="/terms">使用条款</a> | <a href="/privacy">隐私政策</a>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -12,17 +12,9 @@
     <h2>个人信息</h2>
     <form action="/edit_profile/" method="post">
         {% csrf_token %}
-        <div class="form-group">
+        <div class="form-group majority-width">
             <label for="name" class="required">姓名</label>
             <input type="text" id="name" name="name" value="{{ name }}" required>
-        </div>
-        <div class="form-group majority-width">
-            <label for="file-upload-button">头像</label>
-            <button id="file-upload-button" type="button" class="custom-file-upload-button">
-                上传文件
-            </button>
-            <input type="file" id="file-upload" name="avatar" accept="image/*"/>
-            <span id="file-name-display"></span>
         </div>
         <div class="form-group minority-width">
             <label>性别</label>

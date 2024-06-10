@@ -4,7 +4,6 @@ from django.contrib.auth import authenticate, login
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.core.files.base import ContentFile
-from django.http import HttpRequest
 from django.contrib import messages
 from .gen_captcha import gen_captcha
 from .models import Customer
@@ -12,7 +11,7 @@ from collections import defaultdict
 from pathlib import Path
 
 
-def customer_register(request: HttpRequest):
+def customer_register(request):
     if request.method == 'GET':
         register_dict = defaultdict()
         # 如果 session 中有上次登录的信息，直接填入
@@ -102,7 +101,7 @@ def customer_register(request: HttpRequest):
         return redirect('edit_profile')
 
 
-def edit_profile(request: HttpRequest):
+def edit_profile(request):
     # 如果没有注册，跳转到注册页面
     if not request.session.get('is_registered', False):
         return redirect('customer_register')
@@ -157,6 +156,7 @@ def edit_profile(request: HttpRequest):
         fs = FileSystemStorage(location=Path.joinpath(settings.MEDIA_ROOT, 'avatar'))
         avatar_name = f'{c_id}_avatar.jpg'
         if upload_avatar:
+            print("already upload avatar")
             # 不允许头像大于 1M
             if upload_avatar.size > 1024 * 1024:
                 messages.error(request, '头像图片大小不能超过 1MB')
@@ -168,6 +168,7 @@ def edit_profile(request: HttpRequest):
                 fs.delete(avatar_name)
             fs.save(avatar_name, upload_avatar)
         else:
+            print("not upload avatar")
             # 如果用户没有上传头像，那么使用 static/image/logo.png 作为默认头像
             # 仍然保存为 f'{c_id}_avatar.jpg'
             default_avatar_path = Path.joinpath(settings.STATICFILES_DIRS[0], 'image/logo.png')
