@@ -56,3 +56,96 @@
     - 在浏览器中输入 `localhost:8000`，即可查看项目
 
 ## 项目展示
+
+## 项目细节
+
+### 文件结构
+
+```bash
+│  .gitignore
+│  LICENSE
+│  README.md
+│  requirements.txt
+│
+├─assets
+│
+├─design
+│  │  .gitignore
+│  │
+│  ├─backend
+│  │
+│  └─frontend
+│
+├─docs
+│  │  Demand Analysis.md
+│  │  Design Analysis.md
+│  │  Exp Manual.pdf
+│  │  Project Log.md
+│  │
+│  └─Django Notes
+│
+└─src
+    ├─BankManageSystem
+    │  │  .gitignore
+    │  │  manage.py
+    │  │
+    │  ├─BankManageSystem
+    │  │
+    │  ├─bank_service
+    │  │  │
+    │  │  ├─account_utils
+    │  │  │
+    │  │  └─migrations
+    │  │
+    │  ├─statics
+    │  │  ├─css
+    │  │  │  │  customer_register.css
+    │  │  │  │  dashboard.css
+    │  │  │  │  edit_profile.css
+    │  │  │  │  home.css
+    │  │  │  │  login.css
+    │  │  │  │  terms.css
+    │  │  │  │
+    │  │  │  └─dashboard
+    │  │  │          credit.css
+    │  │  │          dashboard.css
+    │  │  │          loan.css
+    │  │  │          profile.css
+    │  │  │          savings.css
+    │  │  │
+    │  │  ├─image
+    │  │  │      logo.png
+    │  │  │
+    │  │  └─js
+    │  │      │  dashboard.js
+    │  │      │
+    │  │      └─dashboard
+    │  │              credit.js
+    │  │              dashboard.js
+    │  │              loan.js
+    │  │              profile.js
+    │  │              savings.js
+    │  │
+    │  └─templates
+    │      │  customer_register.html
+    │      │  edit_profile.html
+    │      │  home.html
+    │      │  login.html
+    │      │  privacy.html
+    │      │  terms.html
+    │      │
+    │      └─dashboard
+    │              credit.html
+    │              dashboard.html
+    │              loan.html
+    │              profile.html
+    │              savings.html
+    │
+    └─sql_src
+            create tables in bank manage system.sql
+            savings_account_add.sql
+            savings_account_deposit.sql
+            savings_account_transfer.sql
+            savings_account_withdraw.sql
+            trigger_savings_account_total.sql
+```
