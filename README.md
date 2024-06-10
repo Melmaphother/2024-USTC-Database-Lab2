@@ -1,6 +1,6 @@
 # 2024-USTC-Database-Lab2
 
-<img src="logo.png" alt="Logo" style="zoom: 25%;" />
+<img src="assets/logo.png" alt="Logo" style="zoom: 25%;" />
 
 ## 基本信息
 
@@ -8,7 +8,7 @@
 
 2. 本项目基于 Django 框架，以 MySQL 为后端，以 HTML、CSS、JavaScript 为前端。
 
-3. 本文档主要包括项目的快速开始、项目细节，查看更多说明请查看 docs 文件夹。
+3. 本文档主要包括项目的快速开始、项目展示、项目细节，查看更多说明请查看 docs 文件夹。
    | 文件 | 链接 |
    | --- | --- |
    | 需求分析 | [Demand Analysis](docs/Demand%20Analysis.md) |
@@ -31,28 +31,28 @@
    | PDManer 元数建模 | 4.9    | [pdmaner](https://gitee.com/robergroup/pdmaner)   |
 
 2. 简单配置流程
-   - clone 本项目
-     ```bash
-     $ git clone https://github.com/Melmaphother/2024-USTC-Database-Lab2.git
-     ```
-   - 安装 MySQL，创建数据库 `bank_manage_system`，导入 `src/sql_src/init_database.sql` 文件
-     ```bash
-     $ mysql -u username -p password
-     $ create database db_name default charset=UTF8MB4
-     ```
-   - 安装 Anaconda，搭建 Python 环境
-     ```bash
-     $ conda create -n django python=3.11
-     $ conda activate django
-     ```
-   - 安装必要的包
-     ```bash
-     $ pip install -r requirements.txt
-     ```
-   - 进入目录 `src/BankManageSystem`，运行 Django 项目
-     ```bash
-     $ python manage.py runserver
-     ```
-   - 在浏览器中输入 `localhost:8000`，即可查看项目
+    - clone 本项目
+      ```bash
+       $ git clone https://github.com/Melmaphother/2024-USTC-Database-Lab2.git
+      ```
+    - 安装 MySQL，创建数据库 `bank_manage_system`，导入 `src/sql_src/init_database.sql` 文件
+      ```bash
+      $ mysql -u username -p password
+      $ create database db_name default charset=UTF8MB4
+      ```
+    - 安装 Anaconda，搭建 Python 环境
+      ```bash
+      $ conda create -n django python=3.11
+      $ conda activate django
+      ```
+    - 安装必要的包
+      ```bash
+      $ pip install -r requirements.txt
+      ```
+    - 进入目录 `src/BankManageSystem`，运行 Django 项目
+      ```bash
+      $ python manage.py runserver
+      ```
+    - 在浏览器中输入 `localhost:8000`，即可查看项目
 
-## 项目细节
+## 项目展示
