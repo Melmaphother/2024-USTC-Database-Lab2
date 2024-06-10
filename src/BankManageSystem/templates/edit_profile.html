@@ -29,7 +29,8 @@
         </div>
         <div class="form-group majority-width">
             <label for="phone">电话</label>
-            <input type="tel" id="phone" name="phone" value="{{ phone }}" placeholder="请输入11位电话">
+            <input type="tel" id="phone" name="phone" pattern="\d{11}" title="电话号码应为11位数字" value="{{ phone }}"
+                   placeholder="请输入11位电话">
         </div>
         <div class="form-group minority-width">
             <label for="age">年龄</label>

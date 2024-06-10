@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
     <link rel="stylesheet" href="{% static 'css/dashboard/profile.css' %}">
     <script src="{% static 'js/dashboard.js' %}"></script>
+    <script src="{% static 'js/alert_message.js' %}"></script>
     <script src="{% static 'js/dashboard/profile.js' %}"></script>
 </head>
 <body>
@@ -33,6 +34,15 @@
         </div>
         <div class="profile-header">
             <h3>个人主页</h3>
+        </div>
+        <div>
+            {% if messages %}
+                {% for message in messages %}
+                    {% if forloop.last %}
+                        <p class="error-message">{{ message }}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
         </div>
         <form action="/dashboard/profile/" method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -63,7 +73,8 @@
             </div>
             <div class="form-group majority-width">
                 <label for="phone">电话</label>
-                <input type="tel" id="phone" name="phone" value="{{ c_phone }}" placeholder="请输入11位电话">
+                <input type="tel" id="phone" name="phone" pattern="\d{11}" title="电话号码应为11位数字"
+                       value="{{ c_phone }}" placeholder="请输入11位电话">
             </div>
             <div class="form-group minority-width">
                 <label for="age">年龄</label>
@@ -74,15 +85,6 @@
                 <input type="text" id="address" name="address" value="{{ c_addr }}" placeholder="不超过200个字">
             </div>
             <button type="submit" class="save-button">确认修改</button>
-            <div>
-                {% if messages %}
-                    {% for message in messages %}
-                        {% if forloop.last %}
-                            <p class="error-message">{{ message }}</p>
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-            </div>
         </form>
     </div>
 </div>

@@ -31,121 +31,196 @@
    | PDManer 元数建模 | 4.9    | [pdmaner](https://gitee.com/robergroup/pdmaner)   |
 
 2. 简单配置流程
-    - clone 本项目
-      ```bash
-       $ git clone https://github.com/Melmaphother/2024-USTC-Database-Lab2.git
-      ```
-    - 安装 MySQL，创建数据库 `bank_manage_system`，导入 `src/sql_src/init_database.sql` 文件
-      ```bash
-      $ mysql -u username -p password
-      $ create database db_name default charset=UTF8MB4
-      ```
-    - 安装 Anaconda，搭建 Python 环境
-      ```bash
-      $ conda create -n django python=3.11
-      $ conda activate django
-      ```
-    - 安装必要的包
-      ```bash
-      $ pip install -r requirements.txt
-      ```
-    - 进入目录 `src/BankManageSystem`，运行 Django 项目
-      ```bash
-      $ python manage.py runserver
-      ```
-    - 在浏览器中输入 `localhost:8000`，即可查看项目
+   - clone 本项目：
+     ```bash
+      $ git clone https://github.com/Melmaphother/2024-USTC-Database-Lab2.git
+     ```
+     
+   - 安装 MySQL，创建数据库 `bank_manage_system`：
+     ```bash
+     $ mysql -u username -p password
+     $ create database db_name default charset=UTF8MB4
+     ```
+     
+   - 进入目录 `src/BankManageSystem/BankManageSystem/settings.py`，修改数据库配置：
+     ```python
+     DATABASES = {
+         'default': {
+             'ENGINE': 'django.db.backends.mysql',
+             'NAME': 'bank_manage_system',
+             'USER': 'your username',
+             'PASSWORD': 'your password',
+             'HOST': 'localhost',
+             'PORT': '3306',
+           }
+       }
+     ```
+     
+   - 安装 Anaconda，搭建 Python 环境：
+     ```bash
+     $ conda create -n django python=3.11
+     $ conda activate django
+     ```
+     
+   - 安装必要的包：
+     ```bash
+     $ pip install -r requirements.txt
+     ```
+     
+   - 进入目录 `src/BankManageSystem`，创建数据表：
+     
+     ```bash
+     $ python manage.py migrate
+     ```
+     
+   - 在数据库 IDE（DataGrip、MySQL Workbench）中，运行 `src/sql_src/init_database.sql`：
+     
+     这一步是为了避免外键依赖导致业务操作失败。
+     
+   - 启动本地服务器：
+     
+     ```bash
+     $ python manage.py runserver [localhost:8000]
+     ```
+     
+   - 在浏览器中输入 `localhost:8000`，即可查看项目：
+     为了保证使用体验，建议使用 **Chrome 或 Edge 浏览器**，将窗口**缩放为 125%** 体验更佳。
 
 ## 项目展示
+
+1. 欢迎界面
+
+   <img src="assets/welcome.png" alt="Welcome" style="zoom: 50%;" />
+
+2. 注册界面
+
+   <img src="assets/register.png" alt="Register" style="zoom: 50%;" />
+
+3. 注册后填写个人信息
+
+   <img src="assets/edit_profile.png" alt="Register Info" style="zoom: 50%;" />
+
+4. 登录界面
+
+   <img src="assets/login.png" alt="Login" style="zoom: 50%;" />
+
+5. 主页
+
+   <img src="assets/dashboard.png" alt="Dashboard" style="zoom: 50%;" />
+
+6. 个人主页
+
+   <img src="assets/profile.png" alt="Profile" style="zoom: 50%;" />
+
+7. 添加账户
+
+   不跳转 url，通过背景模糊 + 弹窗的形式，动态展示添加账户页面，符合用户直觉。
+
+   <img src="assets/add_savings_account.png" alt="Add Account" style="zoom: 50%;" />
+
+8. 账户详情
+
+   <img src="assets/savings_account.png" alt="Account" style="zoom: 50%;" />
+
+9. 存款
+
+   <img src="assets/savings_account_deposit.png" alt="Deposit" style="zoom: 50%;" />
+
+10. 取款
+
+    <img src="assets/savings_account_withdraw.png" alt="Withdraw" style="zoom: 50%;" />
+
+11. 转账
+
+    <img src="assets/savings_account_transfer.png" alt="Transfer" style="zoom: 50%;" />
+
+12. 查看明细
+
+    <img src="assets/savings_account_details.png" alt="Details" style="zoom: 50%;" />
+
+13. 表单填写错误处理
+    刷新验证码，保存未出错的表单信息，避免重复填写，提示错误信息。
+
+    <img src="assets/error_form.png" alt="Form Error" style="zoom: 50%;" />
+
+14. 账户操作提示信息
+    以浏览器自带 alert 提示操作成功或失败的信息。
+
+    <img src="assets/error_message.png" alt="Alert" style="zoom: 50%;" />
 
 ## 项目细节
 
 ### 文件结构
 
 ```bash
-│  .gitignore
+2024-USTC-Database-Lab2
 │  LICENSE
 │  README.md
 │  requirements.txt
 │
-├─assets
+├─assets  README.md 中的图片
 │
 ├─design
-│  │  .gitignore
 │  │
-│  ├─backend
+│  ├─backend  后端设计，包括数据库建模、API 设计、ER 图
 │  │
-│  └─frontend
+│  └─frontend  前端设计，包括页面设计
 │
-├─docs
-│  │  Demand Analysis.md
-│  │  Design Analysis.md
-│  │  Exp Manual.pdf
-│  │  Project Log.md
+├─docs  项目文档，包括需求分析、设计分析、项目日志、实验手册
 │  │
-│  └─Django Notes
+│  └─Django Notes  Django 笔记
 │
 └─src
-    ├─BankManageSystem
-    │  │  .gitignore
-    │  │  manage.py
+    ├─BankManageSystem  Django 项目
+    │  │  manage.py  Django 项目启动文件
     │  │
-    │  ├─BankManageSystem
+    │  ├─BankManageSystem  Django 项目配置文件，包括路由、数据库配置
     │  │
-    │  ├─bank_service
+    │  ├─bank_service  银行服务，包括主页、注册、登录、账户的视图函数
     │  │  │
-    │  │  ├─account_utils
-    │  │  │
-    │  │  └─migrations
+    │  │  └─account_utils  专门用于处理各种账户交易的视图函数
     │  │
-    │  ├─statics
-    │  │  ├─css
-    │  │  │  │  customer_register.css
-    │  │  │  │  dashboard.css
-    │  │  │  │  edit_profile.css
-    │  │  │  │  home.css
-    │  │  │  │  login.css
-    │  │  │  │  terms.css
+    │  ├─statics  静态文件
+    │  │  ├─css  欢迎界面、注册、登录的样式
     │  │  │  │
-    │  │  │  └─dashboard
-    │  │  │          credit.css
-    │  │  │          dashboard.css
-    │  │  │          loan.css
-    │  │  │          profile.css
-    │  │  │          savings.css
+    │  │  │  └─dashboard  登入后具体各部分的主页样式
     │  │  │
     │  │  ├─image
-    │  │  │      logo.png
+    │  │  │      logo.png  项目的 logo
     │  │  │
-    │  │  └─js
-    │  │      │  dashboard.js
+    │  │  └─js  主页 js 文件
     │  │      │
-    │  │      └─dashboard
-    │  │              credit.js
-    │  │              dashboard.js
-    │  │              loan.js
-    │  │              profile.js
-    │  │              savings.js
+    │  │      └─dashboard  登入后具体各部分的主页 js 文件
     │  │
-    │  └─templates
-    │      │  customer_register.html
-    │      │  edit_profile.html
-    │      │  home.html
-    │      │  login.html
-    │      │  privacy.html
-    │      │  terms.html
+    │  └─templates  html 文件，包括欢迎界面、注册、登录、主页
     │      │
-    │      └─dashboard
-    │              credit.html
-    │              dashboard.html
-    │              loan.html
-    │              profile.html
-    │              savings.html
+    │      └─dashboard  登入后具体各部分的主页
     │
-    └─sql_src
-            create tables in bank manage system.sql
-            savings_account_add.sql
-            savings_account_deposit.sql
-            savings_account_transfer.sql
-            savings_account_withdraw.sql
-            trigger_savings_account_total.sql
+    └─sql_src  数据库存储过程、函数、触发器、初始化数据库
 ```
+
+### Tips
+
+如果你想上手或改造本项目，可能需要学习的知识有：
+
+1. 熟练使用 ChatGPT
+2. 熟练使用 Python
+3. 了解 Django MTV（model、template、view）模型的原理
+4. 了解 Django orm（Object-Relational Mapper） 语法
+5. HTML、CSS 基础
+6. JavaScript 懂一点点
+
+### 教程
+
+学习 Django 的教程：
+
+- [Django 官方英文文档]()：首选，不会直接查，不需要学完
+
+- [Django 官方中文文档]()：某些难以理解的也可以结合中文看
+- [Django 菜鸟教程]()：当故事看，前几章的介绍质量还是挺不错的
+
+学习 HTML、CSS 教程：
+
+- [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web)：由 FireFox 团队编写，非常适合新手入门，很可惜我目前不用 FireFox
+
+- [MDN Web Docs 中文版](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web)

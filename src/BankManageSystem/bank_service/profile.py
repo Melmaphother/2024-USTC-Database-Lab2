@@ -17,7 +17,7 @@ def profile(request):
         profile_dict['c_id'] = c_id
         profile_dict['c_name'] = customer.c_name
         profile_dict['c_gender'] = customer.c_gender
-        profile_dict['c_age'] = customer.c_age
+        profile_dict['c_age'] = customer.c_age if customer.c_age else ''
         profile_dict['c_phone'] = customer.c_phone
         profile_dict['c_addr'] = customer.c_addr
         profile_dict['c_avatar'] = customer.c_avatar
@@ -50,9 +50,13 @@ def profile(request):
             upload_avatar = f'avatar/{avatar_name}'
 
         # 检查手机号长度是否为 11 位，注意未提交的 post 为 None
-        if phone and len(phone) != 11:
-            messages.error(request, '手机号长度应为 11 位')
-            return redirect('profile')
+        if phone:
+            if len(phone) != 11:
+                messages.error(request, '手机号长度应为 11 位')
+                return redirect('profile')
+        else:
+            phone = ''
+
         if age:
             # 检查年龄是否为数字
             try:
@@ -64,11 +68,16 @@ def profile(request):
             if not 0 <= age <= 150:
                 messages.error(request, '年龄应在 0-150 之间')
                 return redirect('profile')
+        else:
+            age = None
 
         # 检查地址是否在 200 字以内
-        if address and len(address) > 200:
-            messages.error(request, '地址应在 200 字以内')
-            return redirect('profile')
+        if address:
+            if len(address) > 200:
+                messages.error(request, '地址应在 200 字以内')
+                return redirect('profile')
+        else:
+            address = ''
 
         customer = Customer.objects.get(c_id=c_id)
         # 如果上传图片为 None，那么仍然使用之前的头像

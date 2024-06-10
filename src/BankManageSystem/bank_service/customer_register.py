@@ -118,7 +118,7 @@ def edit_profile(request):
         if 'phone' in request.session:
             edit_profile_dict['phone'] = request.session['phone']
         if 'age' in request.session:
-            edit_profile_dict['age'] = request.session['age']
+            edit_profile_dict['age'] = request.session['age'] if request.session['age'] else ''
         if 'address' in request.session:
             edit_profile_dict['address'] = request.session['address']
         return render(
@@ -186,15 +186,21 @@ def edit_profile(request):
                 gender = "M"
             else:
                 gender = "F"
+        else:
+            gender = ''  # 这里不能设为 None，因为 models 中该字段为 CharField，null=False
 
         # 检查手机号长度是否为 11 位，注意未提交的 post 为 None
-        if phone and len(phone) != 11:
-            messages.error(request, '手机号长度应为 11 位')
-            if 'phone' in request.session:
-                del request.session['phone']
-            return redirect('edit_profile')
+        if phone:
+            if len(phone) != 11:
+                messages.error(request, '手机号长度应为 11 位')
+                if 'phone' in request.session:
+                    del request.session['phone']
+                return redirect('edit_profile')
+        else:
+            phone = ''
+
         if age:
-            # 检查年龄是否为数字
+            # 如果输入了年龄，检查年龄是否为数字
             try:
                 age = int(age)  # 不能直接转换为 int，int 方法会抛出异常
             except:
@@ -208,13 +214,18 @@ def edit_profile(request):
                 if 'age' in request.session:
                     del request.session['age']
                 return redirect('edit_profile')
+        else:
+            age = None  # age 是 IntegerField，可以设为 None
 
         # 检查地址是否在 200 字以内
-        if address and len(address) > 200:
-            messages.error(request, '地址应在 200 字以内')
-            if 'address' in request.session:
-                del request.session['address']
-            return redirect('edit_profile')
+        if address:
+            if len(address) > 200:
+                messages.error(request, '地址应在 200 字以内')
+                if 'address' in request.session:
+                    del request.session['address']
+                return redirect('edit_profile')
+        else:
+            address = ''
 
         # 将这些信息写入 customer 表对应表项
         customer = Customer.objects.get(c_id=c_id)

@@ -13,15 +13,18 @@
         {% csrf_token %}
         <div class="form-group">
             <label for="id_number">身份证号</label>
-            <input type="text" id="id_number" name="id_number" value="{{ id_number }}" placeholder="请输入18位身份证号" required>
+            <input type="text" id="id_number" name="id_number" value="{{ id_number }}" placeholder="请输入18位身份证号"
+                   required>
         </div>
         <div class="form-group">
             <label for="password">密码</label>
-            <input type="password" id="password" name="password" value="{{ password }}" required>
+            <input type="password" id="password" name="password" value="{{ password }}" placeholder="请输入6-10位密码"
+                   required>
         </div>
         <div class="form-group">
             <label for="confirm_password">确认密码</label>
-            <input type="password" id="confirm_password" name="confirm_password" value="{{ confirm_password }}" required>
+            <input type="password" id="confirm_password" name="confirm_password" value="{{ confirm_password }}"
+                   placeholder="请确认密码" required>
         </div>
         <div class="form-group">
             <label class="form-label" for="captcha">验证码</label>

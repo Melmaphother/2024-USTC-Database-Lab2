@@ -85,6 +85,5 @@ input[type="radio"] {
 }
 
 p.error-message {
-    color: red;
-    text-align: center;
+    display: none;
 }
