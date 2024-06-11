@@ -21,27 +21,26 @@
 
 1. 本项目使用的软件有：
 
-   | 软件             | 版本   | 下载方式                                          |
-   | ---------------- | ------ | ------------------------------------------------- |
-   | MySQL            | 8.0    | [MySQL](https://www.mysql.com/cn/downloads/)      |
-   | Python           | 3.11   | [Anaconda](https://www.anaconda.com/download)     |
-   | Django           | 5.0    | [Django](https://www.djangoproject.com/download/) |
-   | DataGrip         | 2024.1 | [DataGrip](https://www.jetbrains.com/datagrip/)   |
-   | PyCharm          | 2024.1 | [Pycharm](https://www.jetbrains.com/pycharm/)     |
-   | PDManer 元数建模 | 4.9    | [pdmaner](https://gitee.com/robergroup/pdmaner)   |
+   | 软件             | 版本   | 下载方式                                                                 |
+   | ---------------- | ------ | ------------------------------------------------------------------------ |
+   | MySQL            | 8.0    | [MySQL](https://www.mysql.com/cn/downloads/)                             |
+   | Python           | 3.11   | [Anaconda](https://www.anaconda.com/download)                            |
+   | Django           | 5.0    | [Django](https://www.djangoproject.com/download/)                        |
+   | DataGrip         | 2024.1 | [DataGrip](https://www.jetbrains.com/datagrip/)                          |
+   | PyCharm          | 2024.1 | [Pycharm](https://www.jetbrains.com/pycharm/)                            |
+   | PDManer 元数建模 | 4.9    | [pdmaner](https://gitee.com/robergroup/pdmaner)                          |
+   | draw.io          | 24.5   | [draw.io](https://github.com/jgraph/drawio-desktop/releases/tag/v24.5.1) |
 
 2. 简单配置流程
    - clone 本项目：
      ```bash
       $ git clone https://github.com/Melmaphother/2024-USTC-Database-Lab2.git
      ```
-     
    - 安装 MySQL，创建数据库 `bank_manage_system`：
      ```bash
      $ mysql -u username -p password
      $ create database db_name default charset=UTF8MB4
      ```
-     
    - 进入目录 `src/BankManageSystem/BankManageSystem/settings.py`，修改数据库配置：
      ```python
      DATABASES = {
@@ -55,34 +54,31 @@
            }
        }
      ```
-     
    - 安装 Anaconda，搭建 Python 环境：
      ```bash
      $ conda create -n django python=3.11
      $ conda activate django
      ```
-     
    - 安装必要的包：
      ```bash
      $ pip install -r requirements.txt
      ```
-     
    - 进入目录 `src/BankManageSystem`，创建数据表：
-     
+
      ```bash
      $ python manage.py migrate
      ```
-     
+
    - 在数据库 IDE（DataGrip、MySQL Workbench）中，运行 `src/sql_src/init_database.sql`：
-     
+
      这一步是为了避免外键依赖导致业务操作失败。
-     
+
    - 启动本地服务器：
-     
+
      ```bash
      $ python manage.py runserver [localhost:8000]
      ```
-     
+
    - 在浏览器中输入 `localhost:8000`，即可查看项目：
      为了保证使用体验，建议使用 **Chrome 或 Edge 浏览器**，将窗口**缩放为 125%** 体验更佳。
 
