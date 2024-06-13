@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.http import HttpRequest
 from django.contrib import messages
@@ -43,22 +44,28 @@ def auth_login(request: HttpRequest):
             messages.error(request, '验证码错误')
             return redirect('login')
 
-        # 验证用户
-        user = authenticate(request, username=id_number, password=password)
-        # 如果用户存在，则进入主页
-        if user is not None:
-            login(request, user)
-            # 删除所有登录相关的 session
-            if 'id_number' in request.session:
-                del request.session['id_number']
-            if 'password' in request.session:
-                del request.session['password']
-            return redirect('dashboard')
-        # 如果用户不存在，需要重新登录
+        # 首先检查输入的用户名是否存在
+        user_exists = User.objects.filter(username=id_number).exists()
+
+        if not user_exists:
+            messages.error(request, '用户名不存在')
         else:
-            messages.error(request, '用户名或密码输入错误')
-            if 'id_number' in request.session:
-                del request.session['id_number']
-            if 'password' in request.session:
-                del request.session['password']
-            return redirect('login')
+            user = authenticate(request, username=id_number, password=password)
+            # 如果用户用户名和密码均认证通过，则进入主页
+            if user is not None:
+                login(request, user)
+                if 'id_number' in request.session:
+                    del request.session['id_number']
+                if 'password' in request.session:
+                    del request.session['password']
+                return redirect('dashboard')
+            # 如果用户密码输入错误，则需要重新登录
+            else:
+                messages.error(request, '密码输入错误')
+
+        # 处理完成后，清除可能残留的session
+        if 'id_number' in request.session:
+            del request.session['id_number']
+        if 'password' in request.session:
+            del request.session['password']
+        return redirect('login')
