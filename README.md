@@ -15,7 +15,7 @@
    | 设计分析 | [Design Analysis](docs/Design%20Analysis.md) |
    | 项目日志 | [Project Log](docs/Project%20Log.md) |
    | 实验手册 | [Experiment Manual](docs/Exp%20Manual.pdf) |
-   | 我的 Django 笔记 | [Django Note](docs/Django%20Notes/Django%20Note.md) |
+   | 我的 Django 笔记 | [Django 笔记](docs/Django%20笔记/Django%20Note.md) |
 
 ## 快速开始
 
