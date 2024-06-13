@@ -16,6 +16,7 @@ h1, h2 {
     margin: 20px auto;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
 }
 
 section {
@@ -24,4 +25,15 @@ section {
 
 .privacy, .terms {
     text-align: justify;
+}
+
+button {
+    display: inline-block;
+    background-color: #c22c2c;
+    color: white;
+    padding: 12px 40px;
+    margin: 10px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
 }
