@@ -1,6 +1,6 @@
 # 2024-USTC-Database-Lab2
 
-<img src="assets/logo.png" alt="Logo" style="zoom: 25%;" />
+<img src="docs/assets/logo.png" alt="Logo" style="zoom: 25%;" />
 
 ## 基本信息
 
@@ -90,63 +90,63 @@
 
 1. 欢迎界面
 
-   <img src="assets/welcome.png" alt="Welcome" style="zoom: 50%;" />
+   <img src="docs/assets/welcome.png" alt="Welcome" style="zoom: 50%;" />
 
 2. 注册界面
 
-   <img src="assets/register.png" alt="Register" style="zoom: 50%;" />
+   <img src="docs/assets/register.png" alt="Register" style="zoom: 50%;" />
 
 3. 注册后填写个人信息
 
-   <img src="assets/edit_profile.png" alt="Register Info" style="zoom: 50%;" />
+   <img src="docs/assets/edit_profile.png" alt="Register Info" style="zoom: 50%;" />
 
 4. 登录界面
 
-   <img src="assets/login.png" alt="Login" style="zoom: 50%;" />
+   <img src="docs/assets/login.png" alt="Login" style="zoom: 50%;" />
 
 5. 主页
 
-   <img src="assets/dashboard.png" alt="Dashboard" style="zoom: 50%;" />
+   <img src="docs/assets/dashboard.png" alt="Dashboard" style="zoom: 50%;" />
 
 6. 个人主页
 
-   <img src="assets/profile.png" alt="Profile" style="zoom: 50%;" />
+   <img src="docs/assets/profile.png" alt="Profile" style="zoom: 50%;" />
 
 7. 添加账户
 
    不跳转 url，通过背景模糊 + 弹窗的形式，动态展示添加账户页面，符合用户直觉。
 
-   <img src="assets/add_savings_account.png" alt="Add Account" style="zoom: 50%;" />
+   <img src="docs/assets/add_savings_account.png" alt="Add Account" style="zoom: 50%;" />
 
 8. 账户详情
 
-   <img src="assets/savings_account.png" alt="Account" style="zoom: 50%;" />
+   <img src="docs/assets/savings_account.png" alt="Account" style="zoom: 50%;" />
 
 9. 存款
 
-   <img src="assets/savings_account_deposit.png" alt="Deposit" style="zoom: 50%;" />
+   <img src="docs/assets/savings_account_deposit.png" alt="Deposit" style="zoom: 50%;" />
 
 10. 取款
 
-    <img src="assets/savings_account_withdraw.png" alt="Withdraw" style="zoom: 50%;" />
+    <img src="docs/assets/savings_account_withdraw.png" alt="Withdraw" style="zoom: 50%;" />
 
 11. 转账
 
-    <img src="assets/savings_account_transfer.png" alt="Transfer" style="zoom: 50%;" />
+    <img src="docs/assets/savings_account_transfer.png" alt="Transfer" style="zoom: 50%;" />
 
 12. 查看明细
 
-    <img src="assets/savings_account_details.png" alt="Details" style="zoom: 50%;" />
+    <img src="docs/assets/savings_account_details.png" alt="Details" style="zoom: 50%;" />
 
 13. 表单填写错误处理
     刷新验证码，保存未出错的表单信息，避免重复填写，提示错误信息。
 
-    <img src="assets/error_form.png" alt="Form Error" style="zoom: 50%;" />
+    <img src="docs/assets/error_form.png" alt="Form Error" style="zoom: 50%;" />
 
 14. 账户操作提示信息
     以浏览器自带 alert 提示操作成功或失败的信息。
 
-    <img src="assets/error_message.png" alt="Alert" style="zoom: 50%;" />
+    <img src="docs/assets/error_message.png" alt="Alert" style="zoom: 50%;" />
 
 ## 项目细节
 
@@ -158,7 +158,7 @@
 │  README.md
 │  requirements.txt
 │
-├─assets  README.md 中的图片
+├─docs/assets  README.md 中的图片
 │
 ├─design
 │  │
