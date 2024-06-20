@@ -68,29 +68,37 @@
                     <div class="account-row">
                         <p>利率：{{ account.sa_rate }}</p>
                         <p>提款额度：{{ account.sa_withdraw_limit }}</p>
+                        <p></p>
+                    </div>
+                    <div class="account-row">
                         <p>交易总额：{{ account.a_total }}</p>
+                        <p></p>
+                        <p></p>
                     </div>
                     <div class="button-row">
                         <button onclick="openDepositModal(this)"
                                 data-deposit-account-number="{{ account.a_no }}"
-                                class="deposit">存款
+                                class="deposit">
+                            存款
                         </button>
                         <button onclick="openWithdrawModal(this)"
                                 data-withdraw-account-number="{{ account.a_no }}"
                                 data-withdraw-balance="{{ account.a_balance }}"
                                 data-withdraw-limit="{{ account.sa_withdraw_limit }}"
-                                class="withdraw">取款
+                                class="withdraw">
+                            取款
                         </button>
                         <button onclick="openTransferModal(this)"
                                 data-transfer-account-number="{{ account.a_no }}"
                                 data-transfer-balance="{{ account.a_balance }}"
                                 data-transfer-limit="{{ account.sa_withdraw_limit }}"
-                                class="transfer">转账
+                                class="transfer">
+                            转账
                         </button>
                     </div>
                 </div>
             {% empty %}
-                <h3 class="empty-savings-message">没有储蓄账户信息</h3>
+                <h3 class="empty-account-message">没有储蓄账户信息</h3>
             {% endfor %}
         </div>
     </div>

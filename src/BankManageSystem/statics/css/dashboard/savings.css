@@ -159,7 +159,7 @@
     background-color: #CC6633;
 }
 
-h3.empty-savings-message {
+h3.empty-account-message {
     margin: 10px 30px;
     font-size: 20px;
 }
@@ -172,31 +172,27 @@ h3.empty-savings-message {
     border: 1px solid #888;
     border-radius: 8px;
     width: 40%; /* Could be more or less, depending on screen size */
-    height: 40%;
+    min-height: 30%;
+    max-height: 60%;
     justify-content: space-around; /* Improved spacing within the modal */
 }
 
 .business-modal-content.add-account-modal-content {
-    height: 58%;
+    /*height: 58%;*/
 }
 
 .business-modal-content.detail-modal-content {
     width: 50%;
-    height: 50%;
+    /*height: 50%;*/
     overflow: auto;
 }
 
 .business-modal-content.withdraw-modal-content {
-    height: 52%;
+    /*height: 52%;*/
 }
 
 .business-modal-content.transfer-modal-content {
-    height: 58%;
-}
-
-.business-modal-content .h3 {
-    font-weight: bold;
-    font-size: 1.8em;
+    /*height: 58%;*/
 }
 
 .business-modal-content .add-account {

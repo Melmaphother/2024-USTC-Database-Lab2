@@ -7,8 +7,10 @@
     {% load static %}
     <link rel="icon" href="{% static 'image/favicon-rounded.png' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard/savings.css' %}">
     <link rel="stylesheet" href="{% static 'css/dashboard/credit.css' %}">
     <script src="{% static 'js/dashboard.js' %}"></script>
+    <script src="{% static 'js/alert_message.js' %}"></script>
     <script src="{% static 'js/dashboard/credit.js' %}"></script>
 </head>
 <body>
@@ -29,35 +31,76 @@
     </div>
     <div class="main-content">
         <div class="header">
-            <h1>你好，Username!</h1>
-            <img src="{% static 'image/logo.png' %}" alt="User Avatar">
+            <h1>你好，{{ c_name }}!</h1>
+            <img src="{{ MEDIA_URL }}{{ c_avatar }}" alt="User Avatar">
         </div>
         <div class="account-header">
             <h3>信用卡账户</h3>
             <button onclick="openAddAccountModal()">添加账户</button>
         </div>
+        <div>
+            {% if messages %}
+                {% for message in messages %}
+                    {% if forloop.last %}
+                        <p class="error-message">{{ message }}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
 
         <!-- 账户信息列表 -->
         <div class="account-details">
-            <!-- 第一个账户 -->
-            <div class="account">
-                <p class="account-number">账户号码：CA123456</p>
-                <div class="account-row">
-                    <p>余额：¥ 123</p>
-                    <p>开户银行：东区银行</p>
-                    <p>绑定员工：E001</p>
+            {% for account in CreditAccount %}
+                <div class="account">
+                    <div class="each-account-header">
+                        <p class="account-number">账户号：{{ account.a_no }}</p>
+                        {% csrf_token %}
+                        <input type="hidden" id="csrfToken" value="{{ csrf_token }}">
+                        <button onclick="openDetailModal(this)"
+                                data-detail-account-number="{{ account.a_no }}"
+                                class="business-detail-button">明细
+                        </button>
+                    </div>
+                    <div class="account-row">
+                        <p>余额：{{ account.a_balance }}</p>
+                        <p>开户银行：{{ account.a_open_b_name }}</p>
+                        <p>开户时间：{{ account.a_open_time }}</p>
+                    </div>
+                    <div class="account-row">
+                        <p>利率：{{ account.ca_rate }}</p>
+                        <p>透支额度：{{ account.ca_overdraft_limit }}</p>
+                        <p>当前透支：{{ account.ca_current_overdraft_amount }}</p>
+                    </div>
+                    <div class="account-row">
+                        <p>交易总额：{{ account.a_total }}</p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                    <div class="button-row">
+                        <button onclick="openDepositModal(this)"
+                                data-deposit-account-number="{{ account.a_no }}"
+                                class="deposit">
+                            存款
+                        </button>
+                        <button onclick="openWithdrawModal(this)"
+                                data-withdraw-account-number="{{ account.a_no }}"
+                                data-withdraw-balance="{{ account.a_balance }}"
+                                data-withdraw-limit="{{ account.sa_withdraw_limit }}"
+                                class="withdraw">
+                            取款
+                        </button>
+                        <button onclick="openTransferModal(this)"
+                                data-transfer-account-number="{{ account.a_no }}"
+                                data-transfer-balance="{{ account.a_balance }}"
+                                data-transfer-limit="{{ account.sa_withdraw_limit }}"
+                                class="transfer">
+                            转账
+                        </button>
+                    </div>
                 </div>
-                <div class="account-row">
-                    <p>利率：5%</p>
-                    <p>透支额度：¥ 10000</p>
-                    <p>当前透支：¥ 0</p>
-                </div>
-                <div class="button-row">
-                    <button onclick="openDepositModal()" class="deposit">存款</button>
-                    <button onclick="openWithdrawModal()" class="withdraw">取款</button>
-                    <button onclick="openTransferModal()" class="transfer">转账</button>
-                </div>
-            </div>
+            {% empty %}
+                <h3 class="empty-account-message">没有信用卡账户信息</h3>
+            {% endfor %}
         </div>
     </div>
 </div>
@@ -73,26 +116,75 @@
 <div id="addAccountModal" class="modal">
     <div class="business-modal-content add-account-modal-content">
         <h2 class="add-account">添加账户</h2>
-        <h3>为您分配的账户号：1234，您可以随时取消！</h3>
-        <div class="button-container">
-            <button type="submit" class="confirm">确认添加</button>
-            <button type="button" onclick="closeAddAccountModal()" class="cancel">取消</button>
-        </div>
+        <form action="/credit_account_add/" method="post">
+            {% csrf_token %}
+            <div class="input-form-group">
+                <label for="open_b_name">开户银行：</label>
+                <select id="open_b_name" name="open_b_name" required>
+                    <option value="东区银行">东区银行</option>
+                    <option value="西区银行">西区银行</option>
+                    <option value="中区银行">中区银行</option>
+                    <option value="高新区银行" selected>高新区银行</option>
+                </select>
+            </div>
+            <div class="input-form-group">
+                <label for="currency">货币类型：</label>
+                <select id="currency" name="currency" required>
+                    <option value="CNY" selected>CNY</option>
+                    <option value="USD">USD</option>
+                    <option value="GBP">GBP</option>
+                    <option value="EUR">EUR</option>
+                </select>
+            </div>
+            <div class="input-form-group">
+                <label for="rate">利率：</label>
+                <select id="rate" name="rate" required>
+                    <option value="1" selected>1%</option>
+                    <option value="2">2%</option>
+                    <option value="3">3%</option>
+                    <option value="4">4%</option>
+                    <option value="5">5%</option>
+                </select>
+            </div>
+            <div class="input-form-group">
+                <label for="overdraft_limit">透支额度：</label>
+                <select id="overdraft_limit" name="overdraft_limit" required>
+                    <option value="10000" selected>50000</option>
+                    <option value="50000">100000</option>
+                    <option value="100000">200000</option>
+                </select>
+            </div>
+            <div class="input-form-group">
+                <label for="set-password">设置密码：</label>
+                <input type="password" id="set-password" name="password" placeholder="密码请设置为6位" required>
+            </div>
+            <div class="input-form-group">
+                <label for="set-confirm_password">确认密码：</label>
+                <input type="password" id="set-confirm_password" name="confirm_password" required>
+            </div>
+            <div class="button-container">
+                <button type="submit" class="confirm">确认添加</button>
+                <button type="button" onclick="closeAddAccountModal()" class="cancel">取消</button>
+            </div>
+        </form>
     </div>
 </div>
 <div id="depositModal" class="modal">
     <div class="business-modal-content">
         <h2 class="deposit">存款</h2>
-        <h3>账户号：1234</h3>
-        <form action="" method="post">
+        <form action="/credit_account_deposit/" method="post">
             {% csrf_token %}
             <div class="input-form-group">
-                <label for="amount">存款金额：</label>
-                <input type="text" id="amount" name="amount" required>
+                <label for="hiddenDepositAccountNumber">账户号：</label>
+                <input type="text" id="hiddenDepositAccountNumber" name="a_no" readonly>
             </div>
             <div class="input-form-group">
-                <label for="password">账户密码：</label>
-                <input type="password" id="password" name="password" required>
+                <label for="deposit-amount">存款金额：</label>
+                <input type="text" id="deposit-amount" name="amount" required>
+            </div>
+            <div class="input-form-group">
+                <label for="deposit-password">账户密码：</label>
+                <input type="password" id="deposit-password" name="password" required>
             </div>
             <div class="button-container">
                 <button type="submit" class="confirm">确认</button>
@@ -102,18 +194,29 @@
     </div>
 </div>
 <div id="withdrawModal" class="modal">
-    <div class="business-modal-content">
+    <div class="business-modal-content withdraw-modal-content">
         <h2 class="withdraw">取款</h2>
-        <h3>账户号：1234</h3>
-        <form action="" method="post">
+        <form action="/credit_account_withdraw/" method="post">
             {% csrf_token %}
             <div class="input-form-group">
-                <label for="amount">取款金额：</label>
-                <input type="text" id="amount" name="amount" required>
+                <label for="hiddenWithdrawAccountNumber">账户号：</label>
+                <input type="text" id="hiddenWithdrawAccountNumber" name="a_no" readonly>
             </div>
             <div class="input-form-group">
-                <label for="password">账户密码：</label>
-                <input type="password" id="password" name="password" required>
+                <label for="hiddenWithdrawBalance">账户余额：</label>
+                <input type="text" id="hiddenWithdrawBalance" name="balance" disabled>
+            </div>
+            <div class="input-form-group">
+                <label for="hiddenWithdrawLimit">透支额度：</label>
+                <input type="text" id="hiddenWithdrawLimit" name="limit" disabled>
+            </div>
+            <div class="input-form-group">
+                <label for="withdraw-amount">取款金额：</label>
+                <input type="text" id="withdraw-amount" name="amount" required>
+            </div>
+            <div class="input-form-group">
+                <label for="withdraw-password">账户密码：</label>
+                <input type="password" id="withdraw-password" name="password" required>
             </div>
             <div class="button-container">
                 <button type="submit" class="confirm">确认</button>
@@ -123,22 +226,33 @@
     </div>
 </div>
 <div id="transferModal" class="modal">
-    <div class="business-modal-content transfer-modal-content" >
+    <div class="business-modal-content transfer-modal-content">
         <h2 class="transfer">转账</h2>
-        <h3>账户号：1234</h3>
-        <form action="" method="post">
+        <form action="/credit_account_transfer/" method="post">
             {% csrf_token %}
             <div class="input-form-group">
-                <label for="amount">转账金额：</label>
-                <input type="text" id="amount" name="amount" required>
+                <label for="hiddenTransferAccountNumber">账户号：</label>
+                <input type="text" id="hiddenTransferAccountNumber" name="a_no" readonly>
             </div>
             <div class="input-form-group">
-                <label for="target">目标账户号：</label>
-                <input type="text" id="target" name="target" required>
+                <label for="hiddenTransferBalance">账户余额：</label>
+                <input type="text" id="hiddenTransferBalance" name="balance" disabled>
             </div>
             <div class="input-form-group">
-                <label for="password">账户密码：</label>
-                <input type="password" id="password" name="password" required>
+                <label for="hiddenTransferLimit">提款额度：</label>
+                <input type="text" id="hiddenTransferLimit" name="limit" disabled>
+            </div>
+            <div class="input-form-group">
+                <label for="transfer-target">目标账户号：</label>
+                <input type="text" id="transfer-target" name="target" required>
+            </div>
+            <div class="input-form-group">
+                <label for="transfer-amount">转账金额：</label>
+                <input type="text" id="transfer-amount" name="amount" required>
+            </div>
+            <div class="input-form-group">
+                <label for="transfer-password">账户密码：</label>
+                <input type="password" id="transfer-password" name="password" required>
             </div>
             <div class="button-container">
                 <button type="submit" class="confirm">确认</button>

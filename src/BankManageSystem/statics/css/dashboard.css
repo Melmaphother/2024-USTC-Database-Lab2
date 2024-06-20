@@ -77,8 +77,8 @@ body, html {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 .modal-content {
@@ -89,7 +89,8 @@ body, html {
     border: 1px solid #888;
     border-radius: 8px;
     width: 40%; /* Could be more or less, depending on screen size */
-    height: 20%;
+    min-height: 10%;
+    max-height: 60%;
     justify-content: space-around; /* Improved spacing within the modal */
 }
 

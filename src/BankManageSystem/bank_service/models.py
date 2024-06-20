@@ -70,7 +70,7 @@ class Account(models.Model):
 class SavingsAccount(models.Model):
     sa_no = models.OneToOneField(Account, on_delete=models.CASCADE, primary_key=True,
                                  related_name='savings_account', db_column='sa_no')
-    sa_rate = models.DecimalField(max_digits=5, decimal_places=4)
+    sa_rate = models.DecimalField(max_digits=5, decimal_places=4, default=0.0)
     sa_withdraw_limit = models.DecimalField(max_digits=20, decimal_places=2)
 
     class Meta:
@@ -80,6 +80,7 @@ class SavingsAccount(models.Model):
 class CreditAccount(models.Model):
     ca_no = models.OneToOneField(Account, on_delete=models.CASCADE, primary_key=True,
                                  related_name='credit_account', db_column='ca_no')
+    ca_rate = models.DecimalField(max_digits=5, decimal_places=4, default=0.0)
     ca_overdraft_limit = models.DecimalField(max_digits=20, decimal_places=2)
     ca_current_overdraft_amount = models.DecimalField(max_digits=20, decimal_places=2)
 
@@ -90,7 +91,7 @@ class CreditAccount(models.Model):
 class LoanAccount(models.Model):
     la_no = models.OneToOneField(Account, on_delete=models.CASCADE, primary_key=True,
                                  related_name='loan_account', db_column='la_no')
-    la_rate = models.DecimalField(max_digits=5, decimal_places=4)
+    la_rate = models.DecimalField(max_digits=5, decimal_places=4, default=0.0)
     la_loan_limit = models.DecimalField(max_digits=20, decimal_places=2)
 
     class Meta:

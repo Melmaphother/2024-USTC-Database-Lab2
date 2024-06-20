@@ -24,6 +24,47 @@ body, html {
     position: relative;
 }
 
+.header {
+    flex: 1;
+    display: flex;
+}
+
+.header h1 {
+    font-size: 24px;
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    color: #FF8C00; /* 橙色 */
+    margin: 0;
+}
+
+.slogan {
+    flex: 8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px; /* 确保标语在左侧 */
+}
+
+.slogan .large {
+    font-size: 36px;
+    font-weight: bolder;
+    margin-bottom: 0.4em;
+    color: #FF8C00; /* 主标题的橙色 */
+}
+
+.slogan .small {
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 0.4em;
+    color: #FFAE33; /* 淡橙色 */
+}
+
+.blank {
+    flex: 1;
+    display: flex;
+}
+
 .right-panel {
     width: 33%;
     height: 100%;
@@ -36,8 +77,23 @@ body, html {
     justify-content: center;
 }
 
+.right-logo {
+    flex: 1; /* 占据10%的空间 */
+    display: flex;
+}
+
+.right-logo img {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* 圆形Logo */
+    margin-right: 10px;
+}
+
 .content {
-    flex: 8; /* 占据80%的空间 */
+    flex: 8; /* 占据90%的空间 */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,36 +102,12 @@ body, html {
 }
 
 .bottom {
-    flex: 2; /* 占据20%的空间 */
+    flex: 1; /* 占据10%的空间 */
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-h1 {
-    position: absolute;
-    top: 20px;
-    left: 30px;
-    color: #FF8C00; /* 橙色 */
-    margin: 0;
-}
-
-.slogan {
-    margin-left: 10px; /* 确保标语在左侧 */
-}
-
-.slogan .large {
-    font-size: 24px;
-    font-weight: bolder;
-    color: #FF8C00; /* 主标题的橙色 */
-}
-
-.slogan .small {
-    font-size: 18px;
-    font-weight: bold;
-    color: #FFAE33; /* 淡橙色 */
 }
 
 .buttons {
@@ -87,12 +119,13 @@ h1 {
 button {
     background-color: #0066cc;
     color: white;
+    font-size: 14px;
     padding: 12px 24px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     margin: 5px;
-    width: 190px; /* 按钮宽度 */
+    width: 45%; /* 按钮宽度 */
 }
 
 .footer {
@@ -100,23 +133,16 @@ button {
     align-items: center;
     justify-content: center;
     margin-top: 30px; /* 底部间隔 */
-}
-
-.footer img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%; /* 圆形Logo */
-    margin-right: 10px;
-}
-
-.footer p {
+    margin-bottom: 8px;
     font-size: 18px; /* 名称字体大小 */
+}
+
+.footer a {
     color: #40A798; /* 名称颜色 */
 }
 
 .links {
-    margin-top: 10px;
-    font-size: 16px; /* 链接字体大小 */
+    font-size: 14px;
 }
 
 .links a {

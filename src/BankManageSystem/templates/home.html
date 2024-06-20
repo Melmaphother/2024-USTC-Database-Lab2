@@ -11,14 +11,20 @@
 <body>
 <div class="container">
     <div class="left-panel">
-        <h1>USTC 银行管理系统</h1>
+        <div class="header">
+            <h1>USTC 银行管理系统</h1>
+        </div>
         <div class="slogan">
             <p class="large">让这里</p>
-            <p class="small">作为您远航的起点</p>
-            <p class="small">也成为您扬帆的护佑</p>
+            <p class="small">作为您远航的起点，也成为您扬帆的护佑</p>
         </div>
+        <div class="blank"></div>
     </div>
     <div class="right-panel">
+        <div class="right-logo">
+            {% load static %}
+            <img src="{% static 'image/logo.png' %}" alt="Bank Logo">
+        </div>
         <div class="content">
             <h2>快速开始！</h2>
             <div class="buttons">
@@ -28,9 +34,7 @@
         </div>
         <div class="bottom">
             <div class="footer">
-                {% load static %}
-                <img src="{% static 'image/logo.png' %}" alt="Bank Logo">
-                <p>Melmaphother</p>
+                <a href="https://github.com/Melmaphother/2024-USTC-Database-Lab2">Melmaphother</a> &nbsp; &copy; 2024
             </div>
             <div class="links">
                 <a href="/terms">使用条款</a> | <a href="/privacy">隐私政策</a>

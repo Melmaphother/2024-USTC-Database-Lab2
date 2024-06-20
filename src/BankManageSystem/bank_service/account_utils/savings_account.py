@@ -78,6 +78,7 @@ def savings_account_deposit(request):
         return redirect('savings')
 
 
+@login_required
 def savings_account_withdraw(request):
     if request.method == 'GET':
         return redirect('savings')
@@ -122,6 +123,7 @@ def savings_account_withdraw(request):
         return redirect('savings')
 
 
+@login_required
 def savings_account_transfer(request):
     if request.method == 'GET':
         return redirect('savings')
@@ -174,6 +176,7 @@ def savings_account_transfer(request):
         return redirect('savings')
 
 
+@login_required
 def savings_account_details(request):
     account_number = request.GET.get('account_number')
 
