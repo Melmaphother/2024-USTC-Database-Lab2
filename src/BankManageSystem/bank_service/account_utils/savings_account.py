@@ -133,6 +133,11 @@ def savings_account_transfer(request):
         password = request.POST.get('password')
         target_a_no = request.POST.get('target')
 
+        # 检查 target_a_no 是否与 a_no 相同
+        if a_no == target_a_no:
+            messages.error(request, f'账户号：{a_no}，无法为自己转账')
+            return redirect('savings')
+
         # 检查 amount 是否为数字
         try:
             amount = Decimal(amount)
