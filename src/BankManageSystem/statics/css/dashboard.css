@@ -8,21 +8,22 @@ body, html {
 .sidebar {
     background-color: #F0F0F0;
     width: 220px;
-    height: 100%;
-    position: fixed;
+    height: 100vh;
     overflow: hidden;
+    position: fixed;
     padding: 20px 10px; /* Updated padding */
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 }
 
 .bank-info {
+    flex: 0 0 20%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 30px;
-    position: relative; /* For absolute positioning of the separator */
+    justify-content: center;
 }
 
 .bank-info img {
@@ -48,12 +49,14 @@ body, html {
     background-color: #dedede;
     color: black;
     font-weight: bold;
-    margin: 10px;
+    margin: 8px;
     padding: 14px 20px; /* Larger padding */
-    width: 90%; /* Slightly larger button */
+    width: 140%; /* Slightly larger button */
+    max-width: 200px;
     cursor: pointer;
     border: none;
     border-radius: 8px;
+    box-sizing: border-box;
 }
 
 .sidebar button.onclick {
@@ -61,11 +64,27 @@ body, html {
     color: whitesmoke;
 }
 
-.sidebar button.logout-btn {
+.sidebar .middle-buttons {
+    flex: 0 0 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.sidebar .bottom-buttons {
+    flex: 0 0 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.bottom-buttons button {
     color: white;
-    margin-top: auto;
-    margin-bottom: 60px; /* Updated margin to move up */
     background-color: #CC3333;
+    width: 210%;
 }
 
 .modal {
@@ -124,8 +143,7 @@ body, html {
 .main-content {
     margin-left: 220px;
     padding: 20px;
-    overflow: auto;
-    height: 100%;
+    height: 100vh;
     background-color: white;
     display: flex;
     flex-direction: column;

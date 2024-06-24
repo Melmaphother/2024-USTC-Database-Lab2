@@ -42,7 +42,7 @@
 }
 
 .each-account-header .business-detail-button {
-    padding: 8px 16px;
+    padding: 10px 20px;
     background-color: #0066CC;
     color: white;
     font-weight: bold;
@@ -64,7 +64,7 @@
     border-collapse: collapse;
     margin: 20px auto;
     border-radius: 8px;
-    overflow: hidden;  /* 确保所有内容都被包含在圆角内 */
+    overflow: hidden; /* 确保所有内容都被包含在圆角内 */
 }
 
 .detail-table th, td {
@@ -119,13 +119,13 @@
 .account-row {
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    margin: 5px 0;
+    width: 94%;
+    margin: 6px 5px;
 }
 
 .account-row p {
     flex: 1; /* 使每个p标签填满等分的空间 */
-    margin: 5px 10px; /* 调整间距 */
+    margin: 5px 15px; /* 调整间距 */
     font-size: 16px;
     color: #555;
 }
@@ -133,8 +133,8 @@
 .button-row {
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    margin: 5px 0;
+    width: 94%;
+    margin: 6px 5px;
 }
 
 .account button {
@@ -144,7 +144,7 @@
     border-radius: 8px;
     cursor: pointer;
     flex: 1; /* 每个按钮等宽 */
-    margin: 0 10px; /* 调整按钮间距 */
+    margin: 5px 15px; /* 调整按钮间距 */
 }
 
 .account button.deposit {

@@ -21,12 +21,16 @@
             <span>USTC 银行</span>
             <div class="separator"></div>
         </div>
-        <button onclick="goToPage('');">账户查询</button>
-        <button onclick="goToPage('profile');">个人主页</button>
-        <button onclick="goToPage('savings');" class="onclick">储蓄账户</button>
-        <button onclick="goToPage('credit')">信用卡账户</button>
-        <button onclick="goToPage('loan')">贷款账户</button>
-        <button onclick="openLogoutModal()" class="logout-btn">登出</button>
+        <div class="middle-buttons">
+            <button onclick="goToPage('');">账户查询</button>
+            <button onclick="goToPage('profile');">个人主页</button>
+            <button onclick="goToPage('savings');" class="onclick">储蓄账户</button>
+            <button onclick="goToPage('credit')">信用卡账户</button>
+            <button onclick="goToPage('loan')">贷款账户</button>
+        </div>
+        <div class="bottom-buttons">
+            <button onclick="openLogoutModal()">登出</button>
+        </div>
     </div>
     <div class="main-content">
         <div class="header">
@@ -262,7 +266,7 @@
                 <input type="text" id="hiddenTransferBalance" name="balance" disabled>
             </div>
             <div class="input-form-group">
-                <label for="hiddenTransferLimit">提款额度：</label>
+                <label for="hiddenTransferLimit">转账额度：</label>
                 <input type="text" id="hiddenTransferLimit" name="limit" disabled>
             </div>
             <div class="input-form-group">
