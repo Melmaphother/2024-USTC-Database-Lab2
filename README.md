@@ -32,6 +32,7 @@
    | draw.io          | 24.5   | [draw.io](https://github.com/jgraph/drawio-desktop/releases/tag/v24.5.1) |
 
 2. 简单配置流程
+
    - clone 本项目：
      ```bash
       $ git clone https://github.com/Melmaphother/2024-USTC-Database-Lab2.git
@@ -69,7 +70,7 @@
      $ python manage.py migrate
      ```
 
-   - 在数据库 IDE（DataGrip、MySQL Workbench）中，运行 `src/sql_src/init_database.sql`：
+   - 在数据库 IDE（DataGrip、MySQL Workbench）中，运行 `src/sqls/init_database.sql`：
 
      这一步是为了避免外键依赖导致业务操作失败。
 
