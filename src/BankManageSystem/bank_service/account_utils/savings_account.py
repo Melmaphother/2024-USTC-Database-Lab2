@@ -56,6 +56,10 @@ def savings_account_deposit(request):
         # 检查 amount 是否为数字
         try:
             amount = Decimal(amount)
+            # 检查 amount 是否大于 0
+            if amount <= 0:
+                messages.error(request, f'账户号：{a_no}，存款金额必须大于0')
+                return redirect('savings')
         except:
             messages.error(request, f'账户号：{a_no}，存款金额必须为数字')
             return redirect('savings')
@@ -90,6 +94,10 @@ def savings_account_withdraw(request):
         # 检查 amount 是否为数字
         try:
             amount = Decimal(amount)
+            # 检查 amount 是否大于 0
+            if amount <= 0:
+                messages.error(request, f'账户号：{a_no}，存款金额必须大于0')
+                return redirect('savings')
         except:
             messages.error(request, f'账户号：{a_no}，取款金额必须为数字')
             return redirect('savings')
@@ -141,6 +149,10 @@ def savings_account_transfer(request):
         # 检查 amount 是否为数字
         try:
             amount = Decimal(amount)
+            # 检查 amount 是否大于 0
+            if amount <= 0:
+                messages.error(request, f'账户号：{a_no}，存款金额必须大于0')
+                return redirect('savings')
         except:
             messages.error(request, f'账户号：{a_no}，转账金额必须为数字')
             return redirect('savings')
@@ -231,6 +243,7 @@ def savings_account_details(request):
                 'd_amount': formatted_amount,
                 'd_balance': formatted_balance
             })
+
         return JsonResponse({"details": formatted_details}, safe=False)
     else:
         return JsonResponse({"error": "No account number provided"}, status=400)

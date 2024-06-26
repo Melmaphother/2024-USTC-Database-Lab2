@@ -1,16 +1,18 @@
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from . import (
-    login,
+from .system import (
     customer_register,
+    terms,
+    login,
+    home
+)
+from .dashboard import (
     dashboard,
     profile,
     savings,
     credit,
-    loan,
-    home,
-    terms
+    loan
 )
 from .account_utils import (
     savings_account,

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import Customer, AccountHoldManage, Account, CreditAccount
+from bank_service.models import Customer, AccountHoldManage, Account, CreditAccount
 from collections import defaultdict
 
 
@@ -37,6 +37,8 @@ def credit(request):
         formatted_rate = f"{credit_account_details.ca_rate * 100}%"
         formatted_overdraft_limit = f"{account['a_currency']} {credit_account_details.ca_overdraft_limit}"
         formatted_current_overdraft_amount = f"{account['a_currency']} {credit_account_details.ca_current_overdraft_amount}"
+        # 当前剩余透支额度 = 透支额度 - 当前透支金额
+        formatted_remaining_overdraft = f"{account['a_currency']} {credit_account_details.ca_overdraft_limit - credit_account_details.ca_current_overdraft_amount}"
         formatted_total = f"{account['a_currency']} {account['a_total']}"
         account_info = {
             'a_no': account['a_no'],
@@ -46,7 +48,8 @@ def credit(request):
             'a_total': formatted_total,
             'ca_rate': formatted_rate,
             'ca_overdraft_limit': formatted_overdraft_limit,
-            'ca_current_overdraft_amount': formatted_current_overdraft_amount
+            'ca_current_overdraft_amount': formatted_current_overdraft_amount,
+            'ca_remaining_overdraft': formatted_remaining_overdraft
         }
         credit_dict['CreditAccount'].append(account_info)
 

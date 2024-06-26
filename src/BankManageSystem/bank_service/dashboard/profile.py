@@ -3,7 +3,7 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Customer
+from bank_service.models import Customer
 from collections import defaultdict
 from pathlib import Path
 

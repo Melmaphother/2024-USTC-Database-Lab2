@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import Customer, AccountHoldManage, Account, SavingsAccount
+from bank_service.models import Customer, AccountHoldManage, Account, SavingsAccount
 from collections import defaultdict
 
 

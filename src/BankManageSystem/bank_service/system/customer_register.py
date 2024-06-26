@@ -6,7 +6,7 @@ from django.core.files.storage import FileSystemStorage
 from django.core.files.base import ContentFile
 from django.contrib import messages
 from .gen_captcha import gen_captcha
-from .models import Customer
+from bank_service.models import Customer
 from collections import defaultdict
 from pathlib import Path
 
