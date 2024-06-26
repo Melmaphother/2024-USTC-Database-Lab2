@@ -89,14 +89,14 @@
                         <button onclick="openWithdrawModal(this)"
                                 data-withdraw-account-number="{{ account.a_no }}"
                                 data-withdraw-balance="{{ account.a_balance }}"
-                                data-overdraft-limit="{{ account.ca_overdraft_limit }}"
+                                data-overdraft-limit="{{ account.ca_remaining_overdraft }}"
                                 class="withdraw">
                             取款
                         </button>
                         <button onclick="openTransferModal(this)"
                                 data-transfer-account-number="{{ account.a_no }}"
                                 data-transfer-balance="{{ account.a_balance }}"
-                                data-transfer-limit="{{ account.ca_overdraft_limit }}"
+                                data-transfer-limit="{{ account.ca_remaining_overdraft }}"
                                 class="transfer">
                             转账
                         </button>
@@ -184,6 +184,7 @@
                     <th>交易类型</th>
                     <th>交易金额</th>
                     <th>交易后余额</th>
+                    <th>交易后透支金额</th>
                     <th>对方账户</th>
                 </tr>
                 </thead>
@@ -235,7 +236,7 @@
                 <input type="text" id="hiddenWithdrawBalance" name="balance" disabled>
             </div>
             <div class="input-form-group">
-                <label for="hiddenOverdraftLimit">透支额度：</label>
+                <label for="hiddenOverdraftLimit">剩余透支额度：</label>
                 <input type="text" id="hiddenOverdraftLimit" name="limit" disabled>
             </div>
             <div class="input-form-group">
@@ -267,7 +268,7 @@
                 <input type="text" id="hiddenTransferBalance" name="balance" disabled>
             </div>
             <div class="input-form-group">
-                <label for="hiddenTransferLimit">转账额度：</label>
+                <label for="hiddenTransferLimit">剩余透支额度：</label>
                 <input type="text" id="hiddenTransferLimit" name="limit" disabled>
             </div>
             <div class="input-form-group">

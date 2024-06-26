@@ -54,7 +54,7 @@ function openDetailModal(button) {
     let csrfToken = document.getElementById('csrfToken').value;
 
     // AJAX 请求获取交易明细
-    fetch(`/savings_account_details/?account_number=${account_number}`, {
+    fetch(`/credit_account_details/?account_number=${account_number}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -80,12 +80,13 @@ function updateDetailTable(details) {
                 <td>${detail.d_type}</td>
                 <td>${detail.d_amount}</td>
                 <td>${detail.d_balance}</td>
+                <td>${detail.d_overdraft_amount}</td>
                 <td>${detail.d_other_a_no}</td>
             </tr>`;
             tableBody.innerHTML += row;
         });
     } else {
-        tableBody.innerHTML = '<tr><td colspan="5" class="empty-row">没有交易信息</td></tr>';
+        tableBody.innerHTML = '<tr><td colspan="6" class="empty-row">没有交易信息</td></tr>';
     }
 }
 

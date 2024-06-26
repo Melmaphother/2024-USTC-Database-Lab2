@@ -4,7 +4,7 @@ create procedure credit_account_withdraw(
     in amount DECIMAL(20, 2)
 )
 begin
-    declare overdraw_limit DECIMAL(20, 2);
+    declare overdraft_limit DECIMAL(20, 2);
     declare curr_overdraft_amount DECIMAL(20, 2);
     declare new_balance DECIMAL(20, 2);
     declare curr_balance DECIMAL(20, 2);
@@ -17,11 +17,11 @@ begin
     start transaction;
     -- 开启事务
 
-    -- 计算该账户当前余额、当然透支、透支额度
+    -- 计算该账户当前余额、当前透支、透支额度
     select a_balance, ca_current_overdraft_amount, ca_overdraft_limit
-    into curr_balance, curr_overdraft_amount, overdraw_limit
+    into curr_balance, curr_overdraft_amount, overdraft_limit
     from account
-    join credit_account on a_no = ca_no
+             join credit_account on a_no = ca_no
     where a_no = account_no;
 
 
@@ -34,7 +34,7 @@ begin
     else
         -- 若取的钱大于余额，计算余额部分之外的剩余支出与剩余额度
         -- 若剩余支出小于等于剩余额度，直接取
-        if amount - curr_balance <= overdraw_limit - curr_overdraft_amount then
+        if amount - curr_balance <= overdraft_limit - curr_overdraft_amount then
             set new_balance = 0;
             set curr_overdraft_amount = curr_overdraft_amount + amount - curr_balance;
         else
@@ -54,8 +54,9 @@ begin
     end if;
 
     -- 插入交易记录
-    insert into credit_account_record(car_a_no, car_other_a_no, car_after_balance, car_after_overdraft_amount, car_amount, car_time, car_type)
-    value (account_no, account_no, new_balance, curr_overdraft_amount, amount, now(), 'withdraw');
+    insert into credit_account_record(car_a_no, car_other_a_no, car_after_balance, car_after_overdraft_amount,
+                                      car_amount, car_time, car_type)
+        value (account_no, account_no, new_balance, curr_overdraft_amount, amount, now(), 'withdraw');
 
     -- 提交事务
     commit;
