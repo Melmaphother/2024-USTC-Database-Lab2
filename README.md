@@ -11,10 +11,10 @@
 3. 本文档主要包括项目的快速开始、项目展示、项目细节，查看更多说明请查看 docs 文件夹。
    | 文件 | 链接 |
    | --- | --- |
-   | 需求分析 | [Demand Analysis](docs/Demand%20Analysis.md) |
-   | 设计分析 | [Design Analysis](docs/Design%20Analysis.md) |
-   | 项目日志 | [Project Log](docs/Project%20Log.md) |
-   | 实验手册 | [Experiment Manual](docs/Exp%20Manual.pdf) |
+   | 需求分析 | [Demand Analysis](docs/需求分析.md) |
+   | 设计分析 | [Design Analysis](docs/设计分析.md) |
+   | 项目日志 | [Project Log](docs/项目日志.md) |
+   | 实验手册 | [Experiment Manual](docs/实验手册.pdf) |
    | 我的 Django 笔记 | [Django 笔记](docs/Django%20笔记/Django%20Note.md) |
 
 ## 快速开始
