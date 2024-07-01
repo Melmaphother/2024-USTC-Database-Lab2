@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="{% static 'css/dashboard/savings.css' %}">
     <link rel="stylesheet" href="{% static 'css/dashboard/credit.css' %}">
     <script src="{% static 'js/dashboard.js' %}"></script>
-    <script src="{% static 'js/alert_message.js' %}"></script>
     <script src="{% static 'js/dashboard/credit.js' %}"></script>
+    <script src="{% static 'js/alert_message.js' %}"></script>
 </head>
 <body>
 <div id="pageContent">
@@ -103,7 +103,7 @@
                     </div>
                 </div>
             {% empty %}
-                <h3 class="empty-account-message">没有信用卡账户信息</h3>
+                <h3 class="empty-account-message">没有信用卡账户信息，右上角添加账户</h3>
             {% endfor %}
         </div>
     </div>
@@ -153,9 +153,9 @@
             <div class="input-form-group">
                 <label for="overdraft_limit">透支额度：</label>
                 <select id="overdraft_limit" name="overdraft_limit" required>
-                    <option value="10000" selected>50000</option>
-                    <option value="50000">100000</option>
-                    <option value="100000">200000</option>
+                    <option value="50000" selected>50000</option>
+                    <option value="100000">100000</option>
+                    <option value="200000">200000</option>
                 </select>
             </div>
             <div class="input-form-group">
