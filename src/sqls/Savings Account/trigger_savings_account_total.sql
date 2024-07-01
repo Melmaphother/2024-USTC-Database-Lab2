@@ -1,5 +1,5 @@
-drop trigger if exists update_account_total;
-CREATE TRIGGER update_account_total
+drop trigger if exists update_savings_account_total;
+CREATE TRIGGER update_savings_account_total
     AFTER INSERT
     ON savings_account_record
     FOR EACH ROW
