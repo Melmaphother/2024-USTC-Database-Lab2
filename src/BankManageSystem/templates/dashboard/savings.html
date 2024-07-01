@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
     <link rel="stylesheet" href="{% static 'css/dashboard/savings.css' %}">
     <script src="{% static 'js/dashboard.js' %}"></script>
-    <script src="{% static 'js/alert_message.js' %}"></script>
     <script src="{% static 'js/dashboard/savings.js' %}"></script>
+    <script src="{% static 'js/alert_message.js' %}"></script>
 </head>
 <body>
 <div id="pageContent">
@@ -102,7 +102,7 @@
                     </div>
                 </div>
             {% empty %}
-                <h3 class="empty-account-message">没有储蓄账户信息</h3>
+                <h3 class="empty-account-message">没有储蓄账户信息，右上角添加账户</h3>
             {% endfor %}
         </div>
     </div>
