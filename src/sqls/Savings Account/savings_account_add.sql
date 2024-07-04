@@ -22,9 +22,6 @@ begin
     into new_a_no
     from account;
 
-    -- 打印新的账户号
-    select new_a_no as new_a_no;
-
     -- 在 account 表中插入新的账户
     insert into account(a_no, a_type, a_currency, a_balance, a_open_time, a_open_b_name, a_password_hash, a_total)
     value (new_a_no, 'Savings', currency, 0, now(), b_name, a_password, 0);
