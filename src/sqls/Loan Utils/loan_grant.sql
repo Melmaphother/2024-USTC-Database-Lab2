@@ -7,6 +7,7 @@ create procedure loan_grant(
 begin
     declare new_l_no int;
     declare loan_limit decimal(20, 2);
+    declare new_balance decimal(20, 2);
     begin
         GET DIAGNOSTICS CONDITION 1
             @p1 = RETURNED_SQLSTATE, @p2 = MESSAGE_TEXT;
@@ -33,13 +34,31 @@ begin
     from loan;
 
     -- 在 loan 表中插入新的贷款信息
-    insert into loan(l_no, l_amount, l_grant_time, l_repay_deadline, l_current_repay_period, l_repay_amount_total,
+    insert into loan(l_no, l_amount, l_grant_time, l_repay_deadline, l_repay_amount_total,
                      l_status)
-        value (new_l_no, loan_amount, now(), loan_repay_deadline, 0, 0.0, 'disbursed');
+        value (new_l_no, loan_amount, now(), loan_repay_deadline, 0.0, 'disbursed');
 
     -- 在 loan_grant 表中插入新的对应关系
     insert into loan_grant(lg_l_no, lg_la_no)
         value (new_l_no, account_no);
+
+    -- 从 account 表中获取账户余额
+    select a_balance
+    into new_balance
+    from account
+    where a_no = account_no;
+
+    -- 将贷款金额加到账户余额上
+    set new_balance = new_balance + loan_amount;
+
+    -- 更新账户余额
+    update account
+    set a_balance = new_balance
+    where a_no = account_no;
+
+    -- 写入 loan_account_record 表，类型为："grant_in"
+    insert into loan_account_record(lar_a_no, lar_other_a_no, lar_after_balance, lar_amount, lar_time, lar_type)
+        value (account_no, account_no, new_balance, loan_amount, now(), 'grant_in');
 
     -- 提交事务
     commit;

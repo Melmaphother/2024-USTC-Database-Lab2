@@ -231,6 +231,7 @@ def loan_account_details(request):
                 'withdraw': '取款',
                 'transfer_in': '转入',
                 'transfer_out': '转出',
+                'grant_in': '贷款发放',
                 'repay_in': '还款超付',
             }
             formatted_type = type_mapping.get(detail['lar_type'], detail['lar_type'])

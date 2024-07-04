@@ -58,7 +58,7 @@ input[type="text"], input[type="password"], input[type="tel"] {
 }
 
 .minority-width {
-    width: 30%;
+    width: 40%;
     display: inline-block;
 }
 

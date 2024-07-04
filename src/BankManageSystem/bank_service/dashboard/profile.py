@@ -27,15 +27,35 @@ def profile_dashboard(request):
             profile_dict
         )
     elif request.method == 'POST':
+        name = request.POST.get('name')
+        gender = request.POST.get('gender')
         upload_avatar = request.FILES.get('avatar')
         phone = request.POST.get('phone')
         age = request.POST.get('age')
         address = request.POST.get('address')
 
+        # 检查 name 长度是否小于等于 50
+        if name:
+            if len(name) > 50:
+                messages.error(request, '姓名应在 50 字以内')
+                if 'name' in request.session:
+                    del request.session['name']
+                return redirect('profile')
+        else:
+            name = 'USTCer'
+
+        # 将 gender 转换为单个字符
+        if gender:
+            if gender == "male":
+                gender = "M"
+            else:
+                gender = "F"
+        else:
+            gender = ''  # 这里不能设为 None，因为 models 中该字段为 CharField，null=False
+
         # 保存头像文件到对应位置
         # 使用用户的 id_avatar 作为文件名
         if upload_avatar:
-            print("allowed")
             # 不允许头像大于 1M
             if upload_avatar.size > 1024 * 1024:
                 messages.error(request, '头像图片大小不能超过 1MB')
@@ -81,6 +101,8 @@ def profile_dashboard(request):
 
         customer = Customer.objects.get(c_id=c_id)
         # 如果上传图片为 None，那么仍然使用之前的头像
+        customer.c_name = name
+        customer.c_gender = gender
         customer.c_avatar = upload_avatar if upload_avatar else customer.c_avatar
         customer.c_age = age
         customer.c_phone = phone

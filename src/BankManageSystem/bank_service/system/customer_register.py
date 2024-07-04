@@ -78,6 +78,22 @@ def customer_register(request):
                 del request.session['confirm_password']
             return redirect('customer_register')
 
+        # 使用 USTCer 作为默认姓名
+        default_name = 'USTCer'
+
+        # 使用 logo.png 作为默认头像
+        # 使用用户的 id_avatar 作为文件名
+        fs = FileSystemStorage(location=Path.joinpath(settings.MEDIA_ROOT, 'avatar'))
+        avatar_name = f'{id_number}_avatar.jpg'
+        default_avatar_path = Path.joinpath(settings.STATICFILES_DIRS[0], 'image/logo.png')
+        with open(default_avatar_path, 'rb') as f:
+            default_avatar = ContentFile(f.read())
+        # 若之前指定头像则替换它
+        if fs.exists(avatar_name):
+            fs.delete(avatar_name)
+        fs.save(avatar_name, default_avatar)
+        upload_avatar_url = f'avatar/{avatar_name}'
+
         # 创建用户
         user = User.objects.create_user(
             username=id_number,
@@ -89,7 +105,9 @@ def customer_register(request):
 
         # 将用户同时加入 Customer 表
         Customer.objects.create(
-            c_id=id_number
+            c_id=id_number,
+            c_name=default_name,
+            c_avatar=upload_avatar_url
         )
 
         # 标记为已经注册，没有输入个人信息
@@ -131,14 +149,12 @@ def edit_profile(request):
         c_id = request.session.get('id_number')
 
         name = request.POST.get('name')
-        upload_avatar = request.FILES.get('avatar')
         gender = request.POST.get('gender')
         phone = request.POST.get('phone')
         age = request.POST.get('age')
         address = request.POST.get('address')
         # 将用户输入的信息保存到 session 中
         request.session['name'] = name
-        request.session['upload_avatar'] = upload_avatar
         request.session['gender'] = gender
         request.session['phone'] = phone
         request.session['age'] = age
@@ -150,35 +166,6 @@ def edit_profile(request):
             if 'name' in request.session:
                 del request.session['name']
             return redirect('edit_profile')
-
-        # 保存头像文件到对应位置
-        # 使用用户的 id_avatar 作为文件名
-        fs = FileSystemStorage(location=Path.joinpath(settings.MEDIA_ROOT, 'avatar'))
-        avatar_name = f'{c_id}_avatar.jpg'
-        if upload_avatar:
-            print("already upload avatar")
-            # 不允许头像大于 1M
-            if upload_avatar.size > 1024 * 1024:
-                messages.error(request, '头像图片大小不能超过 1MB')
-                if 'upload_avatar' in request.session:
-                    del request.session['upload_avatar']
-                return redirect('edit_profile')
-            # 若之前指定头像则替换它
-            if fs.exists(avatar_name):
-                fs.delete(avatar_name)
-            fs.save(avatar_name, upload_avatar)
-        else:
-            print("not upload avatar")
-            # 如果用户没有上传头像，那么使用 static/image/logo.png 作为默认头像
-            # 仍然保存为 f'{c_id}_avatar.jpg'
-            default_avatar_path = Path.joinpath(settings.STATICFILES_DIRS[0], 'image/logo.png')
-            with open(default_avatar_path, 'rb') as f:
-                default_avatar = ContentFile(f.read())
-            # 若之前指定头像则替换它
-            if fs.exists(avatar_name):
-                fs.delete(avatar_name)
-            fs.save(avatar_name, default_avatar)
-        upload_avatar_url = f'avatar/{avatar_name}'
 
         # 将 gender 转换为单个字符
         if gender:
@@ -234,7 +221,6 @@ def edit_profile(request):
         customer.c_age = age
         customer.c_phone = phone
         customer.c_addr = address
-        customer.c_avatar = upload_avatar_url
         customer.save()
 
         # 直接为用户登录
@@ -250,8 +236,6 @@ def edit_profile(request):
                 del request.session['password']
             if 'name' in request.session:
                 del request.session['name']
-            if 'upload_avatar' in request.session:
-                del request.session['upload_avatar']
             if 'gender' in request.session:
                 del request.session['gender']
             if 'phone' in request.session:
