@@ -398,6 +398,9 @@
         <h2 class="loan-repay-header">贷款 <span id="hiddenLoanRepayLoanNumber"></span> 还贷</h2>
         <form action="/loan_repay/" method="post">
             {% csrf_token %}
+            <div>
+                <input type="hidden" id="hiddenInFormLoanRepayLoanNumber" name="loan_number">
+            </div>
             <div class="input-form-group">
                 <label for="hiddenLoanRepayAccountNumber">账户号：</label>
                 <input type="text" id="hiddenLoanRepayAccountNumber" name="a_no" readonly>
@@ -435,6 +438,7 @@
                     <th>还款期数</th>
                     <th>还款时间</th>
                     <th>还款金额</th>
+                    <th>还款超付额</th>
                     <th>交易后已还总额</th>
                 </tr>
                 </thead>

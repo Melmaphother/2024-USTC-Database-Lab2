@@ -105,3 +105,45 @@ h2.loan-repay-header {
     font-size: 24px;
     color: #339900;
 }
+
+.business-modal-content.loan-detail-modal-content {
+    width: 50%;
+    /*height: 50%;*/
+    overflow: auto;
+}
+
+.loan-detail-table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* 确保有足够的宽度 */
+}
+
+.loan-detail-table table {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    border-radius: 8px;
+    overflow: hidden; /* 确保所有内容都被包含在圆角内 */
+}
+
+.loan-detail-table th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+    background-color: white;
+}
+
+.loan-detail-table th {
+    background-color: #3366CC;
+    color: whitesmoke;
+}
+
+.loan-detail-table tr:nth-child(odd) td {
+    background-color: #abe7ef;
+}
+
+.loan-detail-table td.empty-row {
+    background-color: #dedede;
+    text-align: center;
+}

@@ -166,12 +166,13 @@ function updateLoanDetailTable(details) {
                 <td>${detail.lr_repay_period}</td>
                 <td>${detail.lr_time}</td>
                 <td>${detail.lr_amount}</td>
+                <td>${detail.lr_overpayment}</td>
                 <td>${detail.lr_after_repay_amount_total}</td>
             </tr>`;
             tableBody.innerHTML += row;
         });
     } else {
-        tableBody.innerHTML = '<tr><td colspan="4" class="empty-row">没有贷款信息</td></tr>';
+        tableBody.innerHTML = '<tr><td colspan="5" class="empty-row">没有还贷信息</td></tr>';
     }
 }
 

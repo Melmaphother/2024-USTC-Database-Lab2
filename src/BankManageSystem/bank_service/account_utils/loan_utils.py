@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from decimal import Decimal
 from django.contrib.auth.hashers import check_password
-from ..models import Account, LoanAccount, LoanGrant, LoanRepay
+from ..models import Account, Loan, LoanAccount, LoanGrant, LoanRepay
 from datetime import datetime
 from django.http import JsonResponse
 
@@ -68,12 +68,20 @@ def loan_repay(request):
         repay_amount = request.POST.get('repay_amount')
         password = request.POST.get('password')
 
-        # 从 LoanGrant 表中获取 a_no
-        loan_grant_object = LoanGrant.objects.get(lg_l_no=loan_number)
-        if not loan_grant_object:
-            messages.error(request, f'贷款编号：{loan_number}，不存在')
+        # 获取 loan 的状态
+        loan = Loan.objects.get(l_no=loan_number)
+        if loan.l_status == 'settled':
+            messages.error(request, f'贷款号：{loan_number}，已结清，无需继续还贷')
             return redirect('loan')
-        a_no = loan_grant_object.lg_la_no
+        elif loan.l_status == 'pending':
+            messages.error(request, f'贷款号：{loan_number}，未发放，无需还贷')
+            return redirect('loan')
+
+        # 从 LoanGrant 表中获取 a_no
+        loan_grant_ = LoanGrant.objects.filter(
+            lg_l_no=loan_number
+        ).values('lg_la_no').first()
+        a_no = loan_grant_['lg_la_no']
 
         # 检查密码是否正确
         account = Account.objects.get(a_no=a_no)
@@ -95,28 +103,29 @@ def loan_repay(request):
         # 调用存储过程
         try:
             with connection.cursor() as cursor:
-                cursor.callproc('loan_repay', [loan_number, a_no, repay_amount])
+                cursor.callproc('loan_repay', [loan_number, repay_amount])
             messages.success(request, f'账户号：{a_no}，还款成功')
         except:
             messages.error(request, f'账户号：{a_no}，还款失败')
+
+        return redirect('loan')
 
 
 @login_required
 def loan_details(request):
     loan_number = request.GET.get('loan_number')
 
-    # 从 LoanGrant 表中获取 a_no
-    loan_grant_object = LoanGrant.objects.get(lg_l_no=loan_number)
-    if not loan_grant_object:
-        messages.error(request, f'贷款编号：{loan_number}，不存在')
-        return redirect('loan')
-    a_no = loan_grant_object.lg_la_no
-
     if loan_number:
+        # 从 LoanGrant 表中获取 a_no
+        loan_grant_ = LoanGrant.objects.filter(
+            lg_l_no=loan_number
+        ).values('lg_la_no').first()
+        a_no = loan_grant_['lg_la_no']
+
         details = LoanRepay.objects.filter(
             lr_l_no=loan_number
-        ).order_by('lr_repay_period').values(
-            'lr_time', 'lr_amount', 'lr_repay_period', 'lr_after_repay_amount_total'
+        ).order_by('-lr_repay_period').values(
+            'lr_time', 'lr_amount', 'lr_repay_period', 'lr_after_repay_amount_total', 'lr_overpayment'
         )
 
         account_info = Account.objects.filter(
@@ -131,10 +140,11 @@ def loan_details(request):
         formatted_details = []
         for detail in details:
             formatted_detail = {
-                'lr_time': detail['lr_time'],
+                'lr_time': detail['lr_time'].strftime('%Y-%m-%d %H:%M:%S'),
                 'lr_amount': f'{currency} {detail["lr_amount"]}',
                 'lr_repay_period': detail['lr_repay_period'],
-                'lr_after_repay_amount_total': f'{currency} {detail["lr_after_repay_amount_total"]}'
+                'lr_after_repay_amount_total': f'{currency} {detail["lr_after_repay_amount_total"]}',
+                'lr_overpayment': f'{currency} {detail["lr_overpayment"]}'
             }
             formatted_details.append(formatted_detail)
 

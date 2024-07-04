@@ -184,6 +184,7 @@ class LoanRepay(models.Model):
     lr_amount = models.DecimalField(max_digits=20, decimal_places=2)
     lr_repay_period = models.IntegerField(null=True)
     lr_after_repay_amount_total = models.DecimalField(max_digits=20, decimal_places=2, default=0.0)
+    lr_overpayment = models.DecimalField(max_digits=20, decimal_places=2, default=0.0)
 
     class Meta:
         db_table = 'loan_repay'
