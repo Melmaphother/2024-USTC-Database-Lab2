@@ -6,9 +6,13 @@
     {% load static %}
     <link rel="icon" href="{% static 'image/favicon-rounded.png' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/edit_profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <script src="{% static 'js/dashboard/profile.js' %}"></script>
 </head>
 <body>
+<div class="back-button-container">
+    <a href="/customer_register" class="back-button">返回</a>
+</div>
 <div class="form-container">
     <h2>个人信息</h2>
     <form action="/edit_profile/" method="post">

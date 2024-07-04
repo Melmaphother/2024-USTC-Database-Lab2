@@ -5,9 +5,12 @@
     <title>客户注册</title>
     {% load static %}
     <link rel="icon" href="{% static 'image/favicon-rounded.png' %}" type="image/x-icon">
-    <link rel="stylesheet" href="{% static 'css/customer_register.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 <body>
+<div class="back-button-container">
+    <a href="/" class="back-button">返回</a>
+</div>
 <div class="form-container">
     <h2>用户注册</h2>
     <form action="/customer_register/" method="post">
