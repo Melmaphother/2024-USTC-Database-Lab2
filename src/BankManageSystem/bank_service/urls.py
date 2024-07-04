@@ -17,7 +17,8 @@ from .dashboard import (
 from .account_utils import (
     savings_account,
     credit_account,
-    loan_account
+    loan_account,
+    loan_utils
 )
 
 # System URLs
@@ -33,10 +34,10 @@ system_patterns = [
 # Dashboard URLs
 dashboard_patterns = [
     path('dashboard/', dashboard.dashboard, name='dashboard'),
-    path('dashboard/profile/', profile.profile, name='profile'),
-    path('dashboard/savings/', savings.savings, name='savings'),
-    path('dashboard/credit/', credit.credit, name='credit'),
-    path('dashboard/loan/', loan.loan, name='loan'),
+    path('dashboard/profile/', profile.profile_dashboard, name='profile'),
+    path('dashboard/savings/', savings.savings_dashboard, name='savings'),
+    path('dashboard/credit/', credit.credit_dashboard, name='credit'),
+    path('dashboard/loan/', loan.loan_dashboard, name='loan'),
 ]
 
 # Savings Account URLs
@@ -66,6 +67,13 @@ loan_account_patterns = [
     path('loan_account_details/', loan_account.loan_account_details, name='loan_account_details'),
 ]
 
+# Loan URLS
+loan_patterns = [
+    path('loan_grant/', loan_utils.loan_grant, name='loan_grant'),
+    path('loan_repay/', loan_utils.loan_repay, name='loan_repay'),
+    path('loan_details/', loan_utils.loan_details, name='loan_details'),
+]
+
 # Main urlpatterns
 urlpatterns = (
         system_patterns +
@@ -73,5 +81,6 @@ urlpatterns = (
         savings_account_patterns +
         credit_account_patterns +
         loan_account_patterns +
+        loan_patterns +
         static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 )

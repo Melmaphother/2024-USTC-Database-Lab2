@@ -29,7 +29,7 @@
         </div>
         <div class="bottom-buttons">
             <button onclick="openLogoutModal()">登出</button>
-        </div> 
+        </div>
     </div>
     <div class="main-content">
         <div class="header">
@@ -39,69 +39,75 @@
         <div class="dashboard-header">
             <h3>账户查询</h3>
         </div>
-        <h3 class="savings-accounts">储蓄账户</h3>
-        <table class="savings-accounts">
-            <tr>
-                <th>账号</th>
-                <th>余额</th>
-                <th>开户日期</th>
-                <th>开户银行</th>
-            </tr>
-            {% for account in SavingsAccount %}
+        <div class="savings-accounts">
+            <h3>储蓄账户</h3>
+            <table>
                 <tr>
-                    <td>{{ account.a_no }}</td>
-                    <td>{{ account.formatted_balance }}</td>
-                    <td>{{ account.a_open_time|date:"Y-m-d" }}</td>
-                    <td>{{ account.a_open_b_name }}</td>
+                    <th>账号</th>
+                    <th>余额</th>
+                    <th>开户日期</th>
+                    <th>开户银行</th>
                 </tr>
-            {% empty %}
+                {% for account in SavingsAccount %}
+                    <tr>
+                        <td>{{ account.a_no }}</td>
+                        <td>{{ account.formatted_balance }}</td>
+                        <td>{{ account.a_open_time|date:"Y-m-d" }}</td>
+                        <td>{{ account.a_open_b_name }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4" class="empty-row">没有储蓄账户信息</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="credit-accounts">
+            <h3>信用卡账户</h3>
+            <table>
                 <tr>
-                    <td colspan="4" class="empty-row">没有储蓄账户信息</td>
+                    <th>账号</th>
+                    <th>余额</th>
+                    <th>开户日期</th>
+                    <th>开户银行</th>
                 </tr>
-            {% endfor %}
-        </table>
-        <h3 class="credit-accounts">信用卡账户</h3>
-        <table class="credit-accounts">
-            <tr>
-                <th>账号</th>
-                <th>余额</th>
-                <th>开户日期</th>
-                <th>开户银行</th>
-            </tr>
-            {% for account in dashboard_dict.CreditAccount %}
+                {% for account in CreditAccount %}
+                    <tr>
+                        <td>{{ account.a_no }}</td>
+                        <td>{{ account.formatted_balance }}</td>
+                        <td>{{ account.a_open_time|date:"Y-m-d" }}</td>
+                        <td>{{ account.a_open_b_name }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4" class="empty-row">没有信用卡账户信息</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="loan-accounts">
+            <h3>贷款账户</h3>
+            <table>
                 <tr>
-                    <td>{{ account.a_no }}</td>
-                    <td>{{ account.formatted_balance }}</td>
-                    <td>{{ account.a_open_time|date:"Y-m-d" }}</td>
-                    <td>{{ account.a_open_b_name }}</td>
+                    <th>账号</th>
+                    <th>余额</th>
+                    <th>开户日期</th>
+                    <th>开户银行</th>
                 </tr>
-            {% empty %}
-                <tr>
-                    <td colspan="4" class="empty-row">没有信用卡账户信息</td>
-                </tr>
-            {% endfor %}
-        </table>
-        <h3 class="loan-accounts">贷款账户</h3>
-        <table class="loan-accounts">
-            <tr>
-                <th>账号</th>
-                <th>余额</th>
-                <th>开户日期</th>
-                <th>开户银行</th>
-            </tr>
-            {% for account in dashboard_dict.LoanAccount %}
-                <tr>
-                    <td>{{ account.a_no }}</td>
-                    <td>{{ account.formatted_balance }}</td>
-                    <td>{{ account.a_open_time|date:"Y-m-d" }}</td>
-                    <td>{{ account.a_open_b_name }}</td>
-                </tr>
-            {% empty %}
-                <tr>
-                    <td colspan="4" class="empty-row">没有贷款账户信息</td>
-                </tr>
-            {% endfor %}
-        </table>
+                {% for account in LoanAccount %}
+                    <tr>
+                        <td>{{ account.a_no }}</td>
+                        <td>{{ account.formatted_balance }}</td>
+                        <td>{{ account.a_open_time|date:"Y-m-d" }}</td>
+                        <td>{{ account.a_open_b_name }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4" class="empty-row">没有贷款账户信息</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
 </div>
 <div id="logoutModal" class="modal">

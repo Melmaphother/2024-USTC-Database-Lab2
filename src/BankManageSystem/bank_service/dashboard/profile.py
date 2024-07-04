@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 @login_required
-def profile(request):
+def profile_dashboard(request):
     c_id = request.user.username
     if request.method == 'GET':
         customer = Customer.objects.get(c_id=c_id)
