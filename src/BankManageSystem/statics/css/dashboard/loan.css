@@ -2,3 +2,106 @@
     font-size: 24px;
     color: #CC6633;
 }
+
+.loan-table {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; /* 确保有足够的宽度 */
+}
+
+.loan-table table {
+    width: 91%;
+    border-collapse: collapse;
+    margin: 20px 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.loan-table th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+    background-color: white;
+}
+
+.loan-table th {
+    color: whitesmoke;
+    background-color: #CC6633;
+}
+
+.loan-table tr:nth-child(odd) td {
+    background-color: whitesmoke;
+}
+
+.loan-table tr:nth-child(even) td {
+    background-color: #fddca8;
+}
+
+.loan-table .loan-repay-container {
+    text-align: center;
+}
+
+.loan-table .loan-detail-container {
+    text-align: center;
+}
+
+.loan-table td.empty-row {
+    background-color: whitesmoke;
+    text-align: center;
+}
+
+.loan-repay-container .loan-repay-button {
+    padding: 10px 20px;
+    margin: 0;
+    background-color: #339900;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 85%;
+    max-width: 100px;
+}
+
+.loan-detail-container .loan-detail-button {
+    padding: 10px 20px;
+    margin: 0;
+    background-color: #0066CC;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 85%;
+    max-width: 100px;
+}
+
+.button-loan-grant-row {
+    display: flex;
+    justify-content: space-between;
+    width: 94%;
+    margin: 6px 5px;
+}
+
+.button-loan-grant-row .loan-grant-button {
+    padding: 12px 14px;
+    background-color: #CC6633;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    flex: none;
+    width: calc((100% / 3) - 30px);
+    margin: 5px 15px; /* 调整按钮间距 */
+}
+
+h2.loan-grant-header {
+    font-size: 24px;
+    color: #CC6633;
+}
+
+h2.loan-repay-header {
+    font-size: 24px;
+    color: #339900;
+}

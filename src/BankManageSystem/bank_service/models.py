@@ -158,10 +158,9 @@ class LoanAccountRecord(models.Model):
 class Loan(models.Model):
     l_no = models.IntegerField(primary_key=True)
     l_amount = models.DecimalField(max_digits=20, decimal_places=2)
-    l_time = models.DateTimeField(blank=True, null=True)
-    l_deadline = models.DateTimeField(blank=True, null=True)
-    l_current_amount_period = models.IntegerField(null=True)
-    l_current_amount_total = models.DecimalField(max_digits=20, decimal_places=2)
+    l_grant_time = models.DateTimeField(blank=True, null=True)
+    l_repay_deadline = models.DateTimeField(blank=True, null=True)
+    l_repay_amount_total = models.DecimalField(max_digits=20, decimal_places=2)
     l_status = models.CharField(max_length=20, blank=True, default='')
 
     class Meta:
@@ -171,8 +170,8 @@ class Loan(models.Model):
 class LoanGrant(models.Model):
     lg_l_no = models.OneToOneField(Loan, on_delete=models.CASCADE, primary_key=True,
                                    related_name='loan_grants', db_column='lg_l_no')
-    lg_a_no = models.ForeignKey(LoanAccount, on_delete=models.CASCADE,
-                                related_name='grants', db_column='lg_a_no')
+    lg_la_no = models.ForeignKey(LoanAccount, on_delete=models.CASCADE,
+                                 related_name='grants', db_column='lg_la_no')
 
     class Meta:
         db_table = 'loan_grant'
@@ -183,6 +182,8 @@ class LoanRepay(models.Model):
                                 related_name='repays', db_column='lr_l_no')
     lr_time = models.DateTimeField()
     lr_amount = models.DecimalField(max_digits=20, decimal_places=2)
+    lr_repay_period = models.IntegerField(null=True)
+    lr_after_repay_amount_total = models.DecimalField(max_digits=20, decimal_places=2, default=0.0)
 
     class Meta:
         db_table = 'loan_repay'

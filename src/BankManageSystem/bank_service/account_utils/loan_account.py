@@ -56,6 +56,12 @@ def loan_account_deposit(request):
         amount = request.POST.get('amount')
         password = request.POST.get('password')
 
+        # 检查密码是否正确
+        account = Account.objects.get(a_no=a_no)
+        if not check_password(password, account.a_password_hash):
+            messages.error(request, f'账户号：{a_no}，密码错误')
+            return redirect('loan')
+
         # 检查 amount 是否为数字
         try:
             amount = Decimal(amount)
@@ -65,12 +71,6 @@ def loan_account_deposit(request):
                 return redirect('loan')
         except:
             messages.error(request, f'账户号：{a_no}，存款金额必须为数字')
-            return redirect('loan')
-
-        # 检查密码是否正确
-        account = Account.objects.get(a_no=a_no)
-        if not check_password(password, account.a_password_hash):
-            messages.error(request, f'账户号：{a_no}，密码错误')
             return redirect('loan')
 
         try:
@@ -94,6 +94,12 @@ def loan_account_withdraw(request):
         amount = request.POST.get('amount')
         password = request.POST.get('password')
 
+        # 检查密码是否正确
+        account = Account.objects.get(a_no=a_no)
+        if not check_password(password, account.a_password_hash):
+            messages.error(request, f'账户号：{a_no}，密码错误')
+            return redirect('loan')
+
         # 检查 amount 是否为数字
         try:
             amount = Decimal(amount)
@@ -103,12 +109,6 @@ def loan_account_withdraw(request):
                 return redirect('loan')
         except:
             messages.error(request, f'账户号：{a_no}，取款金额必须为数字')
-            return redirect('loan')
-
-        # 检查密码是否正确
-        account = Account.objects.get(a_no=a_no)
-        if not check_password(password, account.a_password_hash):
-            messages.error(request, f'账户号：{a_no}，密码错误')
             return redirect('loan')
 
         # 检查取款金额是否超过余额
@@ -149,6 +149,12 @@ def loan_account_transfer(request):
             messages.error(request, f'账户号：{a_no}，无法为自己转账')
             return redirect('loan')
 
+        # 检查密码是否正确
+        account = Account.objects.get(a_no=a_no)
+        if not check_password(password, account.a_password_hash):
+            messages.error(request, f'账户号：{a_no}，密码错误')
+            return redirect('loan')
+
         # 检查 amount 是否为数字
         try:
             amount = Decimal(amount)
@@ -158,12 +164,6 @@ def loan_account_transfer(request):
                 return redirect('loan')
         except:
             messages.error(request, f'账户号：{a_no}，转账金额必须为数字')
-            return redirect('loan')
-
-        # 检查密码是否正确
-        account = Account.objects.get(a_no=a_no)
-        if not check_password(password, account.a_password_hash):
-            messages.error(request, f'账户号：{a_no}，密码错误')
             return redirect('loan')
 
         # 检查转账金额是否超过余额

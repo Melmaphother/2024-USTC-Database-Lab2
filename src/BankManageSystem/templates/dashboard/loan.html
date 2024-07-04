@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
     <link rel="stylesheet" href="{% static 'css/dashboard/savings.css' %}">
     <link rel="stylesheet" href="{% static 'css/dashboard/loan.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/zh.js"></script>
     <script src="{% static 'js/dashboard.js' %}"></script>
     <script src="{% static 'js/dashboard/loan.js' %}"></script>
     <script src="{% static 'js/alert_message.js' %}"></script>
@@ -100,6 +103,67 @@
                                 class="transfer">
                             转账
                         </button>
+                    </div>
+                    <div class="button-loan-grant-row">
+                        <button onclick="openLoanGrantModal(this)"
+                                data-loan-grant-account-number="{{ account.a_no }}"
+                                data-loan-limit="{{ account.la_loan_limit }}"
+                                class="loan-grant-button">
+                            申请贷款
+                        </button>
+                    </div>
+                    <div class="loan-table">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>贷款号</th>
+                                <th>贷款时间</th>
+                                <th>贷款额</th>
+                                <th>已还</th>
+                                <th>期限</th>
+                                <th>状态</th>
+                                <th class="loan-repay-container">
+                                    还贷
+                                </th>
+                                <th class="loan-detail-container">
+                                    明细
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for loan in account.Loans %}
+                                <tr>
+                                    <td>{{ loan.l_no }}</td>
+                                    <td>{{ loan.l_grant_time }}</td>
+                                    <td>{{ loan.l_amount }}</td>
+                                    <td>{{ loan.l_repay_amount_total }}</td>
+                                    <td>{{ loan.l_repay_deadline }}</td>
+                                    <td>{{ loan.l_status }}</td>
+                                    <td class="loan-repay-container">
+                                        <button onclick="openLoanRepayModal(this)"
+                                                data-loan-repay-account-number="{{ account.a_no }}"
+                                                data-loan-repay-loan-number="{{ loan.l_no }}"
+                                                data-loan-amount="{{ loan.l_amount }}"
+                                                data-repay-amount-total="{{ loan.l_repay_amount_total }}"
+                                                class="loan-repay-button">
+                                            还贷
+                                        </button>
+                                    </td>
+                                    <td class="loan-detail-container">
+                                        <button onclick="openLoanDetailModal(this)"
+                                                data-loan-detail-loan-number="{{ loan.l_no }}"
+                                                class="loan-detail-button">
+                                            明细
+                                        </button>
+                                    </td>
+                                </tr>
+                            {% empty %}
+                                <tr>
+                                    <td colspan="9" class="empty-row">没有贷款信息，左上角申请贷款</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             {% empty %}
@@ -297,84 +361,92 @@
         </form>
     </div>
 </div>
-<!--<div id="loanRepayModal" class="modal">
-    <div class="business-modal-content">
-        <h2 class="loan-repay">还贷</h2>
-        <h3>账户号：1234</h3>
-        <form action="" method="post">
+<div id="loanGrantModal" class="modal">
+    <div class="business-modal-content loan-grant-modal-content">
+        <h2 class="loan-grant-header">申请贷款</h2>
+        <form action="/loan_grant/" method="post">
             {% csrf_token %}
             <div class="input-form-group">
-                <label for="loan-id">选择贷款号：</label>
-                <input type="text" id="loan-id" name="loan-id" required>
+                <label for="hiddenLoanGrantAccountNumber">账户号：</label>
+                <input type="text" id="hiddenLoanGrantAccountNumber" name="a_no" readonly>
             </div>
             <div class="input-form-group">
-                <label for="amount">还贷金额：</label>
-                <input type="text" id="amount" name="amount" required>
+                <label for="hiddenLoanLimit">贷款额度：</label>
+                <input type="text" id="hiddenLoanLimit" name="loan_limit" disabled>
             </div>
             <div class="input-form-group">
-                <label for="password">账户密码：</label>
-                <input type="password" id="password" name="password" required>
+                <label for="loan-amount">贷款金额：</label>
+                <input type="text" id="loan-amount" name="loan_amount" required>
+            </div>
+            <div class="input-form-group">
+                <label for="repay-deadline">还款期限：</label>
+                <input type="text" id="repay-deadline" name="repay_deadline" required>
+            </div>
+            <div class="input-form-group">
+                <label for="loan-grant-password">账户密码：</label>
+                <input type="password" id="loan-grant-password" name="password" required>
             </div>
             <div class="button-container">
-                <button type="submit" class="confirm">
-                    确认
-                </button>
-                <button type="button" onclick="closeLoanRepayModal()" class="cancel">
-                    取消
-                </button>
+                <button type="submit" class="confirm">确认</button>
+                <button type="button" onclick="closeLoanGrantModal()" class="cancel">取消</button>
             </div>
         </form>
     </div>
 </div>
-<div id="loanApplyModal" class="modal">
-    <div class="business-modal-content">
-        <h2 class="loan-apply">申请贷款</h2>
-        <h3>账户号：1234，贷款号：L001</h3>
-        <form action="" method="post">
+<div id="loanRepayModal" class="modal">
+    <div class="business-modal-content loan-repay-modal-content">
+        <h2 class="loan-repay-header">贷款 <span id="hiddenLoanRepayLoanNumber"></span> 还贷</h2>
+        <form action="/loan_repay/" method="post">
             {% csrf_token %}
             <div class="input-form-group">
-                <label for="amount">贷款金额：</label>
-                <input type="text" id="amount" name="amount" required>
+                <label for="hiddenLoanRepayAccountNumber">账户号：</label>
+                <input type="text" id="hiddenLoanRepayAccountNumber" name="a_no" readonly>
             </div>
             <div class="input-form-group">
-                <label for="password">账户密码：</label>
-                <input type="password" id="password" name="password" required>
+                <label for="hiddenLoanAmount">贷款总额：</label>
+                <input type="text" id="hiddenLoanAmount" name="loan_amount" disabled>
+            </div>
+            <div class="input-form-group">
+                <label for="hiddenRepayAmountTotal">已还总额：</label>
+                <input type="text" id="hiddenRepayAmountTotal" name="repay_amount_total" disabled>
+            </div>
+            <div class="input-form-group">
+                <label for="loan-repay-amount">还贷金额：</label>
+                <input type="text" id="loan-repay-amount" name="repay_amount" required>
+            </div>
+            <div class="input-form-group">
+                <label for="loan-repay-password">账户密码：</label>
+                <input type="password" id="loan-repay-password" name="password" required>
             </div>
             <div class="button-container">
-                <button type="submit" class="confirm">
-                    确认
-                </button>
-                <button type="button" onclick="closeLoanApplyModal()" class="cancel">
-                    取消
-                </button>
+                <button type="submit" class="confirm">确认</button>
+                <button type="button" onclick="closeLoanRepayModal()" class="cancel">取消</button>
             </div>
         </form>
     </div>
 </div>
 <div id="loanDetailModal" class="modal">
-    <div class="business-modal-content">
-        <h2 class="loan-detail">贷款明细</h2>
-        <h3>账户号：1234</h3>
-        <form action="" method="post">
-            {% csrf_token %}
-            <div class="input-form-group">
-                <label for="amount">还贷金额：</label>
-                <input type="text" id="amount" name="amount" required>
-            </div>
-            <div class="input-form-group">
-                <label for="password">账户密码：</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="button-container">
-                <button type="submit" class="confirm">
-                    确认
-                </button>
-                <button type="button" onclick="closeLoanDetailModal()" class="cancel">
-                    取消
-                </button>
-            </div>
-        </form>
+    <div class="business-modal-content loan-detail-modal-content">
+        <h2 class="loan-detail-header">贷款 <span id="hiddenLoanDetailLoanNumber"></span> 明细</h2>
+        <div class="loan-detail-table">
+            <table>
+                <thead>
+                <tr>
+                    <th>还款期数</th>
+                    <th>还款时间</th>
+                    <th>还款金额</th>
+                    <th>交易后已还总额</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- 动态内容将会插入这里 -->
+                </tbody>
+            </table>
+        </div>
+        <div class="detail-button-container">
+            <button onclick="closeLoanDetailModal()" class="confirm">确认</button>
+        </div>
     </div>
-</div>-->
+</div>
 </body>
 </html>
