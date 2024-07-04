@@ -109,38 +109,94 @@
 
    <img src="docs/assets/profile.png" alt="Profile" style="zoom: 50%;" />
 
-7. 添加账户
+7. 储蓄账户：添加账户
 
    不跳转 url，通过背景模糊 + 弹窗的形式，动态展示添加账户页面，符合用户直觉。
 
    <img src="docs/assets/add_savings_account.png" alt="Add Account" style="zoom: 50%;" />
 
-8. 账户详情
+8. 储蓄账户：账户详情
 
    <img src="docs/assets/savings_account.png" alt="Account" style="zoom: 50%;" />
 
-9. 存款
+9. 储蓄账户：存款
 
    <img src="docs/assets/savings_account_deposit.png" alt="Deposit" style="zoom: 50%;" />
 
-10. 取款
+10. 储蓄账户：取款
 
     <img src="docs/assets/savings_account_withdraw.png" alt="Withdraw" style="zoom: 50%;" />
 
-11. 转账
+11. 储蓄账户：转账
 
     <img src="docs/assets/savings_account_transfer.png" alt="Transfer" style="zoom: 50%;" />
 
-12. 查看明细
+12. 储蓄账户：查看明细
 
     <img src="docs/assets/savings_account_details.png" alt="Details" style="zoom: 50%;" />
 
-13. 表单填写错误处理
-    刷新验证码，保存未出错的表单信息，避免重复填写，提示错误信息。
+13. 信用卡账户
+
+    <img src="docs/assets/credit_account.png" alt="Details" style="zoom: 50%;" />
+
+14. 信用卡账户：透支逻辑
+
+    - 用户可以从余额之外的透支额度中取款或转账
+
+      <img src="docs/assets/credit_account_withdraw_1.png" alt="Details" style="zoom: 50%;" />
+
+    - 透支将累计在当前透支，而不会从余额扣
+
+      <img src="docs/assets/credit_account_withdraw_2.png" alt="Details" style="zoom: 50%;" />
+
+    - 从明细中自然也可以看到
+
+      <img src="docs/assets/credit_account_withdraw_3.png" alt="Details" style="zoom: 50%;" />
+
+    - 同样的，其它账户向信用卡账户转账时，会优先清除记录的当前透支额，超过了才会存入余额
+
+      <img src="docs/assets/credit_account_transfer.png" alt="Details" style="zoom: 50%;" />
+
+15. 贷款账户，加入了申请贷款的功能
+
+    <img src="docs/assets/loan_account.png" alt="Details" style="zoom: 50%;" />
+
+16. 贷款账户：申请贷款
+
+    - 申请时可以选择贷款期限
+
+      <img src="docs/assets/loan_add.png" alt="Details" style="zoom: 50%;" />
+
+    - 申请结束显示已发放状态，并计入该账户余额
+
+      <img src="docs/assets/loan_add_1.png" alt="Details" style="zoom: 50%;" />
+
+      <img src="docs/assets/loan_add_2.png" alt="Details" style="zoom: 50%;" />
+
+17. 贷款账户：还贷
+
+    - 还贷并不是从余额直接扣，而是另外支付
+
+      <img src="docs/assets/loan_repay.png" alt="Details" style="zoom: 50%;" />
+
+    - 第一次还贷即修改状态为 “还款中”
+
+      <img src="docs/assets/loan_repay_1.png" alt="Details" style="zoom: 50%;" />
+
+    - 当还款金额大于等于还需要还的金额，修改状态为 “已结清”，并将剩余的存入余额
+
+      <img src="docs/assets/loan_repay_2.png" alt="Details" style="zoom: 50%;" />
+
+      <img src="docs/assets/loan_repay_3.png" alt="Details" style="zoom: 50%;" />
+
+    - 当贷款已经结清，就不需要再还贷
+
+18. 表单填写错误处理
+    刷新验证码，保存未出错的表单信息，避免重复填写。同时提示错误信息。
 
     <img src="docs/assets/error_form.png" alt="Form Error" style="zoom: 50%;" />
 
-14. 账户操作提示信息
+19. 账户操作提示信息
     以浏览器自带 alert 提示操作成功或失败的信息。
 
     <img src="docs/assets/error_message.png" alt="Alert" style="zoom: 50%;" />
