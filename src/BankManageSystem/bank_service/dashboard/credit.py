@@ -5,7 +5,7 @@ from collections import defaultdict
 
 
 @login_required
-def credit(request):
+def credit_dashboard(request):
     c_id = request.user.username
     customer = Customer.objects.get(c_id=c_id)
     credit_dict = defaultdict()

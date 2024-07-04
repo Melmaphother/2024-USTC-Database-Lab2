@@ -5,7 +5,7 @@ from collections import defaultdict
 
 
 @login_required
-def savings(request):
+def savings_dashboard(request):
     c_id = request.user.username
     customer = Customer.objects.get(c_id=c_id)
     savings_dict = defaultdict()
