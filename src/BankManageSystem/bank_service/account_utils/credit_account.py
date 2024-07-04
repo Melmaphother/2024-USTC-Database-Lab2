@@ -229,7 +229,7 @@ def credit_account_details(request):
 
             # 如果 other_a_no 是自己，说明为存款取款，那么把对方账户号设为空
             formatted_other_a_no = detail['car_other_a_no']
-            if detail['car_type'] in ['deposit', 'withdraw']:
+            if formatted_other_a_no == int(account_number):
                 formatted_other_a_no = ''
 
             formatted_details.append({

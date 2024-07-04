@@ -230,13 +230,15 @@ def loan_account_details(request):
                 'deposit': '存款',
                 'withdraw': '取款',
                 'transfer_in': '转入',
-                'transfer_out': '转出'
+                'transfer_out': '转出',
+                'repay_in': '还款超付',
             }
             formatted_type = type_mapping.get(detail['lar_type'], detail['lar_type'])
 
-            # 如果 other_a_no 是自己，说明为存款取款，那么把对方账户号设为空
+            # 如果 other_a_no 是自己，说明为存款取款或还款超付，那么把对方账户号设为空
             formatted_other_a_no = detail['lar_other_a_no']
-            if detail['lar_type'] in ['deposit', 'withdraw']:
+            print(formatted_type)
+            if formatted_other_a_no == int(account_number):
                 formatted_other_a_no = ''
 
             formatted_details.append({
